@@ -1,0 +1,4 @@
+13:31:02.520 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+13:31:02.639 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+13:31:12.477 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - seva-7e5ed-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 86ms, init: 0ms
+13:31:12.522 [NamespaceSystem-blocking-namespace-operation-dispatcher-6:seva-7e5ed-default-rtdb$-1550343692:] INFO com.firebase.core.namespace.StateManager - Namespace seva-7e5ed-default-rtdb status Active to Active

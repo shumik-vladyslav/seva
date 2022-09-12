@@ -1,0 +1,93 @@
+<div class="work-container">
+  <div class="main-wrap">
+
+    <div class="work-wrap">
+      <div class="work-head">
+        <h3 class="work-title">Если вы не нашли подходящего служения для себя, оставьте заявку и вам обязательно дадут
+          возможность накопить заслугу</h3>
+        <div class="work-head-input-wrap">
+          <input type="text" placeholder="Ваше имя">
+          <input type="text" placeholder="Ваш телефон">
+          <input type="text" placeholder="Ваш Email">
+        </div>
+        <button class="work-head-btn">Оставить Заявку</button>
+      </div>
+      <div class="from-filter" *ngIf="chackedValue[0]">
+        <div class="card-checked-filter" *ngFor="let item of chackedValue | slice: 0 : 10, let i =index">
+          <p>{{item | slice :0:19}}</p>
+          <p class="ch_exit" (click)="deleteValue(i)">✕</p>
+        </div>
+      </div>
+      <div class="work-content-wrap">
+        <div class="work-content">
+          <div class="work-card">
+            <h2>Набор лекций Гуру</h2>
+            <h3>Тримурти ашрам</h3>
+            <p>Занятость до 3 часов в день, наличие компьтера, преданности и самоотдачи приветствуется. Лекции
+              необходимо набирать быстро, без орфографических ошибок, редактировать набранный текст. Высылаться будет по
+              две лекции в неделю. Служение...</p>
+            <div class="work-card-rowblock">
+              <div class="work-card-img">
+                <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
+                <button [routerLink]="[ '/work/1' ]">Взять служение</button>
+              </div>
+              <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
+            </div>
+
+          </div>
+          <div class="work-card">
+            <h2>Дизайн сайта “Сева сукрити”</h2>
+            <h3>Дивья Лока ашрам</h3>
+            <p>Занятость до 3 часов в день, наличие компьтера, преданности и самоотдачи приветствуется. Лекции
+              необходимо набирать быстро, без орфографических ошибок, редактировать набранный текст. Высылаться будет по
+              две лекции в неделю. Служение...</p>
+            <div class="work-card-rowblock">
+              <div class="work-card-img">
+                <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
+                <button [routerLink]="[ '/work/1' ]">Взять служение</button>
+              </div>
+              <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="work-filter">
+          <div class="filter-wrap">
+            <h3 (click)="showCategory()" class="categ-title">Категория <span class="arrow-categ">⌵</span></h3>
+            <form class="checkbox-holder" name="chackbox" (change)="changeChackbox($event)">
+              <label><input class="filter-checkbox" type="checkbox" name=""
+                  value="Редактирование книг, набор лекций Гуру" id=""> <span class="checkbox-text">Редактирование книг,
+                  набор лекций Гуру</span></label>
+              <label><input class="filter-checkbox" type="checkbox" name=""
+                  value="Дизайн, веб дизайн, художественная мандала" id=""> <span class="checkbox-text">Дизайн, веб
+                  дизайн, художественная мандала</span></label>
+              <label><input class="filter-checkbox" type="checkbox" name="" value="Ландшафтный дизайн" id=""> <span
+                  class="checkbox-text">Ландшафтный дизайн</span></label>
+              <label><input class="filter-checkbox" type="checkbox" name=""
+                  value="Монтаж, озвучивание, редактирование роликов и видео" id=""> <span class="checkbox-text">Монтаж,
+                  озвучивание, редактирование роликов и видео</span></label>
+              <label><input class="filter-checkbox" type="checkbox" name="" value="Строительство" id=""> <span
+                  class="checkbox-text">Строительство</span></label>
+              <label><input class="filter-checkbox" type="checkbox" name="" value="Пошив одежды, монашеских одеяний"
+                  id=""> <span class="checkbox-text">Пошив одежды, монашеских одеяний</span></label>
+              <label><input class="filter-checkbox" type="checkbox" name="" value="IT, разработка сайтов" id=""> <span
+                  class="checkbox-text">IT, разработка сайтов</span></label>
+            </form>
+            <div class="more-block"><span>Еще</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="paginator">
+        <div class="see-more">Показать еще</div>
+
+        <mat-paginator
+         [length]="100"
+         [pageSize]="10"
+         [pageIndex]="1"
+         aria-label="Select page">
+        </mat-paginator>
+
+      </div>
+    </div>
+  </div>
+</div>

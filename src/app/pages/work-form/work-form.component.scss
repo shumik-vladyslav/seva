@@ -1,0 +1,44 @@
+
+::ng-deep{
+  .mat-dialog-container{
+    padding: 0% !important;
+    border-radius: 40px;
+  }
+  .cdk-overlay-backdrop{
+    background: rgba(255,255,255, 0.7)
+  }
+}
+.work-head{
+  height: 100% !important;
+  // display: flex;
+  // align-items: center;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  background: linear-gradient(180deg, #8FBEF2 0%, rgba(23, 116, 226, 0.963542) 18.75%, rgba(59, 77, 243, 0.88) 43.23%, rgba(35, 51, 190, 0.92) 64.06%, rgba(12, 29, 168, 0.85) 84.37%);
+  .work-head-input-wrap {
+
+    padding-top: 0px !important;
+    margin-top: -2%;
+  }
+  .work-head-center{
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    p{
+      width: 20%;
+      text-align: center;
+      font-size: xx-small;
+      color: rgba(255, 255, 255, 0.9);
+      @media (max-width: 558px) {
+        width: 60%;
+      }
+
+    }
+  }
+  .work-head-btn {
+    margin-top: 3% !important;
+    display: flex;
+    align-items: center;
+  }
+}

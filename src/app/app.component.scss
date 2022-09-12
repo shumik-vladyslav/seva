@@ -1,0 +1,49 @@
+.wraper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.outlet-wrap {
+  height: 100%;
+}
+
+:host ::ng-deep {
+  .paginator {
+    margin-top: 5%;
+    .see-more{
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      padding: 1% 0px ;
+      margin: 0% 1%;
+      border: 2px solid #D9D9D9;
+      color: #0478EE;
+      transition: all 0.3s;
+    }
+    .see-more:hover{
+      color: white;
+      background-color: #50a8ff;
+    }
+  }
+
+  .mat-paginator {
+    width: 100%;
+    margin: 0% 1%;
+
+  }
+  .mat-paginator-page-size, .mat-paginator-range-label{
+    display: none !important;
+  }
+  .mat-paginator .mat-paginator-container {
+    justify-content: center;
+    background: #FFFAF5;
+
+    * {
+      color: #000;
+    }
+  }
+}

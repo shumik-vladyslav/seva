@@ -1,0 +1,158 @@
+<div class="proj-content">
+  <div class="proj-slider">
+    <div class="pr-filter"></div>
+    <owl-carousel-o #owl [options]="customOptions2">
+
+      <ng-container *ngFor="let slide of slides">
+        <ng-template carouselSlide >
+          <div class="slide-img-container2">
+
+            <img class="carousel-img2" [src]="slide.img" >
+            <div>
+              <h2>{{slide.title}}</h2>
+
+              <p>{{slide.desc}}</p>
+              <button class="btn-detail" [routerLink]="[ '/project/1' ]">Подробнее</button>
+            </div>
+            <!-- <hr> -->
+            <!-- <p>{{slide.name}}</p> -->
+
+          </div>
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+  <div class="main-wrap">
+    <h1 class="proj-title">Наши проекты</h1>
+    <div class="proj-container">
+      <div class="proj-card"  [routerLink]="[ '/project/1' ]">
+        <div class="proj-img-container"><img src="../../../assets/img/14649577028_1-vsegda-pomnim-com-p-visadka-derevev-foto-.png" alt="" height="100%"></div>
+        <div class="proj-card-text-container">
+          <div class="proj-card-txtinfo">
+
+            <p class="card-tag">Тримурти ашрам</p>
+            <h5 class="card-title">Высадка в Тримурти ашраме 200 новых деревьев</h5>
+            <p class="card-desc">Планируется закупка различных видов деревьев, в том числе плодовых для облагараживания и обустройства территории на втором и третьем участках, а также для сбора своих фруктов и ягод.</p>
+          </div>
+          <div class="card-range-container">
+
+
+            <div class="my-progresbar"></div>
+            <div class="card-range-info">
+              <div class="card-range-info-status">
+                <p class="card-range-percent">60 %</p>
+                <p class="card-range-status">Идёт сбор</p>
+              </div>
+              <div class="card-range-cash-content">
+
+                <p class="card-range-cash">150 000 ₴</p>
+                <p class="card-range-have">Собрано</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="proj-card"  [routerLink]="[ '/project/1' ]">
+        <div class="proj-img-container"><img src="../../../assets/img/1649577028_1-vsegda-pomnim-com-p-visadka-derevev-foto-1.png" alt="" height="100%"></div>
+        <div class="proj-card-text-container">
+          <div class="proj-card-txtinfo">
+
+            <p class="card-tag">Тримурти ашрам</p>
+            <h5 class="card-title">Высадка в Тримурти ашраме 200 новых деревьев</h5>
+            <p class="card-desc">Планируется закупка различных видов деревьев, в том числе плодовых для облагараживания и обустройства территории на втором и третьем участках, а также для сбора своих фруктов и ягод.</p>
+          </div>
+          <div class="card-range-container">
+
+
+            <div class="my-progresbar"></div>
+            <div class="card-range-info">
+              <div class="card-range-info-status">
+                <p class="card-range-percent">60 %</p>
+                <p class="card-range-status">Идёт сбор</p>
+              </div>
+              <div class="card-range-cash-content">
+
+                <p class="card-range-cash">150 000 ₴</p>
+                <p class="card-range-have">Собрано</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="proj-card"  [routerLink]="[ '/project/1' ]">
+        <div class="proj-img-container">
+          <img src="../../../assets/img/14649577028_1-vsegda-pomnim-com-p-visadka-derevev-foto-.png" alt="" height="100%">
+        </div>
+        <div class="proj-card-text-container">
+          <div class="proj-card-txtinfo">
+
+            <p class="card-tag">Тримурти ашрам</p>
+            <h5 class="card-title">Высадка в Тримурти ашраме 200 новых деревьев</h5>
+            <p class="card-desc">Планируется закупка различных видов деревьев, в том числе плодовых для облагараживания и обустройства территории на втором и третьем участках, а также для сбора своих фруктов и ягод.</p>
+          </div>
+          <div class="card-range-container">
+
+
+            <div class="my-progresbar"></div>
+            <div class="card-range-info">
+              <div class="card-range-info-status">
+                <p class="card-range-percent">60 %</p>
+                <p class="card-range-status">Идёт сбор</p>
+              </div>
+              <div class="card-range-cash-content">
+
+                <p class="card-range-cash">150 000 ₴</p>
+                <p class="card-range-have">Собрано</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="proj-card"  [routerLink]="[ '/project/1' ]">
+        <div class="proj-img-container">
+          <img src="../../../assets/img/1649577028_1-vsegda-pomnim-com-p-visadka-derevev-foto-1.png" alt="" height="100%">
+        </div>
+        <div class="proj-card-text-container">
+          <div class="proj-card-txtinfo">
+
+            <p class="card-tag">Тримурти ашрам</p>
+            <h5 class="card-title">Высадка в Тримурти ашраме 200 новых деревьев</h5>
+            <p class="card-desc">Планируется закупка различных видов деревьев, в том числе плодовых для облагараживания и обустройства территории на втором и третьем участках, а также для сбора своих фруктов и ягод.</p>
+          </div>
+          <div class="card-range-container">
+
+
+            <div class="my-progresbar"></div>
+            <div class="card-range-info">
+              <div class="card-range-info-status">
+                <p class="card-range-percent">60 %</p>
+                <p class="card-range-status">Идёт сбор</p>
+              </div>
+              <div class="card-range-cash-content">
+
+                <p class="card-range-cash">150 000 ₴</p>
+                <p class="card-range-have">Собрано</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="paginator">
+
+      <div class="see-more">Показать еще</div>
+      <mat-paginator
+       [length]="100"
+       [pageSize]="10"
+       aria-label="Select page">
+      </mat-paginator>
+
+    </div>
+  </div>
+</div>
