@@ -1,0 +1,22 @@
+<div class="home-container">
+  <ul>
+    <li *ngFor="let item of  quotes$ | async">
+      {{item.title}} <br>
+      {{item.description}}
+    </li>
+  </ul>
+
+
+  <div>
+    <form [formGroup]="form">
+
+      <label for="first-name">Название: </label>
+      <input id="first-name" type="text" formControlName="title">
+
+      <label for="last-name">Описание: </label>
+      <input id="last-name" type="text" formControlName="description">
+      <button (click)="createQuote()">Создать Цитату</button>
+
+    </form>
+  </div>
+</div>
