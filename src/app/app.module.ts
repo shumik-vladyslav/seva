@@ -22,6 +22,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 
 import { getAuth, provideAuth } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
+import { QuotesComponent } from './pages/admin/quotes/quotes.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,12 @@ import { environment } from 'src/environments/environment';
     ProjectDetailsComponent,
     WorkDetailsComponent,
     WorkFormComponent,
+    QuotesComponent,
 
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     CarouselModule,
     MatPaginatorModule,

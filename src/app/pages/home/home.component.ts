@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { addDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +11,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
   }
-  public firstSlides = [
-    {
-      title: '«Влечение к Богу чувствуют не все, а только те, у кого есть сукрити, запас благочестия».',
-      name: 'Свами Вишнудевананда Гири'
-    },
-    {
-      title: '«Влечение к Богу чувствуют не все, а только те, у кого есть сукрити.',
-      name: 'Свами Вишнудевананда Гири'
-    },
-  ];
+
 
   public slides = [
     {
@@ -129,7 +122,26 @@ export class HomeComponent implements OnInit {
 
     navClass: ['owl-prev', 'owl-next']
   } as any
-  public previousPage = 0
+  public previousPage = 0;
+
+  quotes$: Observable<any[]>;
+
+  constructor(firestore: Firestore) {
+    const coll = collection(firestore, 'quotes');
+    this.quotes$ = collectionData(coll);
+  }
+
+  // getAll() {
+  //   return collectionData(this.quotes, {
+  //     idField: 'id',
+  //   }) as Observable<any[]>;
+  // }
+
+  // get(id: string) {
+  //   const pokemonDocumentReference = doc(this.firestore, `pokemon/${id}`);
+  //   return docData(pokemonDocumentReference, { idField: 'id' });
+  // }
+
 
   activePagBtn(id: any) {
     if (id === 'prev') {

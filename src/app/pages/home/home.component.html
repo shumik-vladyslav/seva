@@ -40,19 +40,20 @@
       </div>
     </div>
   </div>
+
   <div class="main-wrap">
     <div class="quotes-container">
       <div class="quotes-block">
         <owl-carousel-o #owl [options]="customOptions2">
 
-          <ng-container *ngFor="let slide of firstSlides">
+          <ng-container *ngFor="let slide of quotes$ | async">
             <ng-template carouselSlide >
               <div class="slide-img-container">
 
                 <!-- <img class="carousel-img" [src]="slide.imgUrl" > -->
                 <h4>{{slide.title}}</h4>
                 <hr>
-                <p>{{slide.name}}</p>
+                <p>{{slide.description}}</p>
 
               </div>
             </ng-template>

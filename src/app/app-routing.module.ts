@@ -5,6 +5,7 @@ import { WorksComponent } from './pages/works/works.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 import { WorkDetailsComponent } from './pages/work-details/work-details.component';
+import { QuotesComponent } from './pages/admin/quotes/quotes.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'work/:details', component: WorkDetailsComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'project/:details', component: ProjectDetailsComponent },
+  { path: 'admin/quotes', component: QuotesComponent },
 
 
 ];
