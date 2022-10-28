@@ -1,0 +1,28 @@
+<div class="home-container">
+  <div class="form-control">
+    <form [formGroup]="form">
+      <label for="first-name">Название: </label>
+      <input id="first-name" type="text" formControlName="title">
+      <label for="first-name">Тег: </label>
+      <input id="first-name" type="text" formControlName="tag">
+      <label for="last-name">Описание: </label>
+      <input id="last-name" type="text" formControlName="desc">
+      <label for="last-name">Нужно Собрать: </label>
+      <input id="last-name" type="number" formControlName="aim">
+      <label for="last-name">Собрано в процентах: </label>
+      <input id="last-name" type="number" max="100" formControlName="percent">
+      <label for="last-name">Изображенние: </label>
+      <input id="last-name" type="file" (change)="upload($event)">
+
+      <button (click)="createWorkOffer()">Создать Проект</button>
+    </form>
+  </div>
+  <ul>
+    <li *ngFor="let item of  workOffer$ | async">
+      {{item.title}} <br>
+      {{item.tag}} <br>
+      {{item.desc}}<br>
+      <button (click)="deleteOffer(item.id)">Delete</button>
+    </li>
+  </ul>
+</div>

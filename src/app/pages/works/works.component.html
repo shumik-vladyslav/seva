@@ -20,34 +20,18 @@
       </div>
       <div class="work-content-wrap">
         <div class="work-content">
-          <div class="work-card">
-            <h2>Набор лекций Гуру</h2>
-            <h3>Тримурти ашрам</h3>
-            <p>Занятость до 3 часов в день, наличие компьтера, преданности и самоотдачи приветствуется. Лекции
-              необходимо набирать быстро, без орфографических ошибок, редактировать набранный текст. Высылаться будет по
-              две лекции в неделю. Служение...</p>
+          <div class="work-card" *ngFor="let item of workOffer$ | async">
+            <h2>{{item.title}}</h2>
+            <h3>{{item.subTitle}}</h3>
+            <p>{{item.desc}}</p>
             <div class="work-card-rowblock">
               <div class="work-card-img">
                 <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
-                <button [routerLink]="[ '/work/1' ]">Взять служение</button>
+                <button [routerLink]="[ '/work/'+item.id+'' ]">Взять служение</button>
               </div>
-              <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
+              <div class="is-hot" *ngIf="item.isHot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
             </div>
 
-          </div>
-          <div class="work-card">
-            <h2>Дизайн сайта “Сева сукрити”</h2>
-            <h3>Дивья Лока ашрам</h3>
-            <p>Занятость до 3 часов в день, наличие компьтера, преданности и самоотдачи приветствуется. Лекции
-              необходимо набирать быстро, без орфографических ошибок, редактировать набранный текст. Высылаться будет по
-              две лекции в неделю. Служение...</p>
-            <div class="work-card-rowblock">
-              <div class="work-card-img">
-                <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
-                <button [routerLink]="[ '/work/1' ]">Взять служение</button>
-              </div>
-              <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
-            </div>
           </div>
 
         </div>

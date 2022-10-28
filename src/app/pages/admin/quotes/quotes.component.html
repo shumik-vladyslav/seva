@@ -1,13 +1,5 @@
 <div class="home-container">
-  <ul>
-    <li *ngFor="let item of  quotes$ | async">
-      {{item.title}} <br>
-      {{item.description}}
-    </li>
-  </ul>
-
-
-  <div>
+  <div class="form-control">
     <form [formGroup]="form">
 
       <label for="first-name">Название: </label>
@@ -19,4 +11,15 @@
 
     </form>
   </div>
+
+  <ul>
+    <li *ngFor="let item of  quotes$ | async">
+      {{item.title}} <br>
+      {{item.description}}<br>
+      <button (click)="deleteQuote(item.id)">Delete</button>
+    </li>
+  </ul>
+
+
+
 </div>

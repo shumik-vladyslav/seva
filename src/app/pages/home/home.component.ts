@@ -87,8 +87,6 @@ export class HomeComponent implements OnInit {
     items: 1,
     navSpeed: 600,
     navText: [
-      // "<i class='fa fa-caret-left'></i>",
-
       "<div><img src='../../../assets/img/Vector9.png'><img src='../../../assets/img/Vector9.png'></div>",
       "<div><img src='../../../assets/img/Vectorr9.png'><img src='../../../assets/img/Vectorr9.png'></div>"
     ],
@@ -104,8 +102,6 @@ export class HomeComponent implements OnInit {
     navSpeed: 400,
     center: true,
     navText: [
-      // "<i class='fa fa-caret-left'></i>",
-
       "<div><img src='../../../assets/img/Vectorarrow.png'></div>",
       "<div><img src='../../../assets/img/Vectorr.png'></div>"
     ],
@@ -125,10 +121,13 @@ export class HomeComponent implements OnInit {
   public previousPage = 0;
 
   quotes$: Observable<any[]>;
+  support$: Observable<any[]>;
 
   constructor(firestore: Firestore) {
     const coll = collection(firestore, 'quotes');
     this.quotes$ = collectionData(coll);
+    const collSup = collection(firestore, 'suport');
+    this.support$ = collectionData(collSup);
   }
 
   // getAll() {
@@ -141,7 +140,6 @@ export class HomeComponent implements OnInit {
   //   const pokemonDocumentReference = doc(this.firestore, `pokemon/${id}`);
   //   return docData(pokemonDocumentReference, { idField: 'id' });
   // }
-
 
   activePagBtn(id: any) {
     if (id === 'prev') {

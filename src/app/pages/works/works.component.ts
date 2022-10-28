@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-works',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorksComponent implements OnInit {
 
-  constructor() { }
+  constructor(firestore: Firestore) {
+    const collSup = collection(firestore, 'workOffer');
+    this.workOffer$ = collectionData(collSup, {idField: 'id'});
+  }
+
+  workOffer$: Observable<any[]>;
 
   chackedValue: Array<any> = []
   ngOnInit(): void {

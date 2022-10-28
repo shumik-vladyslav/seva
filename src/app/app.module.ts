@@ -24,6 +24,8 @@ import { getAuth, provideAuth } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
 import { QuotesComponent } from './pages/admin/quotes/quotes.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WorkOffersComponent } from './pages/admin/work-offers/work-offers.component';
+import { ProjectComponent } from './pages/admin/project/project.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     WorkDetailsComponent,
     WorkFormComponent,
     QuotesComponent,
+    WorkOffersComponent,
+    ProjectComponent,
 
   ],
   imports: [

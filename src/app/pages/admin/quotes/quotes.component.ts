@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collectionData, collection, addDoc, doc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -23,7 +23,7 @@ export class QuotesComponent implements OnInit {
     });
 
     this.collections = collection(firestore, 'quotes');
-    this.quotes$ = collectionData(this.collections);
+    this.quotes$ = collectionData(this.collections, {idField: 'id'});
   }
 
   ngOnInit(): void {
@@ -37,9 +37,8 @@ export class QuotesComponent implements OnInit {
     });
   }
 
-  delete(id: string) {
-    doc(this.firestore, `quotes/${id}`);
-
+  deleteQuote(id: string) {
+    deleteDoc(doc(this.firestore, `quotes/${id}`));
   }
 
 }
