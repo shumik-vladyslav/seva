@@ -1,11 +1,12 @@
 .home-container{
   width: 80%;
   margin: auto;
+  margin-top: 2%;
   .hot{
     color: red;
   }
   ul{
-    margin-top: 5%;
+    margin-top: 2%;
 
     li{
       list-style-type: none;
@@ -23,8 +24,9 @@
     }
   }
   .form-control{
-    margin-top: 15%;
-    form{
+    margin-top: 2%;
+
+    // form{
 
       display: flex;
       flex-direction: column;
@@ -36,9 +38,7 @@
       input{
         margin-bottom: 15px;
       }
-      button{
-        margin-top: 2%;
-      }
+
     }
-  }
+  // }
 }

@@ -8,6 +8,7 @@ import { WorkDetailsComponent } from './pages/work-details/work-details.componen
 import { QuotesComponent } from './pages/admin/quotes/quotes.component';
 import { WorkOffersComponent } from './pages/admin/work-offers/work-offers.component';
 import { ProjectComponent } from './pages/admin/project/project.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,9 +16,14 @@ const routes: Routes = [
   { path: 'work/:details', component: WorkDetailsComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'project/:details', component: ProjectDetailsComponent },
-  { path: 'admin/quotes', component: QuotesComponent },
-  { path: 'admin/work-offers', component: WorkOffersComponent },
-  { path: 'admin/projects', component: ProjectComponent },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', pathMatch: 'full', redirectTo: 'quotes' },
+      { path: 'quotes', component: QuotesComponent },
+      { path: 'work-offers', component: WorkOffersComponent },
+      { path: 'projects', component: ProjectComponent }
+    ]
+  }
 ];
 
 @NgModule({

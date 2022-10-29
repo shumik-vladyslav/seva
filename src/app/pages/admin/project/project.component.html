@@ -1,28 +1,17 @@
 <div class="home-container">
   <div class="form-control">
-    <form [formGroup]="form">
-      <label for="first-name">Название: </label>
-      <input id="first-name" type="text" formControlName="title">
-      <label for="first-name">Тег: </label>
-      <input id="first-name" type="text" formControlName="tag">
-      <label for="last-name">Описание: </label>
-      <input id="last-name" type="text" formControlName="desc">
-      <label for="last-name">Нужно Собрать: </label>
-      <input id="last-name" type="number" formControlName="aim">
-      <label for="last-name">Собрано в процентах: </label>
-      <input id="last-name" type="number" max="100" formControlName="percent">
-      <label for="last-name">Изображенние: </label>
-      <input id="last-name" type="file" (change)="upload($event)">
-
-      <button (click)="createWorkOffer()">Создать Проект</button>
-    </form>
+    <button (click)="createProject()">Создать Проект</button>
   </div>
   <ul>
-    <li *ngFor="let item of  workOffer$ | async">
-      {{item.title}} <br>
-      {{item.tag}} <br>
-      {{item.desc}}<br>
-      <button (click)="deleteOffer(item.id)">Delete</button>
+    <li *ngFor="let item of  projects$ | async">
+      Имя: {{item.title}} <br>
+      Тег: {{item.tag}} <br>
+      Цель: {{item.aim}}<br>
+      Собрано: {{item.percent}}<br>
+      Описание: {{item.desc}}<br>
+      Изображенние: <br> <img src="{{item.img}}" height="70px" width="100px" alt=""><br>
+      <button (click)="EditProj(item)">Edit</button>
+      <button (click)="deleteProj(item.id)">Delete</button>
     </li>
   </ul>
 </div>

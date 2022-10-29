@@ -1,0 +1,24 @@
+
+.nav {
+  li {
+    list-style-type: none;
+    a {
+      text-decoration: none;
+      color: #96652C;
+      padding:0 25px;
+      padding-bottom: 5px;
+      &.active {
+        color: red;
+        border-bottom: 2px solid red;
+      }
+    }
+  }
+
+  padding-bottom: 5px;
+  margin: 12% auto 0;
+  width: 80%;
+  border-bottom: 2px solid #E5BF51;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}

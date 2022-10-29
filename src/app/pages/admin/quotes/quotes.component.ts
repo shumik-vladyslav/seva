@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-quotes',
@@ -16,10 +18,13 @@ export class QuotesComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private firestore: Firestore) {
+  constructor(
+    private firestore: Firestore,
+    private dialogRef: MatDialog
+    ) {
     this.form = new FormGroup({
-      title: new FormControl(''),
-      description: new FormControl(''),
+      title: new FormControl('', Validators.required),
+      desc: new FormControl('', Validators.required),
     });
 
     this.collections = collection(firestore, 'quotes');
@@ -30,10 +35,29 @@ export class QuotesComponent implements OnInit {
 
   }
 
-  createQuote() {
-    addDoc(this.collections,  {
-      title: this.form.controls["title"].value,
-      description: this.form.controls["description"].value
+  createQuotes(){
+    this.form.reset()
+    let obj={
+      type: 'create',
+      category: 'quotes',
+      form: this.form
+    }
+    this.dialogRef.open(ModalComponent, {
+      width: '90%',
+      data:  obj,
+    });
+  }
+  EditQuotes(item: any){
+    this.form.patchValue(item)
+    let obj={
+      type: 'edit',
+      category: 'quotes',
+      form: this.form,
+      id: item.id
+    }
+    this.dialogRef.open(ModalComponent, {
+      width: '90%',
+      data:  obj,
     });
   }
 

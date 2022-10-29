@@ -3,7 +3,9 @@ import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@
 import { deleteObject, getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-project',
@@ -12,17 +14,18 @@ import { Observable } from 'rxjs';
 })
 export class ProjectComponent implements OnInit {
   public form: FormGroup;
-  workOffer$: Observable<any[]>;
+  projects$: Observable<any[]>;
   isUploaded = false
   collections: any;
 
   constructor(
     private firestore: Firestore,
     private storage: Storage,
+    private dialogRef: MatDialog
     ) {
 
     this.collections = collection(firestore, 'projectContent');
-    this.workOffer$ = collectionData(this.collections, {idField: 'id'});
+    this.projects$ = collectionData(this.collections, {idField: 'id'});
 
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -31,11 +34,40 @@ export class ProjectComponent implements OnInit {
       aim: new FormControl('', Validators.required),
       percent: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
-      isHot: new FormControl(false)
     });
   }
 
-  deleteOffer(id: string) {
+  createProject(){
+    this.form.reset()
+    let obj={
+      type: 'create',
+      category: 'projectContent',
+      form: this.form
+    }
+    this.dialogRef.open(ModalComponent, {
+      width: '90%',
+      data:  obj,
+    });
+  }
+
+  EditProj(item: any){
+    console.log(item);
+
+    this.form.patchValue(item)
+    let obj={
+      type: 'edit',
+      category: 'projectContent',
+      form: this.form,
+      id: item.id
+    }
+    this.dialogRef.open(ModalComponent, {
+      width: '90%',
+      data:  obj,
+    });
+  }
+
+
+  deleteProj(id: string) {
     deleteDoc(doc(this.firestore, `projectContent/${id}`));
   }
 

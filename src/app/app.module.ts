@@ -26,6 +26,8 @@ import { QuotesComponent } from './pages/admin/quotes/quotes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WorkOffersComponent } from './pages/admin/work-offers/work-offers.component';
 import { ProjectComponent } from './pages/admin/project/project.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ModalComponent } from './pages/admin/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ProjectComponent } from './pages/admin/project/project.component';
     QuotesComponent,
     WorkOffersComponent,
     ProjectComponent,
+    AdminComponent,
+    ModalComponent,
 
   ],
   imports: [

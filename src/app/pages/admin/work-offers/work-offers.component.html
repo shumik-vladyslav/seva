@@ -1,17 +1,6 @@
 <div class="home-container">
   <div class="form-control">
-    <form [formGroup]="form">
-      <label for="first-name">Название: </label>
-      <input id="first-name" type="text" formControlName="title">
-      <label for="first-name">Подзаголовок: </label>
-      <input id="first-name" type="text" formControlName="subTitle">
-      <label for="last-name">Описание: </label>
-      <input id="last-name" type="text" formControlName="desc">
-      <div>
-        <span> Горячее предложение? </span><input type="checkbox" formControlName="isHot">
-      </div>
-      <button (click)="createWorkOffer()">Создать Предложенние</button>
-    </form>
+    <button (click)="createWorkOffer()">Создать Предложенние</button>
   </div>
   <ul>
     <li *ngFor="let item of  workOffer$ | async">
@@ -19,6 +8,7 @@
       {{item.subTitle}} <br>
       {{item.desc}}<br>
       <span class="hot" *ngIf="item.isHot">Hot</span><br>
+      <button (click)="EditOffer(item)">Edit</button>
       <button (click)="deleteOffer(item.id)">Delete</button>
     </li>
   </ul>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-work-offers',
@@ -15,7 +17,10 @@ export class WorkOffersComponent implements OnInit {
 
   collections: any;
 
-  constructor(private firestore: Firestore) {
+  constructor(
+    private firestore: Firestore,
+    private dialogRef: MatDialog
+    ) {
 
     this.collections = collection(firestore, 'workOffer');
     this.workOffer$ = collectionData(this.collections, {idField: 'id'});
@@ -29,22 +34,34 @@ export class WorkOffersComponent implements OnInit {
   }
 
   deleteOffer(id: string) {
-    console.log(id);
-
-
     deleteDoc(doc(this.firestore, `workOffer/${id}`));
   }
-
+  EditOffer(item: any){
+    this.form.patchValue(item)
+    let obj={
+      type: 'edit',
+      category: 'workOffer',
+      form: this.form,
+      id: item.id
+    }
+    this.dialogRef.open(ModalComponent, {
+      width: '90%',
+      data:  obj,
+    });
+  }
 
   createWorkOffer(){
-    if(this.form.valid){
-      addDoc(this.collections,  {
-        title: this.form.controls["title"].value,
-        subTitle: this.form.controls["subTitle"].value,
-        desc: this.form.controls["desc"].value,
-        isHot: this.form.controls["isHot"].value
-      });
+    this.form.reset()
+    let obj={
+      type: 'create',
+      category: 'workOffer',
+      form: this.form
     }
+    this.dialogRef.open(ModalComponent, {
+      width: '90%',
+      data:  obj,
+    });
+
   }
 
   ngOnInit(): void {
