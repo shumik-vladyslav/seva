@@ -4,10 +4,9 @@
   .hot{
     color: red;
   }
-  ul{
+  main{
     margin-top: 2%;
-    li{
-      list-style-type: none;
+    .li-block{
       border: 1px solid #000;
       border-radius: 10px;
       padding: 10px 20px;
@@ -22,10 +21,8 @@
   }
   .form-control{
     margin-top: 2%;
-    // form{
       display: flex;
       flex-direction: column;
-      // margin: auto;
       *{
         padding: 5px;
         border-radius: 5px;
@@ -33,6 +30,8 @@
       input{
         margin-bottom: 15px;
       }
-    // }
   }
+}
+i{
+  color: rgb(177, 102, 102);
 }

@@ -103,7 +103,7 @@
 }
 
 .work-card-rowblock-center {
-  // justify-content: center !important;
+  margin-top: 4%;
   margin-left: 15%;
   @media (max-width: 600px) {
     margin-left: 10%;
@@ -141,7 +141,6 @@
     }
     padding: 3%;
     *{
-      // padding-left: 20px;
       margin-bottom: 2%;
       text-align: left;
     }

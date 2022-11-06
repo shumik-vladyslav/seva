@@ -18,36 +18,26 @@
               <div class="work-card-rowblock">
 
 
-                <div class="is-hot noabs-is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
+                <div class="is-hot noabs-is-hot" *ngIf="workOffer?.isHot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
 
               </div>
-              <h2>Набор лекций Гуру</h2>
+              <h2>{{workOffer?.title}}</h2>
               <div class="short-info">
                 <div class="regular-work location">
-                  <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="5%" alt=""><span>Служение на постоянной основе</span>
+                  <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="5%" alt=""><span>{{workOffer?.details?.fullTime ? 'Служение на постоянной основе': 'Временное служение'}}</span>
                 </div>
 
                 <div class="location">
-                  <img src="../../../assets/img/31_104880.png" width="5%" alt=""><span>Центральный ашрам Тримурти</span>
+                  <img src="../../../assets/img/31_104880.png" width="5%" alt=""><span>{{workOffer?.details?.location}}</span>
                 </div>
                 <div class="location contacts">
-                  <img src="../../../assets/img/free-icon-telegram-226253.png" width="5%" alt=""><span>Трайлокьядеви  +380 97 415 1900</span>
+                  <img src="../../../assets/img/free-icon-telegram-226253.png" width="5%" alt=""><span>{{workOffer?.details?.contacts}}</span>
                 </div>
                 <div class="location time-work">
-                  <img src="../../../assets/img/checkmark-round_icon-icons.png" width="5%" alt=""><span>Занятость от 3 часов в день</span>
+                  <img src="../../../assets/img/checkmark-round_icon-icons.png" width="5%" alt=""><span>Занятость от {{workOffer?.details?.timeOnDay}} часов в день</span>
                 </div>
               </div>
               <div class="work-detail-description">
-                <h4>Описание</h4>
-                <p>Вам отправляется папка с лекциями, которые необходимо набрать до 30.08.2022. Вы набираете текст, затем его нужно отредактировать и проверить на орфографические ошибки. В указанный срок, вы высылаете все набранные лекции в папке в формате PDF. Если у вас возникают непредусмотренные события и вы не успеваете сделать служение в срок, нужно обязательно об этом предупредить монаха, который курирует данное служение и решить как вам действовать далее.</p>
-                <h4>Требования от служителя:</h4>
-
-                <div>
-                  <li>Ответственность, за взятую севу</li>
-                  <li>Выполнение севы в срок</li>
-                  <li>Усердие, старательность</li>
-                  <li>Желание разбираться и учиться новому</li>
-                </div>
               </div>
               <div class="work-card-rowblock work-card-rowblock-center">
                 <div class="work-card-img">

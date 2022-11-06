@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@kolkov/angular-editor": "^3.0.0-beta.0",
+    "angular-html-editor": "^0.11.2",
     "firebase": "^9.9.3",
     "ngx-owl-carousel-o": "^7.0.4",
     "rxjs": "~7.5.0",

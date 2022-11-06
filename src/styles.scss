@@ -45,6 +45,16 @@ body {
   background: #FFFAF5;
 }
 
+.open-sans{
+  font-family: open-sans, sans-serif !important;
+}
+.PT-Serif{
+  font-family: 'PT Serif' !important;
+}
+.playfair-display{
+  font-family: playfair-display, serif !important;
+}
+
 * {
   margin: 0%;
   padding: 0%;
@@ -749,3 +759,14 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mb-1{
+  margin-bottom: 1% !important;
+}
+.mb-2{
+  margin-bottom: 2% !important;
+}
+
+.ml-2{
+  margin-left: 2% !important;
+}

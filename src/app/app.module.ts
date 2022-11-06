@@ -23,11 +23,15 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getAuth, provideAuth } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
 import { QuotesComponent } from './pages/admin/quotes/quotes.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkOffersComponent } from './pages/admin/work-offers/work-offers.component';
 import { ProjectComponent } from './pages/admin/project/project.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ModalComponent } from './pages/admin/modal/modal.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatNativeDateModule } from '@angular/material/core';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,9 +54,14 @@ import { ModalComponent } from './pages/admin/modal/modal.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
+    MatChipsModule,
     CarouselModule,
     MatPaginatorModule,
+    MatNativeDateModule,
+    HttpClientModule,
+    AngularEditorModule,
     MatDialogModule,
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

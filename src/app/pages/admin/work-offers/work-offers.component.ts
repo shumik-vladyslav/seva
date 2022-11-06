@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, Observable } from 'rxjs';
 import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-work-offers',
@@ -11,60 +12,103 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./work-offers.component.scss']
 })
 export class WorkOffersComponent implements OnInit {
-  public form: FormGroup;
 
   workOffer$: Observable<any[]>;
-
+  dialog: any
   collections: any;
+  form?: any;
 
   constructor(
     private firestore: Firestore,
-    private dialogRef: MatDialog
-    ) {
+    private dialogRef: MatDialog,
+    private fb: FormBuilder,
+  ) {
 
     this.collections = collection(firestore, 'workOffer');
-    this.workOffer$ = collectionData(this.collections, {idField: 'id'});
+    this.workOffer$ = collectionData(this.collections, { idField: 'id' });
 
-    this.form = new FormGroup({
-      title: new FormControl('', Validators.required),
-      subTitle: new FormControl('', Validators.required),
-      desc: new FormControl('', Validators.required),
-      isHot: new FormControl(false)
+  }
+
+  initForm() {
+    this.form = this.fb.group({
+      title: [null, Validators.required],
+      subTitle: [null, Validators.required],
+      desc: [null, Validators.required],
+      bigDesc: [null, Validators.required],
+      details: this.fb.group({
+        location: [null],
+        contacts: [null],
+        timeOnDay: [null],
+        fullTime: [false],
+      }),
+      isHot: [false]
     });
   }
 
   deleteOffer(id: string) {
     deleteDoc(doc(this.firestore, `workOffer/${id}`));
   }
-  EditOffer(item: any){
+  EditOffer(item: any) {
     this.form.patchValue(item)
-    let obj={
+    let obj = {
       type: 'edit',
       category: 'workOffer',
       form: this.form,
       id: item.id
     }
-    this.dialogRef.open(ModalComponent, {
+    let dialog = this.dialogRef.open(ModalComponent, {
       width: '90%',
-      data:  obj,
+      data: obj,
     });
+
+    dialog.afterClosed().subscribe(e => {
+      this.initForm();
+      if (e) {
+        this.initBigDesc();
+      }
+    })
+
   }
 
-  createWorkOffer(){
-    this.form.reset()
-    let obj={
+  createWorkOffer() {
+    let obj = {
       type: 'create',
       category: 'workOffer',
       form: this.form
     }
-    this.dialogRef.open(ModalComponent, {
+
+    let dialog = this.dialogRef.open(ModalComponent, {
       width: '90%',
-      data:  obj,
+      data: obj,
     });
 
+    dialog.afterClosed().subscribe(e => {
+      this.initForm();
+      if (e) {
+        this.initBigDesc();
+      }
+    })
   }
 
   ngOnInit(): void {
+    this.initForm();
+    this.initBigDesc()
   }
 
+  initBigDesc() {
+    this.workOffer$.pipe(debounceTime(600)).subscribe(e => {
+      let elem = document.querySelectorAll('.bigDesc')
+      if (elem.length) {
+        if (e.length) {
+          e.find((el, i) => {
+            if (el?.bigDesc) {
+              if (elem[i].innerHTML !== el?.bigDesc) {
+                elem[i].innerHTML = el.bigDesc
+              }
+            }
+          })
+        }
+      }
+    })
+  }
 }

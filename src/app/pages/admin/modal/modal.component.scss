@@ -1,12 +1,50 @@
 form{
+  overflow: auto;
+  max-height: 90vh;
+  transition: all 0.4s;
   .modal-content{
     display: flex;
     flex-direction: column;
-    input{
+    input, textarea{
       margin-bottom: 1%;
+      border-radius: 5px;
+      padding: 0.5%;
+      &.invalid{
+        border: 1px solid rgb(181, 43, 43);
+      }
     }
   }
 }
-.mb-2{
-  margin-bottom: 2% !important;
+
+.del-img{
+  background-color: rgb(47, 47, 47);
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  width: 26%;
+}
+.del-inp{
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  background-color: rgb(47, 47, 47);
+}
+.hold-req{
+  display: flex;
+  flex-direction: column;
+  div{
+    display: flex;
+    p{
+      margin-bottom: 1%;
+    }
+    align-items: center;
+  }
+}
+
+.disabled{
+  background-color: rgb(165, 165, 165);
 }

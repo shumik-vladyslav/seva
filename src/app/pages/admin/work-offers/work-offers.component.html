@@ -2,14 +2,24 @@
   <div class="form-control">
     <button (click)="createWorkOffer()">Создать Предложенние</button>
   </div>
-  <ul>
-    <li *ngFor="let item of  workOffer$ | async">
-      {{item.title}} <br>
-      {{item.subTitle}} <br>
-      {{item.desc}}<br>
+  <main>
+    <div class="li-block" *ngFor="let item of  workOffer$ | async">
+      <i>Название: </i> {{item.title}} <br>
+      <i>Подзаголовок: </i> {{item.subTitle}} <br>
+      <i>Описание: </i> {{item.desc}}<br>
+      <i>Большое описание: </i>
+      <p class="bigDesc"></p>
+      <i>Детали: </i><br>
+      <div class="ml-2">
+        <i>Локация:</i> {{item.details?.location}}<br>
+        <i>График:</i> {{ item.details?.fullTime ? 'Полний робочий день' : 'Частичная зайнятость'}}<br>
+        <i>Часов в день:</i> {{item.details?.timeOnDay}}<br>
+        <i>Контакти:</i> {{item.details?.contacts}}<br>
+
+      </div>
       <span class="hot" *ngIf="item.isHot">Hot</span><br>
       <button (click)="EditOffer(item)">Edit</button>
       <button (click)="deleteOffer(item.id)">Delete</button>
-    </li>
-  </ul>
+    </div>
+  </main>
 </div>

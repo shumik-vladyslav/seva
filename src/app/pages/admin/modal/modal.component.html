@@ -6,7 +6,24 @@
     <input id="first-name" type="text" formControlName="subTitle">
     <label for="last-name">Описание: </label>
     <input id="last-name" type="text" formControlName="desc">
-    <div>
+    <label for="last-name">Большое описание: </label>
+    <angular-editor id="editor1" formControlName="bigDesc" [config]="editorConfig"></angular-editor>
+    <div >
+    <label for="last-name">Детали: </label>
+    <div class="ml-2" [formGroup]="data.form?.controls?.details">
+      <span>Служение на постоянной основе </span> <input type="checkbox" class="mb-2" formControlName="fullTime">
+      <br >
+      <label for="last-name">Локация: </label>
+      <input type="text" formControlName="location" >
+      <br>
+      <label for="last-name">Зайнятость от: </label>
+      <input type="number"  min="0" max="10"  formControlName="timeOnDay"><span> часов</span>
+      <br>
+      <label for="last-name" >Контакти: </label>
+      <input type="text" formControlName="contacts">
+    </div>
+  </div>
+    <div class="mb-2">
       <span> Горячее предложение? </span><input type="checkbox" formControlName="isHot">
     </div>
     <button [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
@@ -20,7 +37,7 @@
     <button [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
-  <div class="modal-content" *ngIf="data.category ==='projectContent'">
+  <div class="modal-content" *ngIf="data.category ==='projectContent'" >
 
     <label for="first-name">Название: </label>
     <input id="first-name" type="text" formControlName="title">
@@ -30,11 +47,12 @@
     <input id="last-name" type="text" formControlName="desc">
     <label for="last-name">Нужно Собрать: </label>
     <input id="last-name" type="number" formControlName="aim">
-    <label for="last-name">Собрано: </label>
-    <input id="last-name" type="number" max="100" formControlName="percent">
+    <label for="last-name"  min="10" >Собрано: </label>
+    <input  id="last-name" type="number" max="{{data?.form.value?.aim}}" min="0" formControlName="percent">
     <label for="last-name">Изображенние: </label>
-    <input  class="mb-2" id="last-name" type="file" formControlName="img" (change)="upload($event)">
-
+    <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
+    <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
+    <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Delete image</button>
     <button [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
