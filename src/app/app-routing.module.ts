@@ -9,6 +9,8 @@ import { QuotesComponent } from './pages/admin/quotes/quotes.component';
 import { WorkOffersComponent } from './pages/admin/work-offers/work-offers.component';
 import { ProjectComponent } from './pages/admin/project/project.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { RevardsComponent } from './pages/admin/revards/revards.component';
+import { MessagesComponent } from './pages/admin/messages/messages.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +23,9 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'quotes' },
       { path: 'quotes', component: QuotesComponent },
       { path: 'work-offers', component: WorkOffersComponent },
-      { path: 'projects', component: ProjectComponent }
+      { path: 'projects', component: ProjectComponent },
+      { path: 'revards', component: RevardsComponent },
+      { path: 'messages', component: MessagesComponent }
     ]
   }
 ];

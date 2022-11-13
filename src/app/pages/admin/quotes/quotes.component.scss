@@ -1,44 +1,27 @@
-.home-container{
-  width: 80%;
-  margin: auto;
-  margin-top: 2%;
-  .hot{
-    color: red;
-  }
-  ul{
-    margin-top: 2%;
 
-    li{
-      list-style-type: none;
-      border: 1px solid #000;
-      border-radius: 10px;
-      padding: 10px 20px;
-
-      button{
-        background-color: rgb(47, 47, 47);
-        color: white;
-        border-radius: 10px;
-        padding: 5px;
-      }
-
-    }
-  }
+.quotes-cont{
   .form-control{
-    margin-top: 2%;
-
-    // form{
-
-      display: flex;
-      flex-direction: column;
-      margin: auto;
-      *{
-        padding: 5px;
-        border-radius: 5px;
-      }
-      input{
-        margin-bottom: 15px;
-      }
-
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    button{
+      display: block;
+      margin-left: 1%;
     }
-  // }
+
+  }
+}
+.flx{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  .main-block{
+    margin-top: 2%;
+    h2{
+      text-align: center;
+      color: #96652C;
+    }
+    width: 48%;
+  }
 }

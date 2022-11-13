@@ -35,7 +35,11 @@ export class WorkDetailsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  modalDetailsShow(data: any) {
+  modalDetailsShow() {
+    let data = {
+      type: 'work',
+      val: this.workOffer
+    }
     console.log(data);
     let dialogRef = this.dialog.open(WorkFormComponent, {
       height: '45%',

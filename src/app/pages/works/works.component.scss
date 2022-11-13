@@ -8,7 +8,9 @@
 
     .work-card {
       border: 0.8px solid #D9D9D9;
-
+      flex-direction: column;
+      display: flex;
+      justify-content: space-around;
       h2 {
         color: #388EED;
         font-family: pt-serif-caption, serif;

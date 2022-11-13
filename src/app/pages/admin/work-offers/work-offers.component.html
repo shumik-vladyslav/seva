@@ -1,4 +1,4 @@
-<div class="home-container">
+<div class="home-container admin-content">
   <div class="form-control">
     <button (click)="createWorkOffer()">Создать Предложенние</button>
   </div>
@@ -7,7 +7,7 @@
       <i>Название: </i> {{item.title}} <br>
       <i>Подзаголовок: </i> {{item.subTitle}} <br>
       <i>Описание: </i> {{item.desc}}<br>
-      <i>Большое описание: </i>
+      <i class="b-desc" (click)="showDesc(item, $event)">Большое описание <span *ngIf="!isBigDesc">⌵</span> <span class="roteted" *ngIf="isBigDesc">⌵</span></i>
       <p class="bigDesc"></p>
       <i>Детали: </i><br>
       <div class="ml-2">
@@ -17,9 +17,9 @@
         <i>Контакти:</i> {{item.details?.contacts}}<br>
 
       </div>
-      <span class="hot" *ngIf="item.isHot">Hot</span><br>
-      <button (click)="EditOffer(item)">Edit</button>
-      <button (click)="deleteOffer(item.id)">Delete</button>
+      <span class="hot" *ngIf="item.isHot">Срочное</span><br>
+      <button class="mt-1 edit-btn" (click)="EditOffer(item)">Редактировать</button>
+      <button class="ml-1 mt-1" (click)="deleteOffer(item.id)">Удалить</button>
     </div>
   </main>
 </div>

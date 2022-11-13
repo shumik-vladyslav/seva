@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@angular/fire/firestore';
 
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
@@ -15,6 +15,7 @@ export class ProjectComponent implements OnInit {
   public form: FormGroup;
   projects$: Observable<any[]>;
   collections: any;
+  isBigDesc = false;
 
   constructor(
     private firestore: Firestore,
@@ -31,6 +32,12 @@ export class ProjectComponent implements OnInit {
       aim: new FormControl('', Validators.required),
       percent: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
+      date: new FormControl(''),
+      location: new FormControl('', Validators.required),
+      supported: new FormControl('', Validators.required),
+      bigDesc: new FormControl('', Validators.required),
+      revards: new FormControl(null)
+
     });
   }
 
@@ -49,6 +56,7 @@ export class ProjectComponent implements OnInit {
 
   EditProj(item: any){
     console.log(item);
+    this.form.reset()
 
     this.form.patchValue(item)
     let obj={
@@ -85,6 +93,15 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  showDesc(item:any, event: any) {
+    if (!this.isBigDesc) {
+      event.target.nextElementSibling.innerHTML = item.bigDesc
+      this.isBigDesc = true
+    }
+    else{
+      event.target.nextElementSibling.innerHTML = ''
+      this.isBigDesc = false
+    }
+  }
 
 }

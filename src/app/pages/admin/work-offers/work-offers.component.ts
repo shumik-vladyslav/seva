@@ -17,6 +17,7 @@ export class WorkOffersComponent implements OnInit {
   dialog: any
   collections: any;
   form?: any;
+  isBigDesc = false
 
   constructor(
     private firestore: Firestore,
@@ -63,13 +64,18 @@ export class WorkOffersComponent implements OnInit {
 
     dialog.afterClosed().subscribe(e => {
       this.initForm();
-      if (e) {
-        this.initBigDesc();
-      }
     })
-
   }
-
+  showDesc(item:any, event: any) {
+    if (!this.isBigDesc) {
+      event.target.nextElementSibling.innerHTML = item.bigDesc
+      this.isBigDesc = true
+    }
+    else{
+      event.target.nextElementSibling.innerHTML = ''
+      this.isBigDesc = false
+    }
+  }
   createWorkOffer() {
     let obj = {
       type: 'create',
@@ -84,31 +90,28 @@ export class WorkOffersComponent implements OnInit {
 
     dialog.afterClosed().subscribe(e => {
       this.initForm();
-      if (e) {
-        this.initBigDesc();
-      }
     })
   }
 
   ngOnInit(): void {
     this.initForm();
-    this.initBigDesc()
   }
 
-  initBigDesc() {
-    this.workOffer$.pipe(debounceTime(600)).subscribe(e => {
-      let elem = document.querySelectorAll('.bigDesc')
-      if (elem.length) {
-        if (e.length) {
-          e.find((el, i) => {
-            if (el?.bigDesc) {
-              if (elem[i].innerHTML !== el?.bigDesc) {
-                elem[i].innerHTML = el.bigDesc
-              }
-            }
-          })
-        }
-      }
-    })
-  }
+  // ------- load all big desc if need
+  // initBigDesc() {
+  //   this.workOffer$.pipe(debounceTime(600)).subscribe(e => {
+  //     let elem = document.querySelectorAll('.bigDesc')
+  //     if (elem.length) {
+  //       if (e.length) {
+  //         e.find((el, i) => {
+  //           if (el?.bigDesc) {
+  //             if (elem[i].innerHTML !== el?.bigDesc) {
+  //               elem[i].innerHTML = el.bigDesc
+  //             }
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 }

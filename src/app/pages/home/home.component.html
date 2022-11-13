@@ -89,7 +89,7 @@
       <div class="work-card-rowblock">
         <div class="work-card-img">
           <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
-          <button style="padding: 4% 8%">Я хочу сделать пожертвование</button>
+          <button style="padding: 4% 8%" (click)="modalDetail()">Я хочу сделать пожертвование</button>
         </div>
       </div>
     </div>
@@ -100,13 +100,12 @@
         <div class="slider-wrap-absolute">
           <owl-carousel-o #owl [options]="customOptions">
 
-            <ng-container *ngFor="let slide of slides">
-              <ng-template [id]="slide.id" carouselSlide >
+            <ng-container *ngFor="let slide of this.slides$ | async, let i =index">
+              <ng-template [id]="i.toString()" carouselSlide >
                 <div class="slide-img-container" style="box-shadow: 0px 0px 43.0895px rgba(0, 0, 0, 0.05);">
-                  <img class="carousel-img" [src]="slide.imgUrl" >
+                  <img class="carousel-img" [src]="slide.img" >
                   <h4>{{slide.title}}</h4>
-                  <p style="text-align: left !important;     font-size: small;">{{slide.description}}</p>
-
+                  <p style="text-align: left !important; font-size: small;">{{slide.desc}}</p>
                 </div>
               </ng-template>
             </ng-container>

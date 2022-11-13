@@ -32,6 +32,12 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule} from '@angular/common/http';
+import '@angular/common/locales/global/ru';
+import { RevardsComponent } from './pages/admin/revards/revards.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MessagesComponent } from './pages/admin/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +55,8 @@ import { HttpClientModule} from '@angular/common/http';
     ProjectComponent,
     AdminComponent,
     ModalComponent,
-
+    RevardsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,10 @@ import { HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     MatChipsModule,
     CarouselModule,
+    MatFormFieldModule,
     MatPaginatorModule,
+    MatAutocompleteModule,
+    MatIconModule,
     MatNativeDateModule,
     HttpClientModule,
     AngularEditorModule,

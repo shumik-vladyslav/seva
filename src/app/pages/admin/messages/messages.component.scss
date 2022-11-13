@@ -1,0 +1,39 @@
+.mess-Wrap{
+  width: 80%;
+  margin: auto;
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-around;
+  .donat-wrap, .work-wrap{
+    width: 48%;
+    h2{
+      text-align: center;
+      color: #96652C;
+      // width: 45%;
+    }
+    div{
+      i{
+        color: #b16666;
+      }
+      button{
+        top: 5px;
+        right: 10px;
+        width: 10px;
+        cursor: pointer;
+        height: 10px;
+        text-align: center;
+        background-color: transparent;
+        border: 0px;
+        position: absolute;
+      }
+      position: relative;
+      margin-top: 2%;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    }
+
+  }
+}
+
+

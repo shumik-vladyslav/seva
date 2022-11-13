@@ -58,8 +58,10 @@ body {
 * {
   margin: 0%;
   padding: 0%;
-  font-family: open-sans, sans-serif;
   box-sizing: border-box;
+  &:not(.work-detail-description *, .bottom-proj-detail *){
+      font-family: open-sans, sans-serif;
+  }
 }
 
 .main-wrap {
@@ -436,6 +438,91 @@ body {
     }
   }
 }
+.admin-content {
+
+
+  &.home-container {
+    width: 80% !important;
+    margin: auto !important;
+
+    .hot {
+      color: red;
+
+    }
+    ul {
+      &:not(.main) {
+        margin-left: 5%;
+      }
+    }
+    main, .main {
+      margin-top: 2%;
+
+      .li-block {
+        transition: all 0.5s;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        list-style-type: none;
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 10px 20px;
+
+        button {
+          background-color: #96652C;
+          color: white;
+          border-color: #96652C;
+          border-radius: 5px;
+          padding: 5px;
+        }
+
+      }
+    }
+
+    .form-control {
+      margin-top: 2% !important;
+      display: flex;
+      flex-direction: column;
+
+      button{
+        background-color: #E5BF51;
+        width: 25%;
+        outline: none !important;
+        border-color: #E5BF51;
+        color: white;
+      }
+      * {
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      input {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  i {
+    color: rgb(177, 102, 102);
+    &.b-desc{
+      cursor: pointer;
+    }
+    span{
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      top: -2px;
+      margin-left: 5px;
+      font-style: normal;
+      transition: all 0.3s;
+      &.roteted{
+        transform: rotate(180deg);
+        top: 4px;
+      }
+    }
+  }
+
+  .edit-btn{
+    background-color: #96642cc1 !important;
+  }
+}
 
 @media (max-width: 768px) {
   .owl-carousel .slide-img-container {
@@ -766,7 +853,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb-2{
   margin-bottom: 2% !important;
 }
+.mb-1r{
+  margin-bottom: 1rem !important;
+}
 
+.mt-2{
+  margin-top: 2% !important;
+}
+.mt-1{
+  margin-top: 1% !important;
+}
+.ml-1{
+  margin-left: 1% !important;
+}
 .ml-2{
   margin-left: 2% !important;
+}
+.work-detail-description{
+  ul{
+    margin-left: 6%;
+  }
+}
+.m-prog{
+  height: 100%;
+  transition: all 0.4s;
+  background-color: #0478EE;
 }

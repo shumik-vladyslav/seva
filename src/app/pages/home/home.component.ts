@@ -3,6 +3,8 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { addDoc } from 'firebase/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { WorkFormComponent } from '../work-form/work-form.component';
 
 @Component({
   selector: 'app-home',
@@ -15,72 +17,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  public slides = [
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1.png',
-      id: '0',
-      title: 'Фонд по сбору пожертвований на храм Вишну закрыт',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (1).png',
-      title: 'В Тримурти ашраме высажено 200 новых деревьев',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      id: '1',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (2).png',
-      title: 'Завершен перевод “Йога Васиштхи”',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      id: '2',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (3).png',
-      id: '3',
-      title: 'Фонд по сбору пожертвований на мурти Даттатрейи закрыт',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (4).png',
-      id: '4',
-      title: 'Озвучена книга “Антарбхава Видья”',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (4).png',
-      id: '4',
-      title: 'Озвучена книга “Антарбхава Видья”',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (4).png',
-      id: '4',
-      title: 'Озвучена книга “Антарбхава Видья”',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (4).png',
-      id: '4',
-      title: 'Озвучена книга “Антарбхава Видья”',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-    {
-      imgUrl: '../../../assets/img/__Joga_Vasishtha 1 (4).png',
-      id: '4',
-      title: 'Озвучена книга “Антарбхава Видья”',
-      description: 'Служение выполнили: Яшодеви, Даттадеви, Омкар, Гананатха. Материальное обеспечение проекта: Васудева, Вималакирти.',
-      isActive: true
-    },
-  ]
   public customOptions2: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -121,45 +57,55 @@ export class HomeComponent implements OnInit {
   public previousPage = 0;
 
   quotes$: Observable<any[]>;
+  slides$: Observable<any[]>;
   support$: Observable<any[]>;
 
-  constructor(firestore: Firestore) {
+  constructor(
+    firestore: Firestore,
+    private dialog: MatDialog,
+    ) {
     const coll = collection(firestore, 'quotes');
     this.quotes$ = collectionData(coll);
     const collSup = collection(firestore, 'suport');
     this.support$ = collectionData(collSup);
+    const collectionsSld = collection(firestore, 'slides');
+    this.slides$ = collectionData(collectionsSld, {idField: 'id'});
   }
 
-  // getAll() {
-  //   return collectionData(this.quotes, {
-  //     idField: 'id',
-  //   }) as Observable<any[]>;
-  // }
 
-  // get(id: string) {
-  //   const pokemonDocumentReference = doc(this.firestore, `pokemon/${id}`);
-  //   return docData(pokemonDocumentReference, { idField: 'id' });
-  // }
 
-  activePagBtn(id: any) {
-    if (id === 'prev') {
-      this.slides[this.previousPage].isActive = false
-      if (this.previousPage === 0) this.previousPage = this.slides.length - 1
-      else this.previousPage--
-      this.slides[this.previousPage].isActive = true
+  // for btn
+  // activePagBtn(id: any) {
+  //   if (id === 'prev') {
+  //     this.slides[this.previousPage].isActive = false
+  //     if (this.previousPage === 0) this.previousPage = this.slides.length - 1
+  //     else this.previousPage--
+  //     this.slides[this.previousPage].isActive = true
+  //   }
+  //   else if (id === 'next') {
+  //     this.slides[this.previousPage].isActive = false
+  //     if (this.previousPage === this.slides.length - 1) this.previousPage = 0
+  //     else this.previousPage++
+  //     this.slides[this.previousPage].isActive = true
+  //   }
+  //   else {
+  //     this.previousPage = +id
+  //     this.slides.filter(e => {
+  //       e.isActive = false
+  //       if (e.id === id) e.isActive = true
+  //     })
+  //   }
+  // }
+  modalDetail(){
+    let data = {
+      type: 'donate',
+      val: ''
     }
-    else if (id === 'next') {
-      this.slides[this.previousPage].isActive = false
-      if (this.previousPage === this.slides.length - 1) this.previousPage = 0
-      else this.previousPage++
-      this.slides[this.previousPage].isActive = true
-    }
-    else {
-      this.previousPage = +id
-      this.slides.filter(e => {
-        e.isActive = false
-        if (e.id === id) e.isActive = true
-      })
-    }
+    let dialogRef = this.dialog.open(WorkFormComponent, {
+      height: '45%',
+      maxWidth: '95%',
+      data: data,
+      panelClass: "dialog-responsive"
+    });
   }
 }

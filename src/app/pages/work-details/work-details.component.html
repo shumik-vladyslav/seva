@@ -8,7 +8,7 @@
             <div class="work-card-rowblock">
               <div class="work-card-img">
                 <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
-                <button (click)="modalDetailsShow(121)" >Взять служение</button>
+                <button (click)="modalDetailsShow()" >Взять служение</button>
               </div>
               <!-- <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div> -->
             </div>
@@ -42,7 +42,7 @@
               <div class="work-card-rowblock work-card-rowblock-center">
                 <div class="work-card-img">
                   <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
-                  <button (click)="modalDetailsShow(121)" >Я хочу выполнять это служение</button>
+                  <button (click)="modalDetailsShow()" >Я хочу выполнять это служение</button>
                 </div>
                 <!-- <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div> -->
               </div>
@@ -51,64 +51,34 @@
         </div>
         <div class="work-filter work-hot-content">
           <div class="hot-header"><p>Срочное служение</p></div>
-          <div class="hot-card">
-            <h4>Набор лекций Гуру</h4>
-            <div class="short-info">
-              <div class="regular-work location">
-                <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>Служение на постоянной основе</span>
-              </div>
+          <div *ngFor="let item of (workOffers$ | async); let i = index" >
+            <ng-container *ngIf="item.isHot && i<3 ">
 
-              <div class="location">
-                <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>Центральный ашрам Тримурти</span>
-              </div>
-              <div class="location contacts">
-                <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>Трайлокьядеви  +380 97 415 1900</span>
-              </div>
-              <div class="location time-work">
-                <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от 3 часов в день</span>
-              </div>
-            </div>
+              <div class="hot-card">
 
-          </div>
-          <div class="hot-card">
-            <h4>Набор лекций Гуру</h4>
-            <div class="short-info">
-              <div class="regular-work location">
-                <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>Служение на постоянной основе</span>
-              </div>
+                <h4>{{item.title}}</h4>
+                <div class="short-info">
+                  <div class="regular-work location">
+                    <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>Служение
+                      на постоянной основе</span>
+                  </div>
 
-              <div class="location">
-                <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>Центральный ашрам Тримурти</span>
+                  <div class="location">
+                    <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>Центральный ашрам Тримурти</span>
+                  </div>
+                  <div class="location contacts">
+                    <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>Трайлокьядеви +380 97 415
+                      1900</span>
+                  </div>
+                  <div class="location time-work">
+                    <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от 3 часов в
+                      день</span>
+                  </div>
+                </div>
               </div>
-              <div class="location contacts">
-                <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>Трайлокьядеви  +380 97 415 1900</span>
-              </div>
-              <div class="location time-work">
-                <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от 3 часов в день</span>
-              </div>
-            </div>
+            </ng-container>
 
           </div>
-          <div class="hot-card">
-            <h4>Набор лекций Гуру</h4>
-            <div class="short-info">
-              <div class="regular-work location">
-                <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>Служение на постоянной основе</span>
-              </div>
-
-              <div class="location">
-                <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>Центральный ашрам Тримурти</span>
-              </div>
-              <div class="location contacts">
-                <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>Трайлокьядеви  +380 97 415 1900</span>
-              </div>
-              <div class="location time-work">
-                <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от 3 часов в день</span>
-              </div>
-            </div>
-
-          </div>
-
 
         </div>
 

@@ -1,0 +1,19 @@
+<div class="home-container admin-content">
+  <div class="form-control">
+    <button (click)="createRevard()">Создать Награду</button>
+  </div>
+  <main>
+    <div class="li-block" *ngFor="let item of revards$ | async">
+      <i>Название: </i> {{item.title}} <br>
+      <i>Описание: </i> {{item.desc}}<br>
+      <i>Цена: </i> {{item.price}}<br>
+      <i>Куплено: </i> {{item.bought}}<br>
+      <i>Осталось: </i> {{item.remainder}}<br>
+      <i>Изображенние: </i> <br><img [src]="item.img" class="mt-1" width="150px" alt="">
+      <br>
+
+      <button class="mt-1 edit-btn" (click)="editRevard(item)">Редактировать</button>
+      <button class="ml-1 mt-1" (click)="deleteRevard(item.id)">Удалить</button>
+    </div>
+  </main>
+</div>

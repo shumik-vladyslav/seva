@@ -9,6 +9,7 @@
       padding-bottom: 5px;
       &.active {
         color: red;
+        position: relative;
         border-bottom: 2px solid red;
       }
     }

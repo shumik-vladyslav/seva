@@ -1,17 +1,24 @@
-<div class="home-container">
+<div class="home-container admin-content">
   <div class="form-control">
     <button (click)="createProject()">Создать Проект</button>
   </div>
-  <ul>
-    <li *ngFor="let item of  projects$ | async">
-      Имя: {{item.title}} <br>
-      Тег: {{item.tag}} <br>
-      Цель: {{item.aim}}<br>
-      Собрано: {{item.percent}}<br>
-      Описание: {{item.desc}}<br>
-      Изображенние: <br> <img src="{{item.img}}" height="70px" width="100px" alt=""><br>
-      <button (click)="EditProj(item)">Edit</button>
-      <button (click)="deleteProj(item.id)">Delete</button>
+  <ul class="main">
+    <li class="li-block" *ngFor="let item of  projects$ | async">
+      <i>Название: </i>{{item.title}} <br>
+      <i>Тег: </i>  {{item.tag}} <br>
+      <i>Цель: </i> {{item.aim}}<br>
+      <i>Собрано: </i> {{item.percent}}<br>
+      <i>Описание: </i> {{item.desc}}<br>
+      <i>Локация: </i> {{item.location}}<br>
+      <div *ngIf="item.revards.length">
+        <i>Награды: </i> <p class="ml-2" *ngFor="let rev of item.revards">- {{rev.title}}</p>
+      </div>
+      <i class="b-desc" (click)="showDesc(item, $event)">Большое описание <span *ngIf="!isBigDesc">⌵</span> <span class="roteted" *ngIf="isBigDesc">⌵</span></i>
+      <p class="bigDesc" ></p>
+
+      <i>Изображенние: </i> <br> <img src="{{item.img}}" height="70px" width="100px" alt=""><br>
+      <button class="mt-1 edit-btn" (click)="EditProj(item)">Редактировать</button>
+      <button class="ml-1 mt-1" (click)="deleteProj(item.id)">Удалить</button>
     </li>
   </ul>
 </div>

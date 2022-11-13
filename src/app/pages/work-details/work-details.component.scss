@@ -40,7 +40,9 @@
 
 .work-content-details {
   background-color: white;
-
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
   .work-content-wrap {
     padding: 3% 5%;
 

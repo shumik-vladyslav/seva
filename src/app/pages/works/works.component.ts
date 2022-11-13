@@ -14,7 +14,7 @@ export class WorksComponent implements OnInit {
     this.workOffer$ = collectionData(collSup, {idField: 'id'});
   }
 
-  workOffer$: Observable<any[]>;
+  workOffer$: Observable<any>;
 
   chackedValue: Array<any> = []
   ngOnInit(): void {

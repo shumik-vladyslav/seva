@@ -27,7 +27,7 @@
 
           @media (max-width: 800px) {
             .carousel-img2 {
-              width: 80% !important;
+              width: 50% !important;
             }
           }
 
@@ -63,8 +63,6 @@
             h2 {
               text-align: center;
               font-size: xx-large;
-              // font-family: 'PT Serif';
-
             }
 
             @media (max-width: 500px) {
@@ -99,30 +97,19 @@
             }
             * {
               font-family: pt-serif, serif;
-
-
               color: white;
             }
           }
-
           .carousel-img2 {
             width: 50%;
-            // width: auto;
             height: 100%;
             object-fit: cover;
           }
-
         }
-
         width: 100%;
 
         .owl-item {
-
           width: 100%;
-        }
-
-        .owl-nav {
-          // position: relative;
         }
 
         .owl-prev,
@@ -133,12 +120,10 @@
 
         .owl-prev {
           margin-top: -3%;
-          // top: -1vh;
           left: 0px;
         }
 
         .owl-next {
-          // top: -1vh;
           margin-top: -3%;
           right: 0px;
         }
@@ -170,19 +155,12 @@
     height: 55vh;
 
     @media (max-width: 1200px) {
-
       height: 80vh;
     }
 
     @media (max-width: 800px) {
-
       padding-top: 5%;
     }
-
-    // display: flex;
-    // align-items: flex-end;
-    // justify-content: center;
-
   }
 
   .proj-title {
@@ -202,7 +180,6 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    // justify-content: space-between;
 
     .proj-card {
       cursor: pointer;
@@ -211,40 +188,44 @@
       margin-left: 1%;
       margin-top: 2%;
       width: 31.3%;
+      display: flex;
+      width: 31.3%;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 500px;
+      min-height: 500px;
+      border: 2px solid #D9D9D9;
       background-color: white;
-
-      // height: 70vh;
-      // min-height: 75vh;
-
       .proj-img-container {
         transition: all 0.3s;
-        // position: relative;
         display: flex;
+        // height: 20vh;
+        height: 220px;
+        @media screen {
+
+        }
+        width: 100%;
         align-items: flex-end;
-        // bottom: 0px;
 
         img {
           width: 100%;
-          object-fit: contain;
-
+          object-fit: cover;
           z-index: 0;
         }
-
-        width: 100%;
-        // background-color: gray;
-        // height: 47%;
       }
 
       .proj-card-text-container {
         background-color: white;
-
-        // height: 53%;
-        border: 2px solid #D9D9D9;
+        // border: 2px solid #D9D9D9;
         border-top: 0px;
+        flex-direction: column;
+        height: 100%;
+        display: flex;
         width: 100%;
         flex-direction: column;
         display: flex;
-        justify-content: space-around;
+        // justify-content: space-around;
+        justify-content: space-between;
         padding: 0px 3%;
 
         .proj-card-txtinfo {
@@ -252,8 +233,7 @@
             margin-bottom: 10%;
           }
 
-          p,
-          h5 {
+          p, h5 {
             margin-bottom: 3%;
           }
 
@@ -268,10 +248,7 @@
             font-family: oswald, sans-serif;
             font-style: normal;
             font-weight: 300;
-            text-decoration-line: underline; // border-bottom: 1px solid #000;
-            // width: min-content;
-            // white-space: nowrap;
-
+            text-decoration-line: underline;
           }
         }
 
@@ -330,7 +307,6 @@
                 font-family: 'Oswald';
                 font-style: normal;
                 font-weight: 400;
-
               }
             }
           }
@@ -355,16 +331,19 @@
         font-size: x-large;
         top: 0%;
         background: linear-gradient(295.13deg, rgba(14, 108, 203, 0.85) 25.49%, rgba(21, 102, 184, 0.9) 45.33%, rgba(5, 76, 148, 0.85) 63.3%);
-
       }
 
       .proj-img-container {
         transition: all 0.5s;
         position: relative;
-
         background: linear-gradient(295.13deg, rgba(14, 108, 203, 0.85) 25.49%, rgba(21, 102, 184, 0.9) 45.33%, rgba(5, 76, 148, 0.85) 63.3%);
         ;
       }
     }
+  }
+}
+@media (max-width: 800px) {
+  .proj-content .proj-slider .owl-carousel {
+    height: 90%;
   }
 }

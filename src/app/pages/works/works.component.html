@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="paginator">
+      <div class="paginator" [hidden]="(workOffer$ | async)?.length < 20">
         <div class="see-more">Показать еще</div>
 
         <mat-paginator

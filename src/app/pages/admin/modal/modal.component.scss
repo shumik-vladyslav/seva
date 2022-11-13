@@ -17,7 +17,8 @@ form{
 }
 
 .del-img{
-  background-color: rgb(47, 47, 47);
+  background-color: #96642cc1;
+  border-color: #96642cc1;
   color: white;
   border-radius: 10px;
   padding: 5px;
@@ -47,4 +48,15 @@ form{
 
 .disabled{
   background-color: rgb(165, 165, 165);
+}
+.edit-or-save{
+  padding: 5px;
+  border-radius: 10px;
+  width: 30%;
+  &:not(.disabled){
+    color: white;
+    border-color: #E5BF51;
+    background-color: #E5BF51;
+
+  }
 }

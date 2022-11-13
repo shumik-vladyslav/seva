@@ -1,17 +1,33 @@
-<div class="home-container">
+<div class="home-container admin-content quotes-cont">
   <div class="form-control">
     <button (click)="createQuotes()">Создать Цитату</button>
+    <button (click)="createSlide()">Создать Слайд Проекта</button>
   </div>
 
-  <ul>
-    <li *ngFor="let item of  quotes$ | async">
-      {{item.title}} <br>
-      {{item.desc}}<br>
-      <button (click)="EditQuotes(item)">Edit</button>
-      <button (click)="deleteQuote(item.id)">Delete</button>
-    </li>
-  </ul>
+  <div class="flx">
+    <div class="main-block">
+      <h2>Цитати</h2>
+      <ul class="main">
+        <li class="li-block" *ngFor="let item of  quotes$ | async">
+          <i>Название: </i> {{item.title}} <br>
+          <i>Описание: </i> {{item.desc}}<br>
+          <button class="mt-1 edit-btn" (click)="EditQuotes(item)">Редактировать</button>
+          <button class="ml-1 mt-1" (click)="deleteQuote(item.id)">Удалить</button>
+        </li>
+      </ul>
+    </div>
+    <div class="main-block">
+      <h2>Проекты</h2>
+      <ul class="main">
+        <li class="li-block" *ngFor="let item of  slides$ | async">
+          <i>Название: </i> {{item.title}} <br>
+          <i>Описание: </i> {{item.desc}}<br>
+          <i>Изображенние: </i> <br> <img src="{{item.img}}" height="110px" width="100px" alt=""><br>
+          <button class="mt-1 edit-btn" (click)="EditSlide(item)">Редактировать</button>
+          <button class="ml-1 mt-1" (click)="deleteSlide(item.id)">Удалить</button>
+        </li>
+      </ul>
+    </div>
 
-
-
+  </div>
 </div>

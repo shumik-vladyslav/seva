@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatPaginator } from '@angular/material/paginator';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -9,6 +11,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class ProjectsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  projects$: Observable<any>;
   public slides = [
     {
       img:'../../../assets/img/GoChicago.ru-3099.png',
@@ -21,8 +24,10 @@ export class ProjectsComponent implements OnInit {
       desc: 'Начат проект по строению храма Вишну в стиле индийского мандира, посвященный 12 его аватарам'
     },
   ];
-  constructor() { }
-
+  constructor(firestore: Firestore) {
+    const collSup = collection(firestore, 'projectContent');
+    this.projects$ = collectionData(collSup, {idField: 'id'});
+  }
   ngOnInit(): void {
     // setTimeout(() => {
 
