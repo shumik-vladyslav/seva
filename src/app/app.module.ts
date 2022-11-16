@@ -38,6 +38,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MessagesComponent } from './pages/admin/messages/messages.component';
+import { ConfirmComponent } from './pages/admin/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MessagesComponent } from './pages/admin/messages/messages.component';
     ModalComponent,
     RevardsComponent,
     MessagesComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,

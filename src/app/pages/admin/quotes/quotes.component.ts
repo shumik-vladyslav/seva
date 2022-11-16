@@ -3,6 +3,7 @@ import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -24,7 +25,7 @@ export class QuotesComponent implements OnInit {
   constructor(
     private firestore: Firestore,
     private dialogRef: MatDialog
-    ) {
+  ) {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
@@ -36,44 +37,44 @@ export class QuotesComponent implements OnInit {
     });
 
     this.collections = collection(firestore, 'quotes');
-    this.quotes$ = collectionData(this.collections, {idField: 'id'});
+    this.quotes$ = collectionData(this.collections, { idField: 'id' });
     this.collectionsSld = collection(firestore, 'slides');
-    this.slides$ = collectionData(this.collectionsSld, {idField: 'id'});
+    this.slides$ = collectionData(this.collectionsSld, { idField: 'id' });
   }
 
   ngOnInit(): void {
 
   }
 
-  createQuotes(){
+  createQuotes() {
     this.form.reset()
-    let obj={
+    let obj = {
       type: 'create',
       category: 'quotes',
       form: this.form
     }
     this.dialogRef.open(ModalComponent, {
       width: '90%',
-      data:  obj,
+      data: obj,
     });
   }
 
-  createSlide(){
+  createSlide() {
     this.formSlide.reset()
-    let obj={
+    let obj = {
       type: 'create',
       category: 'slides',
       form: this.formSlide
     }
     this.dialogRef.open(ModalComponent, {
       width: '90%',
-      data:  obj,
+      data: obj,
     });
   }
 
-  EditQuotes(item: any){
+  EditQuotes(item: any) {
     this.form.patchValue(item)
-    let obj={
+    let obj = {
       type: 'edit',
       category: 'quotes',
       form: this.form,
@@ -81,13 +82,13 @@ export class QuotesComponent implements OnInit {
     }
     this.dialogRef.open(ModalComponent, {
       width: '90%',
-      data:  obj,
+      data: obj,
     });
   }
 
-  EditSlide(item: any){
+  EditSlide(item: any) {
     this.formSlide.patchValue(item)
-    let obj={
+    let obj = {
       type: 'edit',
       category: 'slides',
       form: this.formSlide,
@@ -95,13 +96,15 @@ export class QuotesComponent implements OnInit {
     }
     this.dialogRef.open(ModalComponent, {
       width: '90%',
-      data:  obj,
+      data: obj,
     });
   }
-  deleteQuote(id: string) {
-    deleteDoc(doc(this.firestore, `slides/${id}`));
-  }
-  deleteSlide(id: string) {
-    deleteDoc(doc(this.firestore, `quotes/${id}`));
+  deleteSlide(id: string, type: string) {
+    let confDialog = this.dialogRef.open(ConfirmComponent, {
+      width: '30%',
+    })
+    confDialog.afterClosed().subscribe(e=>{
+      if(e)deleteDoc(doc(this.firestore, `${type}/${id}`))
+    })
   }
 }

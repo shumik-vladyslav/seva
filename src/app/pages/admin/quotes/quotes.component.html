@@ -12,7 +12,7 @@
           <i>Название: </i> {{item.title}} <br>
           <i>Описание: </i> {{item.desc}}<br>
           <button class="mt-1 edit-btn" (click)="EditQuotes(item)">Редактировать</button>
-          <button class="ml-1 mt-1" (click)="deleteQuote(item.id)">Удалить</button>
+          <button class="ml-1 mt-1" (click)="deleteSlide(item.id, 'quotes')">Удалить</button>
         </li>
       </ul>
     </div>
@@ -24,7 +24,7 @@
           <i>Описание: </i> {{item.desc}}<br>
           <i>Изображенние: </i> <br> <img src="{{item.img}}" height="110px" width="100px" alt=""><br>
           <button class="mt-1 edit-btn" (click)="EditSlide(item)">Редактировать</button>
-          <button class="ml-1 mt-1" (click)="deleteSlide(item.id)">Удалить</button>
+          <button class="ml-1 mt-1" (click)="deleteSlide(item.id, 'slides')">Удалить</button>
         </li>
       </ul>
     </div>

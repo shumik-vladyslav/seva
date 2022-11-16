@@ -4,6 +4,7 @@ import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -73,7 +74,13 @@ export class ProjectComponent implements OnInit {
 
 
   deleteProj(id: string) {
-    deleteDoc(doc(this.firestore, `projectContent/${id}`));
+    let confDialog = this.dialogRef.open(ConfirmComponent, {
+      width: '30%',
+    })
+    confDialog.afterClosed().subscribe(e=>{
+      if(e)deleteDoc(doc(this.firestore, `projectContent/${id}`));
+    })
+
   }
 
 

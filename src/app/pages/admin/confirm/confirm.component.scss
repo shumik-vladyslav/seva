@@ -1,0 +1,16 @@
+button{
+  background-color: rgb(239, 177, 145);
+  border: 0px;
+  outline: none;
+  padding:  5px 20px;
+  border-radius: 5px;
+  margin: 15px 5px 0px 5px;
+  &:first-child{
+    background-color: rgb(252, 135, 135);
+  }
+}
+
+div, p{
+  margin: auto;
+  text-align: center;
+}

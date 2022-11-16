@@ -5,6 +5,7 @@ import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { AsyncPipe } from '@angular/common';
+import { ConfirmComponent } from '../confirm/confirm.component';
 
 @Component({
   selector: 'app-work-offers',
@@ -47,8 +48,14 @@ export class WorkOffersComponent implements OnInit {
   }
 
   deleteOffer(id: string) {
-    deleteDoc(doc(this.firestore, `workOffer/${id}`));
+    let confDialog = this.dialogRef.open(ConfirmComponent, {
+      width: '30%',
+    })
+    confDialog.afterClosed().subscribe(e=>{
+      if(e) deleteDoc(doc(this.firestore, `workOffer/${id}`));
+    })
   }
+
   EditOffer(item: any) {
     this.form.patchValue(item)
     let obj = {
@@ -61,7 +68,6 @@ export class WorkOffersComponent implements OnInit {
       width: '90%',
       data: obj,
     });
-
     dialog.afterClosed().subscribe(e => {
       this.initForm();
     })

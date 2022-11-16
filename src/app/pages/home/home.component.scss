@@ -1,5 +1,5 @@
 .home-container {
-  margin-top: 17vh;
+  margin-top: 16vh;
   height: 100%;
   @media (max-width: 500px) {
     margin-top: 11vh;
@@ -39,7 +39,8 @@
   margin-top: 4%;
   border-radius: 20px;
 
-  background-color: rgb(30, 0, 128);
+  // &:not(.quotes-block){
+  // }
   height: 33vh;
   @media (max-width: 500px) {
     height: auto ;
@@ -49,6 +50,7 @@
 }
 
 .offer-block {
+
   margin-top: 6%;
   height: 56vh;
   left: -33.5%;
@@ -63,7 +65,15 @@
   justify-content: space-between;
 
   .offer-card {
-    width: 30%;
+    @media (min-width: 900px) {
+        &:first-child {
+          margin-left: 20px;
+        }
+        &:not(:first-child) {
+          margin-right: 20px;
+        }
+      }
+    width: 32%;
     height: 78%;
     margin: auto 0px;
     border-radius: 20px;
@@ -166,6 +176,7 @@
   h1 {
     margin: auto;
     border-bottom: 2px solid rgba(77, 73, 73, 0.7);
+    font-size: 26px;
     cursor: pointer;
     // color: #4D4949;
     color: rgba(77, 73, 73, 0.76);
@@ -341,7 +352,7 @@
   justify-content: space-evenly;
   align-items: center;
   background: #FFFFFF !important;
-  padding: 2%;
+  padding: 3%;
   margin-top: 5%;
   border: 2px solid #D9D9D9 !important;
 
@@ -353,6 +364,7 @@
     text-align: center;
     line-height: 45px;
     display: flex;
+    font-size: 25px;
     align-items: center;
     text-indent: 1.63774px;
     color: #4D4949;
@@ -362,7 +374,12 @@
   }
   .work-card-rowblock {
     justify-content: center;
-    margin-top: 1%;
+    button{
+      text-indent: 2.83495px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    margin-top: 2.5%;
     margin-left: -10%;
   }
 }
@@ -411,7 +428,7 @@
 .biger-wrap {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 74.5%;
   margin: auto;
 
   .line {
@@ -425,7 +442,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
 
     .img-wrp {
       align-items: center;
@@ -443,6 +460,9 @@
 
     .wrp-block {
       width: 46%;
+      &.img-wrp{
+        width: 51%;
+      }
       padding: 2% 0px;
       display: flex;
       flex-direction: column;
@@ -452,13 +472,20 @@
         font-family: playfair-display, serif !important;
         font-weight: 700;
         color: #4D4949;
+        @media (min-width: 900px) {
+          font-size: 24px;
+        }
       }
-
       p {
         font-family: 'Playfair Display';
         font-style: italic;
+        text-indent: 1.63774px;
         color: rgba(77, 73, 73, 0.8);
         font-weight: 400;
+        @media (min-width: 900px) {
+          font-size: 16px;
+          line-height: 19px;
+        }
       }
 
       * {
@@ -468,9 +495,9 @@
   }
 
   .bottom-block {
-    margin-top: 5%;
+    margin-top: 3.5%;
     display: flex;
-    margin-bottom: 3%;
+    margin-bottom: 5%;
     flex-direction: row;
     justify-content: space-between;
 
@@ -481,6 +508,8 @@
         text-align: center;
         margin-top: 2%;
         font-family: 'PT Serif';
+        width: 95%;
+        font-size: 18px;
         font-style: normal;
         font-weight: 700;
         color: #4D4949;
