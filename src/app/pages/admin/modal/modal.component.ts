@@ -10,6 +10,9 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 import { MatChipInputEvent } from '@angular/material/chips';
 import { AsyncPipe } from '@angular/common';
+import { ConfirmComponent } from '../confirm/confirm.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-modal',
@@ -22,6 +25,8 @@ export class ModalComponent implements OnInit {
   revardsCtrl = new FormControl('');
   selectedRevards: any[] = [];
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
+  collectionsCateg:any;
+  categorys$: Observable<any>
 
   allRevards= []
   isChangesField = false
@@ -69,11 +74,15 @@ export class ModalComponent implements OnInit {
     private _ref: ChangeDetectorRef,
     private firestore: Firestore,
     private storage: Storage,
+    private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
   ) {
     this.collections = collection(firestore, 'revards');
     this.revards$ = collectionData(this.collections, { idField: 'id' });
+    this.collectionsCateg = collection(firestore, 'category');
+    this.categorys$ = collectionData(this.collectionsCateg, {idField: 'id'});
+
     this.revards$.subscribe((elem: any, i: any) => {
       this.revardsEl = elem
       this.allRevards = elem
@@ -157,14 +166,24 @@ export class ModalComponent implements OnInit {
         data.form.value.date = new Date().toISOString()
       }
       if (data.form.valid) {
-        addDoc(collection(this.firestore, data.category), data.form.value)
-        this.dialog.closeAll()
+        addDoc(collection(this.firestore, data.category), data.form.value).then(()=>{
+          this.openSnackBar('Успешно Создано')
+          this.dialog.closeAll()
+        }).catch(err=>{
+          this.openSnackBar(err)
+          this.dialog.closeAll()
+        })
       }
     }
     else {
       if (data.form.valid) {
-        setDoc(doc(this.firestore, data.category, data.id as string), data.form.value)
-        this.dialog.closeAll()
+        setDoc(doc(this.firestore, data.category, data.id as string), data.form.value).then(()=>{
+          this.openSnackBar('Успешно редактировано')
+          this.dialog.closeAll()
+        }).catch(err=>{
+          this.openSnackBar(err)
+          this.dialog.closeAll()
+        })
       }
     }
   }
@@ -173,7 +192,7 @@ export class ModalComponent implements OnInit {
     const file = event.target.files[0];
     console.log(event);
 
-    this.uploadFile('images', file.name, file).then(data => {
+    this.uploadFile(this.data.category, file.name, file).then(data => {
       this.data.form.patchValue({
         img: data
       });
@@ -206,15 +225,31 @@ export class ModalComponent implements OnInit {
   }
 
   deleteImage(img?: string): void {
-    img = img ? img : this.valueByControl('imagePath')
-    this.isUploaded = false;
-    const task = ref(this.storage, img);
-    deleteObject(task).then(() => {
-      console.log('File deleted successfully');
-      this.data.form.patchValue({
-        img: null
-      })
+    let confDialog = this.dialog.open(ConfirmComponent, {
+      width: '30%',
     })
+    confDialog.afterClosed().subscribe(e=>{
+      if(e) {
+        img = img ? img : this.valueByControl('imagePath')
+        this.isUploaded = false;
+        const task = ref(this.storage, img);
+        deleteObject(task).then(() => {
+          this.openSnackBar('Изображение удалено');
+          this.data.form.patchValue({
+            img: null
+          })
+        }).catch(err=>{
+          this.openSnackBar(err);
+        })
+      }
+    })
+  }
+
+  openSnackBar(message:string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: message,
+      duration: 1000,
+    });
   }
 
   valueByControl(control: string): string {

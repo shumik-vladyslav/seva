@@ -4,6 +4,12 @@
     <input id="first-name" type="text" formControlName="title">
     <label for="first-name">Подзаголовок: </label>
     <input id="first-name" type="text" formControlName="subTitle">
+    <label for="first-name">Категория: </label>
+
+    <select formControlName="category">
+      <option value="null" selected>Без категории</option>
+      <option [value]="cat.id" *ngFor="let cat of categorys$ | async">{{cat.title}}</option>
+    </select>
     <label for="last-name">Описание: </label>
     <input id="last-name" type="text" formControlName="desc">
     <label for="last-name">Большое описание: </label>
@@ -95,6 +101,9 @@
     <input id="last-name" type="number" formControlName="aim">
     <label for="last-name"  min="10" >Собрано: </label>
     <input  id="last-name" type="number" max="{{data?.form.value?.aim}}" min="0" formControlName="percent">
+    <div>
+      <span> Добавить в слайдер? </span><input type="checkbox" formControlName="addToSlider">
+    </div>
     <label for="last-name" >Изображенние: </label>
     <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
@@ -121,4 +130,10 @@
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
+
+  <div class="modal-content" *ngIf="data.category ==='category'" >
+    <label for="first-name">Название: </label>
+    <input id="first-name" type="text" formControlName="title">
+    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+  </div>
 </form>

@@ -11,6 +11,7 @@ import { ProjectComponent } from './pages/admin/project/project.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { RevardsComponent } from './pages/admin/revards/revards.component';
 import { MessagesComponent } from './pages/admin/messages/messages.component';
+import { CategoryComponent } from './pages/admin/category/category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'work-offers', component: WorkOffersComponent },
       { path: 'projects', component: ProjectComponent },
       { path: 'revards', component: RevardsComponent },
-      { path: 'messages', component: MessagesComponent }
+      { path: 'messages', component: MessagesComponent },
+      { path: 'category', component: CategoryComponent }
     ]
   }
 ];

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -24,7 +26,8 @@ export class QuotesComponent implements OnInit {
 
   constructor(
     private firestore: Firestore,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private _snackBar: MatSnackBar
   ) {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -104,7 +107,19 @@ export class QuotesComponent implements OnInit {
       width: '30%',
     })
     confDialog.afterClosed().subscribe(e=>{
-      if(e)deleteDoc(doc(this.firestore, `${type}/${id}`))
+      if(e){
+        deleteDoc(doc(this.firestore, `${type}/${id}`)).then(()=>{
+          this.openSnackBar('Слайд Удалено')
+        }).catch(err=>{
+          this.openSnackBar(err)
+        })
+      }
     })
+  }
+  openSnackBar(message:string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: message,
+      duration: 1000,
+    });
   }
 }

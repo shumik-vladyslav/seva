@@ -54,7 +54,9 @@ body {
 .playfair-display{
   font-family: playfair-display, serif !important;
 }
-
+button{
+  cursor: pointer !important;
+}
 * {
   margin: 0%;
   padding: 0%;
@@ -331,7 +333,7 @@ input[type="range" i]::-webkit-slider-thumb {
   display: flex;
   flex-direction: row;
 
-  @media (max-width: 580px) {
+  @media (max-width: 780px) {
     overflow-x: auto;
   }
 }

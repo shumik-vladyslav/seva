@@ -7,6 +7,9 @@
       <i>Название: </i> {{item.title}} <br>
       <i>Подзаголовок: </i> {{item.subTitle}} <br>
       <i>Описание: </i> {{item.desc}}<br>
+      <p *ngIf="item?.category">
+        <i (click)="cons(item)">Категория: </i> <span *ngFor="let cat of categorys$ | async">{{cat.id == item?.category ? cat.title : ''}}</span> <br>
+      </p>
       <i class="b-desc" (click)="showDesc(item, $event)">Большое описание <span *ngIf="!isBigDesc">⌵</span> <span class="roteted" *ngIf="isBigDesc">⌵</span></i>
       <p class="bigDesc"></p>
       <i>Детали: </i><br>

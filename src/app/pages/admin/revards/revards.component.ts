@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { collection, collectionData, deleteDoc, doc, Firestore } from '@angular/fire/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -20,6 +22,7 @@ export class RevardsComponent implements OnInit {
     private firestore: Firestore,
     private dialogRef: MatDialog,
     private fb: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {
 
     this.collections = collection(firestore, 'revards');
@@ -78,12 +81,22 @@ export class RevardsComponent implements OnInit {
     })
 
   }
+  openSnackBar(message:string){
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: message,
+      duration: 1000,
+    });
+  }
   deleteRevard(id: any){
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
     })
     confDialog.afterClosed().subscribe(e=>{
-      if(e) deleteDoc(doc(this.firestore, `revards/${id}`));
+      if(e) deleteDoc(doc(this.firestore, `revards/${id}`)).then(()=>{
+        this.openSnackBar('Служение Удалено')
+      }).catch(err=>{
+        this.openSnackBar(err)
+      })
     })
   }
 

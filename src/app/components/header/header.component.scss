@@ -10,6 +10,19 @@
   .main-wrap {
 
     .head-block {
+      &:hover{
+       span{
+         border-bottom: 2px solid #E5BF51
+       }
+      }
+      span{
+        padding: 2%;
+        border: 2px transparent solid;
+        transition: all 0.4s;
+        font-family: pt-serif, serif;
+        font-weight: 700;
+        font-style: normal;
+      }
       color: #96652C;
       @media (min-width:1200px) {
         text-transform: uppercase;

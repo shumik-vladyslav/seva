@@ -3,7 +3,9 @@ import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@
 
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -20,7 +22,8 @@ export class ProjectComponent implements OnInit {
 
   constructor(
     private firestore: Firestore,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private _snackBar: MatSnackBar
     ) {
 
     this.collections = collection(firestore, 'projectContent');
@@ -37,7 +40,8 @@ export class ProjectComponent implements OnInit {
       location: new FormControl('', Validators.required),
       supported: new FormControl('', Validators.required),
       bigDesc: new FormControl('', Validators.required),
-      revards: new FormControl(null)
+      revards: new FormControl(null),
+      addToSlider: new FormControl(false),
 
     });
   }
@@ -58,7 +62,6 @@ export class ProjectComponent implements OnInit {
   EditProj(item: any){
     console.log(item);
     this.form.reset()
-
     this.form.patchValue(item)
     let obj={
       type: 'edit',
@@ -78,25 +81,16 @@ export class ProjectComponent implements OnInit {
       width: '30%',
     })
     confDialog.afterClosed().subscribe(e=>{
-      if(e)deleteDoc(doc(this.firestore, `projectContent/${id}`));
+      if(e){
+        deleteDoc(doc(this.firestore, `projectContent/${id}`)).then(()=>{
+          this.openSnackBar('Проект Удалено')
+        }).catch(err=>{
+          this.openSnackBar(err)
+        })
+      }
     })
-
   }
 
-
-  createWorkOffer(){
-    if(this.form.valid){
-      addDoc(this.collections,  {
-        title: this.form.controls["title"].value,
-        tag: this.form.controls["tag"].value,
-        img: this.form.controls["img"].value,
-        aim: this.form.controls["aim"].value,
-        percent: this.form.controls["percent"].value,
-        desc: this.form.controls["desc"].value,
-
-      });
-    }
-  }
   ngOnInit(): void {
   }
 
@@ -111,4 +105,10 @@ export class ProjectComponent implements OnInit {
     }
   }
 
+  openSnackBar(message:string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: message,
+      duration: 1000,
+    });
+  }
 }

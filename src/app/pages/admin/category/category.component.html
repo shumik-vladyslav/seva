@@ -1,0 +1,12 @@
+<div class="home-container admin-content">
+  <div class="form-control">
+    <button (click)="createCateg()">Создать Категорию</button>
+  </div>
+  <ul class="main">
+    <li class="li-block" *ngFor="let item of  categorys$ | async">
+      <i>Название: </i>{{item.title}} <br>
+      <button class="mt-1 edit-btn" (click)="EditCateg(item)">Редактировать</button>
+      <button class="ml-1 mt-1" (click)="deleteCateg(item.id)">Удалить</button>
+    </li>
+  </ul>
+</div>

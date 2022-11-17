@@ -4,7 +4,7 @@
     <owl-carousel-o #owl [options]="customOptions2">
 
       <ng-container *ngFor="let slide of projects$ | async; let i =index" >
-        <ng-template *ngIf="i <3" carouselSlide >
+        <ng-template *ngIf="slide.addToSlider" carouselSlide >
           <div class="slide-img-container2">
 
             <img class="carousel-img2" [src]="slide?.img" >

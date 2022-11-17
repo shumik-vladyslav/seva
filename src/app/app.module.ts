@@ -39,6 +39,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MessagesComponent } from './pages/admin/messages/messages.component';
 import { ConfirmComponent } from './pages/admin/confirm/confirm.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { CategoryComponent } from './pages/admin/category/category.component';
+import { WorkFilterPipe } from './shared/pipe/work-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,9 @@ import { ConfirmComponent } from './pages/admin/confirm/confirm.component';
     RevardsComponent,
     MessagesComponent,
     ConfirmComponent,
+    SnackbarComponent,
+    CategoryComponent,
+    WorkFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +76,7 @@ import { ConfirmComponent } from './pages/admin/confirm/confirm.component';
     CarouselModule,
     MatFormFieldModule,
     MatPaginatorModule,
+    MatSnackBarModule,
     MatAutocompleteModule,
     MatIconModule,
     MatNativeDateModule,

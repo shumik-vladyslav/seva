@@ -1,5 +1,5 @@
 .footer-wrap{
-  background-color: #D9D9D9;
+  // background-color: #D9D9D9;
   height: 25vh;
   margin-top: 2%;
   padding-right: 2%;
@@ -7,7 +7,11 @@
   justify-content: flex-end;
   align-items: center;
   .foot-content{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
 
+    width: 100%;
     .foot-card{
       align-items: center;
       p{
