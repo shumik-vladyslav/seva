@@ -34,25 +34,24 @@ $verstkaSeva-theme: mat.define-light-theme((
 @include mat.all-component-themes($verstkaSeva-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import url("https://use.typekit.net/xuf1per.css");
-@import url("https://use.typekit.net/xuf1per.css");
-@import url("https://use.typekit.net/xuf1per.css");
-@import url("https://use.typekit.net/xuf1per.css");
-@import url("https://use.typekit.net/xuf1per.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Oswald:wght@400;500&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;500;700&display=swap');
+
 
 body {
-
   background: #FFFAF5;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .open-sans{
-  font-family: open-sans, sans-serif !important;
+  font-family: 'Open Sans' !important;
 }
 .PT-Serif{
   font-family: 'PT Serif' !important;
 }
 .playfair-display{
-  font-family: playfair-display, serif !important;
+  font-family: 'Playfair Display' !important;
 }
 button{
   cursor: pointer !important;
@@ -62,7 +61,7 @@ button{
   padding: 0%;
   box-sizing: border-box;
   &:not(.work-detail-description *, .bottom-proj-detail *){
-      font-family: open-sans, sans-serif;
+      font-family: 'Open Sans';
   }
 }
 
@@ -70,8 +69,6 @@ button{
   width: 60%;
   height: 100%;
   margin: auto;
-  // margin-bottom: 20%;
-  // display: flex;
 
 }
 
@@ -112,11 +109,6 @@ button{
   cursor: none;
 }
 
-input[type="range" i] {
-  // appearance:  !important;
-  // -webkit-appearance: none !important;
-
-}
 
 input[type="range" i]::-webkit-slider-thumb {
   -webkit-appearance: none !important;
@@ -155,8 +147,6 @@ input[type="range" i]::-webkit-slider-thumb {
 
   .work-filter {
     width: 33%;
-
-    // background-color: gray;
     .filter-wrap {
       width: 100%;
 
@@ -172,25 +162,8 @@ input[type="range" i]::-webkit-slider-thumb {
         display: flex;
         align-items: flex-start;
       }
-
-      // .checkbox-text{
-
-
-      // }
-      // .checkbox-holder{
-      //   display: flex;
-      //   flex-direction: column;
-      //   div{
-      //     width: 100%;
-      //     margin-bottom: 2%;
-      //     min-height: 4vh;
-      //   }
-      // }
       .filter-checkbox {
-        // padding: 100px;
         margin-right: 4%;
-        // width: 15px;
-        // height: 20px;
         margin-top: 2%;
         transform: scale(1.4);
       }
@@ -198,7 +171,7 @@ input[type="range" i]::-webkit-slider-thumb {
   }
 }
 .location{
-  font-family: pt-serif, serif !important;
+  font-family: 'PT Serif' !important;
 }
 .work-card-rowblock {
   display: flex;
@@ -235,7 +208,7 @@ input[type="range" i]::-webkit-slider-thumb {
       white-space: nowrap;
       font-weight: 400;
       text-indent: 1.81485px;
-      font-family: pt-serif, serif;
+      font-family: 'PT Serif';
       border-radius: 3px;
     }
 
@@ -256,19 +229,19 @@ input[type="range" i]::-webkit-slider-thumb {
   span {
     margin-left: 2%;
     color: rgba(77, 73, 73, 0.8);
-    // vertical-align: middle;
   }
 }
 
 .work-head {
-  height: 35vh;
+  padding-top: 4%;
+  padding-bottom: 6%;
   color: white;
   width: 100%;
   background: linear-gradient(180deg, #1371DA 0%, rgba(5, 23, 181, 0) 100%);
 
   .work-title {
     margin: auto;
-    padding-top: 2%;
+    padding-top: 3.5%;
     font-family: playfair-display, serif;
     text-align: center;
     width: 70%;
@@ -299,7 +272,7 @@ input[type="range" i]::-webkit-slider-thumb {
 
     ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.9);
-      font-family: pt-serif, serif;
+      font-family: 'PT Serif';
 
     }
   }
@@ -357,27 +330,27 @@ body {
     min-width: 14% !important;
   }
 
-  .offer-content {
-    .offer-card {
-      height: 84% !important;
-    }
-  }
 }
 
 @media (max-width: 1150px) {
-  .proj-content .proj-container .proj-card {
-    // min-height: 88vh !important;
-  }
 
   .proj-detail-status {
     min-width: 17% !important;
   }
+    .offer-container {
+      .offer-content {
+        .head-block {
+          display: none !important;
+        }
+        .offer-card{
+          width: 46% !important;
+        }
+      }
+    }
 }
 
 @media (max-width: 950px) {
   .proj-content .proj-container .proj-card {
-    // min-height: 80vh !important;
-
     width: 48% !important;
   }
 
@@ -406,7 +379,7 @@ body {
 
         h3 {
           width: min-content;
-          background-color: #D9D9D9;
+          // background-color: #D9D9D9;
           padding: 1% 2%;
           cursor: pointer;
           border-radius: 10px;
@@ -414,7 +387,6 @@ body {
 
         .arrow-categ {
           margin-left: 5%;
-          // background-color: #D9D9D9;
         }
 
         form,
@@ -525,33 +497,61 @@ body {
     background-color: #96642cc1 !important;
   }
 }
+@media (max-width: 938px) {
+  .owl-carousel .slide-img-container {
+    width: 60vw !important;
+  }
+  .biger-wrap {
+    width: 90% !important;
+
+    .bottom-block {
+      flex-direction: column !important;
+
+      .vline {
+        width: 90%;
+        height: 2px;
+        margin: 2% auto;
+
+      }
+
+      .row-block {
+        width: 100% !important;
+        &:not(:first-child){
+          margin-top: 20px;
+        } 
+
+        .row-block-img {
+          height: 30vh !important;
+        }
+      }
+
+    }
+    .head-block {
+      .wrp-block {
+
+        width: 100% !important;
+      }
+
+      flex-direction: column-reverse !important;
+
+    }
+  }
+}
 
 @media (max-width: 768px) {
-  .owl-carousel .slide-img-container {
-    width: 55vw !important;
-  }
-
   .slider-container .slider-wrap-absolute {
     width: 100% !important;
     right: 0px !important;
   }
-
   .offer-container {
     .offer-content {
-      // flex-direction: column !important;
+      justify-content: center !important;
       align-items: center;
-
       .offer-card {
         width: 100% !important;
         margin: 0px 2% !important;
       }
-
-      .head-block {
-        display: none !important;
-      }
-
     }
-
     .offer-block {
       width: 125% !important;
       left: -13% !important;
@@ -570,46 +570,7 @@ body {
     font-size: larger !important;
   }
 
-  .biger-wrap {
 
-    width: 90% !important;
-
-    .bottom-block {
-      flex-direction: column !important;
-
-      .vline {
-        // transform: rotate(90deg);
-        width: 90%;
-        height: 2px;
-
-        margin: 2% auto;
-        // margin-bottom: 2% ;
-
-      }
-
-      .row-block {
-        width: 100% !important;
-
-        .row-block-img {
-          height: 30vh !important;
-        }
-      }
-
-    }
-
-    .head-block {
-      .wrp-block {
-
-        width: 100% !important;
-      }
-      .img-wrp {
-        height: 40vh;
-      }
-
-      flex-direction: column-reverse !important;
-
-    }
-  }
 
   .main-wrap {
     width: 80%;
@@ -631,10 +592,6 @@ body {
 .biger-wrap{
 
   .head-block {
-    .wrp-block {
-
-      // width: 100% !important;
-    }
     .img-wrp {
       height: 36vh;
     }
@@ -650,12 +607,7 @@ body {
     margin-top: 7% !important;
   }
   .biger-wrap{
-
     .head-block {
-      .wrp-block {
-
-        // width: 100% !important;
-      }
       .img-wrp {
         height: 34vh;
       }
@@ -739,7 +691,6 @@ body {
   }
 
   .work-head {
-    height: 45vh;
     .work-title{
       width: 85% !important;
     }
@@ -756,6 +707,12 @@ body {
   }
 }
 
+@media (max-width: 500px) {
+  .slider-container h1{
+    text-align: center;
+    width: 75%;
+  }
+}
 @media (max-width: 470px) {
   .slider-container h1 {
     font-size: larger;
@@ -764,11 +721,16 @@ body {
   .offer-container .offer-content .offer-card {
     width: 88% !important;
     margin: 2% 0px !important;
+    .txt-offer{
+      p{
+        padding: 2% !important;
+      }
+    }
   }
 
   .offer-block {
 
-    height: 100vh !important;
+    min-height: 100vh !important;
   }
 
   .offer-content {
@@ -816,7 +778,6 @@ body {
 
     .firsthd {
       justify-content: center !important;
-
       width: 25% !important;
     }
   }
@@ -855,6 +816,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb-2{
   margin-bottom: 2% !important;
 }
+.mb-5{
+  margin-bottom: 5% !important;
+}
 .mb-1r{
   margin-bottom: 1rem !important;
 }
@@ -880,4 +844,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 100%;
   transition: all 0.4s;
   background-color: #0478EE;
+}
+.owl-carousel .owl-stage{
+  display: flex !important;
+}
+
+@media (max-width: 700px){
+  .card-donats button {
+    padding: 3% 2%!important;
+  }
+}
+
+@media (max-width: 450px){
+  .card-donats {
+      button {
+        font-size: 14px !important;
+      }
+
+      h2 {
+        font-size: 21px !important;
+        line-height: 33px !important;
+      }
+    }
 }

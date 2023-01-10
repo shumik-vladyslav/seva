@@ -1,29 +1,21 @@
 <div class="proj-detail-container">
-
   <div class="main-wrap">
-
       <a class="return-back" [routerLink]="['/projects']">Посмотреть другие проекты</a>
-
-
       <div class="proj-detail-status">
         <div class="proj-detail-status-blue"></div>
         <p>ИДЕТ СБОР</p>
       </div>
-
       <h2 class="proj-detail-title">{{project?.title }}</h2>
       <h3 class="proj-detail-subtitle">{{project?.desc}}</h3>
-
-
       <div class="proj-detail-head--info  proj-dt-inf">
         <div class="img-prod-detail only-img">
           <img [src]="project?.img" width="100%" alt="">
         </div>
         <div class="prod-detail-progres">
-          <h2 class="prod-detail-progres-cash">{{project?.percent}}₴</h2>
+          <h2 class="prod-detail-progres-cash">{{project?.percent}}  ₴</h2>
           <div>
-
             <div class="prod-detail-progres-cash-aim">
-              <p class="gray aim-txt">из {{project?.aim}}₴ ₴</p>
+              <p class="gray aim-txt">из {{project?.aim}}₴</p>
               <p class="gray aim-txt">собрано {{((project?.percent / project?.aim)* 100).toFixed(0)}}%</p>
             </div>
             <div class="my-progresbar"><div class="m-prog" [ngStyle]="{'width.%': ((project?.percent / project?.aim)* 100)} "></div></div>
@@ -38,7 +30,6 @@
                <p class="gray"> запущен</p>
             </div>
           </div>
-
           <button class="support-proj" (click)="modalDetail()">Поддержать проект</button>
           <div class="location">
             <img src="../../../assets/img/31_104880.png" width="5%" alt=""><span>{{project?.location}}</span>
@@ -46,26 +37,17 @@
         </div>
       </div>
     </div>
-
   <div class="proj-navbar-wrap">
     <div class="main-wrap">
-
       <div class="mrow">
         <div class="proj-nav-btn active-btn">Описание</div>
-        <!-- <div class="proj-nav-btn">Новости проекта</div>
-        <div class="proj-nav-btn">Участники</div>
-        <div class="proj-nav-btn">Куратор проекта</div> -->
-        <button class="support-proj" (click)="modalDetail()">Поддержать проект</button>
       </div>
-
     </div>
   </div>
-
   <div class="main-wrap">
     <div class="proj-detail-head--info bottom-content">
       <div class="img-prod-detail bottom-proj-detail">
       </div>
-
       <div class="prod-detail-progres reward-wrap">
         <div class="reward-proj">
           <h3>Вознаграждения</h3>
@@ -84,12 +66,11 @@
             <h4>{{item.title}}</h4>
             <p>{{item.desc}}</p>
             <div class="support-block border-none">
-              <h3>{{item.price}} ₴</h3>
+              <h3>{{item.price}}  ₴</h3>
               <div><p>Куплено {{item.bought}}</p>
                 <p>Осталось {{item.remainder}}</p></div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

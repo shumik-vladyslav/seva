@@ -1,64 +1,42 @@
 <div class="home-container">
   <div class="biger-wrap">
-
-    <div class='head-block'>
-      <div class="wrp-block">
-        <h3>Заканчивается строительство храма Шивы Прабхакары в Авадхута Сиддха ашраме</h3>
-        <p>Милостью и санкальпами нашего Гуру и Парамгуру в Омаллуре проявился Авадхута Сиддха Ашрам, а сейчас активно идет строительство храма Шива Прабхакары Свами Брахмананды!
-          И это действительно ХРАМ, он строится с учетом очень многих южноиндийских традиций, согласно шастрам и агамам, со всеми надлежащими ритуалами и пуджами.
+    <ng-container  *ngFor="let item of content$ | async">
+      <div class='head-block' *ngIf="item.isTitle">
+        <div class="wrp-block" >
+          <h3>{{item.title}}</h3>
+          <p class="txt-smaller">{{item.desc}}
           </p>
+        </div>
+        <div class="wrp-block img-wrp"><img src="{{item.img}}" width="100%" alt=""></div>
       </div>
-      <div class="wrp-block img-wrp"><img src="../../../assets/img/7b48acf7-8c7f-43ff-b5cc-147a5c45ffbc2.png" width="100%" alt=""></div>
-    </div>
+    </ng-container>
     <div class="line"></div>
     <div class="bottom-block">
-      <div class="row-block">
-        <div class="row-block-img">
-          <img src="../../../assets/img/96e6ec29-3eb8-43e8-b243-da1855cbd1ec.png" width="100%" alt="">
+      <ng-container *ngFor="let item of content$ | async">
+        <div class="row-block" *ngIf="!item.isTitle">
+          <div class="row-block-img">
+            <img src="{{item.img}}" width="100%" alt="">
+          </div>
+          <h4 class="sb-ttl">{{item.title}}</h4>
+          <p class="txt-smaller">{{item.desc}}
+          </p>
         </div>
-        <h4>Издана книга “Шрипада Шриваллабха Чаритрамрита”</h4>
-        <p>Милостью и санкальпами нашего Гуру и Парамгуру в Омаллуре проявился Авадхута Сиддха Ашрам, а сейчас активно идет строительство храма Шива Прабхакары Свами Прахмананды!
-        </p>
-      </div>
-      <div class="vline"></div>
-      <div class="row-block">
-        <div class="row-block-img">
-          <img src="../../../assets/img/d1578285-2810-415c-8f78-db339f940f2f.png" width="100%" alt="">
-        </div>
-        <h4>Издана книга “Шрипада Шриваллабха Чаритрамрита”</h4>
-        <p>Милостью и санкальпами нашего Гуру и Парамгуру в Омаллуре проявился Авадхута Сиддха Ашрам, а сейчас активно идет строительство храма Шива Прабхакары Свами Прахмананды!
-        </p>
-      </div>
-      <div class="vline"></div>
-      <div class="row-block">
-        <div class="row-block-img">
-          <img src="../../../assets/img/c2f948ef-e193-4ea6-bb4d-a847f5a89634.png" width="100%" alt="">
-        </div>
-        <h4>Издана книга “Шрипада Шриваллабха Чаритрамрита”</h4>
-        <p>Милостью и санкальпами нашего Гуру и Парамгуру в Омаллуре проявился Авадхута Сиддха Ашрам, а сейчас активно идет строительство храма Шива Прабхакары Свами Прахмананды!
-        </p>
-      </div>
+      </ng-container>
     </div>
   </div>
-
   <div class="main-wrap">
     <div class="quotes-container">
       <div class="quotes-block">
         <owl-carousel-o #owl [options]="customOptions2">
-
           <ng-container *ngFor="let slide of quotes$ | async">
             <ng-template carouselSlide >
               <div class="slide-img-container">
-
-                <!-- <img class="carousel-img" [src]="slide.imgUrl" > -->
                 <h4>{{slide.title}}</h4>
                 <hr>
                 <p>{{slide.desc}}</p>
-
               </div>
             </ng-template>
           </ng-container>
-
         </owl-carousel-o>
       </div>
     </div>
@@ -77,13 +55,12 @@
             </div>
             <div class="head-block" [routerLink]="['/']" style="width: 21%; margin-left: 1%;">
               <img src="../../../assets/img/clipart33834321.png" alt="" width="50%">
-              <h3>СЕВА СУКРИТИ</h3>
+              <h3>СУКРИТИ МАНДАЛА</h3>
             </div>
             <div class="offer-card">
               <div class="img-offer">
                 <img src="../../../assets/img/0828E3DF-A0CE-4097-ADFB-8440C2F04B4C.png" height="100%" alt="">
                 <button class="suport-proj" [routerLink]="['/projects']">Поддержать проект</button>
-
               </div>
               <div class="txt-offer">
                 <p>В данном разделе вы можете выбрать проект, который готовы материально поддерживать или взять на себя полное его обеспечение.</p>
@@ -93,7 +70,6 @@
         </div>
       </div>
     </div>
-
     <div class="card-donats">
       <h2>Также, вы можете просто сделать пожертвование в ашрам</h2>
       <div class="work-card-rowblock">
@@ -106,26 +82,22 @@
     <div class="slider-container">
       <h1 [routerLink]="['/projects']" >Проекты, которые мы реализовали</h1>
       <div class="slider-wrap-r">
-
         <div class="slider-wrap-absolute">
           <owl-carousel-o #owl [options]="customOptions">
-
             <ng-container *ngFor="let slide of this.slides$ | async, let i =index">
               <ng-template [id]="i.toString()" carouselSlide >
                 <div class="slide-img-container" style="box-shadow: 0px 0px 43.0895px rgba(0, 0, 0, 0.05);">
                   <img class="carousel-img" [src]="slide.img" >
-                  <h4>{{slide.title}}</h4>
-                  <p style="text-align: left !important; font-size: small;">{{slide.desc}}</p>
+                  <h4 class="slide-ttl">{{slide.title}}</h4>
+                  <div class="mb-5">
+                    <p class="slide-txt"  matTooltip="{{slide.desc}}">{{slide.desc}}</p>
+                  </div >
                 </div>
               </ng-template>
             </ng-container>
-
           </owl-carousel-o>
-
         </div>
       </div>
     </div>
-
   </div>
-
 </div>

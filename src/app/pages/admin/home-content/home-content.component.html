@@ -1,0 +1,13 @@
+<div class="home-container admin-content">
+  <div class="form-control">
+  </div>
+  <ul class="main">
+    <li class="li-block" *ngFor="let item of content$ | async">
+      <p *ngIf="item.isTitle"><i class="red">Титульная Карточка </i></p>
+      <i>Название: </i>{{item.title}} <br>
+      <i>Описание: </i>{{item.desc}} <br>
+      <i>Изображенние: </i> <br> <img src="{{item.img}}" height="70px" width="100px" alt=""><br>
+      <button class="mt-1 edit-btn" (click)="EditContent(item)">Редактировать</button>
+    </li>
+  </ul>
+</div>

@@ -26,8 +26,8 @@
 
       p {
         text-indent: 1.81485px;
-        font-family: open-sans, sans-serif;
-        font-size: small;
+        font-family: 'Open Sans';
+        font-size: medium;
         color: rgba(77, 73, 73, 0.85);
       }
 
@@ -51,8 +51,6 @@
 
   .work-filter {
     width: 33%;
-
-    // background-color: gray;
     .filter-wrap {
       width: 100%;
 
@@ -69,16 +67,9 @@
         align-items: flex-start;
       }
 
-      // .checkbox-text{
-
-
-      // }
 
       .filter-checkbox {
-        // padding: 100px;
         margin-right: 4%;
-        // width: 15px;
-        // height: 20px;
         margin-top: 2%;
         transform: scale(1.4);
       }

@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
   quotes$: Observable<any[]>;
   slides$: Observable<any[]>;
   support$: Observable<any[]>;
+  content$: Observable<any[]>;
 
   constructor(
     firestore: Firestore,
@@ -70,6 +71,8 @@ export class HomeComponent implements OnInit {
     this.support$ = collectionData(collSup);
     const collectionsSld = collection(firestore, 'slides');
     this.slides$ = collectionData(collectionsSld, {idField: 'id'});
+    const collectionsContent = collection(firestore, 'content');
+    this.content$ = collectionData(collectionsContent, {idField: 'id'});
   }
 
 

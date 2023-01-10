@@ -130,6 +130,18 @@
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
+  <div class="modal-content" *ngIf="data.category ==='content'" >
+    <label for="first-name">Название: </label>
+    <input id="first-name" type="text" formControlName="title">
+    <label for="last-name">Описание: </label>
+    <input id="last-name" type="text" formControlName="desc">
+    <label for="last-name">Изображенние: </label>
+    <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
+    <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
+    <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
+    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+  </div>
+
 
   <div class="modal-content" *ngIf="data.category ==='category'" >
     <label for="first-name">Название: </label>

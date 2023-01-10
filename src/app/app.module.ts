@@ -19,7 +19,7 @@ import { getAnalytics } from "firebase/analytics";
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { getAuth, provideAuth } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
 import { QuotesComponent } from './pages/admin/quotes/quotes.component';
@@ -43,6 +43,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { WorkFilterPipe } from './shared/pipe/work-filter.pipe';
+import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { WorkFilterPipe } from './shared/pipe/work-filter.pipe';
     SnackbarComponent,
     CategoryComponent,
     WorkFilterPipe,
+    HomeContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,7 @@ import { WorkFilterPipe } from './shared/pipe/work-filter.pipe';
     FormsModule,
     AppRoutingModule,
     MatChipsModule,
+    MatTooltipModule,
     CarouselModule,
     MatFormFieldModule,
     MatPaginatorModule,

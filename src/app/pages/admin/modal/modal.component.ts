@@ -190,8 +190,6 @@ export class ModalComponent implements OnInit {
 
   upload(event: any): void {
     const file = event.target.files[0];
-    console.log(event);
-
     this.uploadFile(this.data.category, file.name, file).then(data => {
       this.data.form.patchValue({
         img: data
@@ -213,9 +211,6 @@ export class ModalComponent implements OnInit {
           await task;
           return await getDownloadURL(storageRef);
         } catch (e: any) {
-
-          console.log(e);
-
           return e.message
         }
       } else {
@@ -230,6 +225,7 @@ export class ModalComponent implements OnInit {
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e) {
+        this.data.form.markAsDirty();
         img = img ? img : this.valueByControl('imagePath')
         this.isUploaded = false;
         const task = ref(this.storage, img);

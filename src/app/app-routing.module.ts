@@ -12,6 +12,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { RevardsComponent } from './pages/admin/revards/revards.component';
 import { MessagesComponent } from './pages/admin/messages/messages.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
+import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'quotes' },
       { path: 'quotes', component: QuotesComponent },
       { path: 'work-offers', component: WorkOffersComponent },
+      { path: 'home-content', component: HomeContentComponent },
       { path: 'projects', component: ProjectComponent },
       { path: 'revards', component: RevardsComponent },
       { path: 'messages', component: MessagesComponent },

@@ -16,7 +16,6 @@
 }
 .work-content-details {
   border: 0.8px solid #D9D9D9;
-  // width: 100%;
   width: 58%;
 
   .work-content-head {
@@ -34,7 +33,6 @@
 }
 
 .location {
-  // align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -52,8 +50,7 @@
 
     h2 {
       margin-bottom: 2%;
-      font-family: pt-serif, serif;
-
+      font-family: 'PT Serif';
     }
 
     .short-info {
@@ -123,10 +120,7 @@
 
 .work-hot-content {
   width: 35%;
-  // background: rgba(255, 226, 192, 0.45);
-  // border: 0.8px solid #E18904;
   .hot-header {
-    // height: 10px;
     background: #E18904;
     border: 1.5px solid #E18904;
     p{

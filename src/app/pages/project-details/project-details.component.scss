@@ -1,7 +1,6 @@
 .proj-detail-container {
   margin-top: 15vh;
 
-
   .proj-detail-title,
   .proj-detail-subtitle {
     margin-top: 1%;
@@ -26,7 +25,6 @@
     min-width: 10%;
     max-width: min-content;
 
-    // width: min-content;
     .proj-detail-status-blue {
       background: #0478EE;
       height: 100%;
@@ -102,10 +100,7 @@
         .support-standart{
           .img-container{
             width: 90%;
-
             margin: auto;
-            // background-color: #0478EE;
-            // height: 25vh;
             margin-top: 5%;
           }
           h4{
@@ -131,7 +126,6 @@
     .img-prod-detail {
       width: 52%;
       height: 100%;
-      // background-color: red;
     }
 
     .bottom-proj-detail{
@@ -144,8 +138,6 @@
         margin-bottom: 2%;
       }
       .proj-img-container{
-        // height: 40vh;
-        // background-color: red;
         display: flex;
         align-items: center;
       }
@@ -157,20 +149,28 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      // background-color: rgb(52, 52, 181);
       padding: 4%;
       padding-right: 0px;
 
       h2 {
-        padding-left: 1%;
-        // margin-bottom: 3%;
-      }
+          padding-left: 1%;
+          font-family: 'Oswald';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 36px;
+          line-height: 53px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          letter-spacing: 0.05em;
+          text-indent: 2.03263px;
+          color: #4D4949;
+        }
 
       .my-progresbar {
         width: 100%;
         height: 5px;
         background-color: #D9D9D9;
-        // margin-bottom: 4%;
       }
 
       .prod-detail-progres-cash-aim,
@@ -178,22 +178,38 @@
 
         display: flex;
         flex-direction: row;
-        // margin-bottom: 2%;
         justify-content: space-between;
 
         .aim-txt {
-          font-size: smaller;
+            font-size: smaller;
+            font-weight: 500;
+            font-family: 'Oswald';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 13px;
+            margin-bottom: 6px;
+            line-height: 18px;
+            letter-spacing: 0.05em;
+            text-indent: 2.03263px;
+            text-transform: uppercase;
+
+          }
+        div {
+          *{
+            font-family: 'Oswald' !important;
+          }
+          font-style: normal;
           font-weight: 500;
+          font-size: 12px;
+          margin-top: 5px;
+          line-height: 21px;
+          text-transform: uppercase;
         }
 
       }
 
       .prod-detail-progres-info {
-
-        // margin-top: 5%;
         div {
-
-          // width: 25%;
           p {
             color: #4D4949;
 
@@ -210,7 +226,14 @@
         width: 100%;
         cursor: pointer;
         margin-top: 5%;
+        text-transform: uppercase;
         padding: 4%;
+        font-family: 'Oswald';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 33px;
+        margin-bottom: 10px;
         @media (max-width: 558px){
 
           margin-bottom: 2%;
@@ -276,7 +299,6 @@
     height: 70%;
     white-space: nowrap;
     cursor: pointer;
-    // vertical-align: middle;
     margin: auto 5px;
   }
 }
