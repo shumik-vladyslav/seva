@@ -16,10 +16,7 @@
           <div class="work-content-wrap">
             <div class="work-content">
               <div class="work-card-rowblock">
-
-
                 <div class="is-hot noabs-is-hot" *ngIf="workOffer?.isHot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
-
               </div>
               <h2>{{workOffer?.title}}</h2>
               <div class="short-info">
@@ -59,19 +56,16 @@
                 <h4>{{item.title}}</h4>
                 <div class="short-info">
                   <div class="regular-work location">
-                    <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>Служение
-                      на постоянной основе</span>
+                    <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>{{workOffer?.details?.fullTime ? 'Служение на постоянной основе': 'Временное служение'}}</span>
                   </div>
-
                   <div class="location">
-                    <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>Центральный ашрам Тримурти</span>
+                    <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>{{item?.details?.location}}</span>
                   </div>
                   <div class="location contacts">
-                    <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>Трайлокьядеви +380 97 415
-                      1900</span>
+                    <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>{{item?.details?.contacts}}</span>
                   </div>
                   <div class="location time-work">
-                    <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от 3 часов в
+                    <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от {{item?.details?.timeOnDay}} часов в
                       день</span>
                   </div>
                 </div>

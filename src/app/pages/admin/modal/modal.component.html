@@ -1,18 +1,18 @@
 <form [formGroup]="data.form">
   <div class="modal-content" *ngIf="data.category ==='workOffer'">
-    <label for="first-name">Название: </label>
-    <input id="first-name" type="text" formControlName="title">
-    <label for="first-name">Подзаголовок: </label>
-    <input id="first-name" type="text" formControlName="subTitle">
+    <label for="first-name">Название*: </label>
+    <input id="first-name" required type="text" formControlName="title">
+    <label for="first-name">Подзаголовок*: </label>
+    <input id="first-name" type="text" required  formControlName="subTitle">
     <label for="first-name">Категория: </label>
 
     <select formControlName="category">
       <option value="null" selected>Без категории</option>
       <option [value]="cat.id" *ngFor="let cat of categorys$ | async">{{cat.title}}</option>
     </select>
-    <label for="last-name">Описание: </label>
+    <label for="last-name">Описание*: </label>
     <input id="last-name" type="text" formControlName="desc">
-    <label for="last-name">Большое описание: </label>
+    <label for="last-name">Большое описание*: </label>
     <angular-editor id="editor1" formControlName="bigDesc" [config]="editorConfig"></angular-editor>
     <div >
     <label for="last-name">Детали: </label>
@@ -36,19 +36,19 @@
   </div>
 
   <div class="modal-content" *ngIf="data.category ==='quotes'">
-    <label for="first-name">Название: </label>
+    <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
-    <label for="last-name">Описание: </label>
+    <label for="last-name">Описание*: </label>
     <input class="mb-2" id="last-name" type="text" formControlName="desc">
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
   <div class="modal-content" *ngIf="data.category ==='slides'">
-    <label for="first-name">Название: </label>
+    <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
-    <label for="last-name">Описание: </label>
+    <label for="last-name">Описание*: </label>
     <input class="mb-2" id="last-name" type="text" formControlName="desc">
-    <label for="last-name">Изображенние: </label>
+    <label for="last-name">Изображенние*: </label>
     <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
     <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
@@ -58,9 +58,9 @@
 
   <div class="modal-content" *ngIf="data.category ==='projectContent'" >
 
-    <label for="first-name">Название: </label>
+    <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
-    <label for="first-name">Тег: </label>
+    <label for="first-name">Тег*: </label>
     <input id="first-name" type="text" formControlName="tag">
     <label for="first-name">Вознаграждения: </label>
     <mat-form-field class="example-chip-list" appearance="fill">
@@ -89,17 +89,17 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <label for="last-name">Описание: </label>
+    <label for="last-name">Описание*: </label>
     <input id="last-name" type="text" formControlName="desc">
-    <label for="last-name">Локация: </label>
+    <label for="last-name">Локация*: </label>
     <input id="last-name" type="text" formControlName="location">
-    <label for="last-name">Поддержали: </label>
+    <label for="last-name">Поддержали*: </label>
     <input id="last-name" type="number" formControlName="supported">
-    <label for="last-name">Большое описание: </label>
+    <label for="last-name">Большое описание*: </label>
     <angular-editor id="editor1" formControlName="bigDesc" [config]="editorConfig"></angular-editor>
-    <label for="last-name">Нужно Собрать: </label>
+    <label for="last-name">Нужно Собрать*: </label>
     <input id="last-name" type="number" formControlName="aim">
-    <label for="last-name"  min="10" >Собрано: </label>
+    <label for="last-name"  min="10" >Собрано*: </label>
     <input  id="last-name" type="number" max="{{data?.form.value?.aim}}" min="0" formControlName="percent">
     <div>
       <span> Добавить в слайдер? </span><input type="checkbox" formControlName="addToSlider">
@@ -113,17 +113,17 @@
 
   <div class="modal-content" *ngIf="data.category ==='revards'" >
 
-    <label for="first-name">Название: </label>
+    <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
-    <label for="last-name">Описание: </label>
+    <label for="last-name">Описание*: </label>
     <input id="last-name" type="text" formControlName="desc">
-    <label for="last-name">Цена: </label>
+    <label for="last-name">Цена*: </label>
     <input id="last-name" type="number" min="0" formControlName="price">
-    <label for="last-name">Куплено: </label>
+    <label for="last-name">Куплено*: </label>
     <input id="last-name" type="number" formControlName="bought">
-    <label for="last-name" >Осталось: </label>
+    <label for="last-name" >Осталось*: </label>
     <input  id="last-name" type="number" max="{{data?.form.value?.aim}}" min="0" formControlName="remainder">
-    <label for="last-name">Изображенние: </label>
+    <label for="last-name">Изображенние*: </label>
     <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
     <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
@@ -131,11 +131,11 @@
   </div>
 
   <div class="modal-content" *ngIf="data.category ==='content'" >
-    <label for="first-name">Название: </label>
+    <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
-    <label for="last-name">Описание: </label>
+    <label for="last-name">Описание*: </label>
     <input id="last-name" type="text" formControlName="desc">
-    <label for="last-name">Изображенние: </label>
+    <label for="last-name">Изображенние*: </label>
     <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
     <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
@@ -144,7 +144,7 @@
 
 
   <div class="modal-content" *ngIf="data.category ==='category'" >
-    <label for="first-name">Название: </label>
+    <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>

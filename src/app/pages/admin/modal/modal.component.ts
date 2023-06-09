@@ -94,7 +94,6 @@ export class ModalComponent implements OnInit {
         }
       }
       setTimeout(() => {
-        console.log(this.revardsEl, this.selectedRevards, 2);
         this.revardscopy$ = this.revardsCtrl.valueChanges.pipe(
           startWith(null),
           map((rev: string | null) => (rev ? this.filter(rev) : this.revardsEl.slice())),
