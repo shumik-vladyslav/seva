@@ -35,6 +35,7 @@ export class WorksComponent implements OnInit {
     this.form = this.fb.group({
       name: [null, Validators.required],
       phone: [null, [Validators.required]],
+      category: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
     });
   }
@@ -98,11 +99,7 @@ export class WorksComponent implements OnInit {
   }
   sendMessage() {
     if (this.form.valid) {
-      let obj = {
-       data:  {type:'work',val:{title:'не знайшли подходящего', id:'не знайшли подходящего'}},
-       message: this.form.value
-      }
-      addDoc(collection(this.firestore, 'message'), obj).then(()=>{
+      addDoc(collection(this.firestore, 'serviceMessage'), this.form.value).then(()=>{
         this.openSnackBar('Заявка Оставленна')
       }).catch(err=>{
         this.openSnackBar(err)

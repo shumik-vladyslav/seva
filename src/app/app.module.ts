@@ -44,6 +44,8 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { WorkFilterPipe } from './shared/pipe/work-filter.pipe';
 import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
 
 @NgModule({
   declarations: [
@@ -66,12 +68,14 @@ import { HomeContentComponent } from './pages/admin/home-content/home-content.co
     ConfirmComponent,
     SnackbarComponent,
     CategoryComponent,
+    ServiceMessagesComponent,
     WorkFilterPipe,
     HomeContentComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    MatMenuModule,
     FormsModule,
     AppRoutingModule,
     MatChipsModule,

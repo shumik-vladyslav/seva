@@ -5,10 +5,20 @@
       <div class="work-head">
         <h3 class="work-title">Если вы не нашли подходящего служения для себя, оставьте заявку и вам обязательно дадут
           возможность накопить заслугу</h3>
-        <div class="work-head-input-wrap">
+        <div class="work-head-input-wrap bigger-inputs">
           <input type="text" formControlName="name" placeholder="Ваше имя">
           <input type="text" formControlName="phone" placeholder="Ваш телефон">
+        </div>
+        <div class="work-head-input-wrap bigger-inputs">
           <input type="text" formControlName="email" placeholder="Ваш Email">
+          <input type="text"   readonly placeholder="Категория" [matMenuTriggerFor]="menu" formControlName="category">
+          <mat-menu #menu="matMenu" >
+            <button  mat-menu-item (click)="form.get('category').setValue(defValue.value)">
+              <input (click)="$event.stopPropagation()" #defValue type="text" class="w-full p-3" placeholder="Вкажите свою категорию">
+            </button>
+            <button (click)="form.get('category').setValue(cat.title)" mat-menu-item *ngFor="let cat of categorys$ | async" >{{cat.title}}>
+            </button>
+          </mat-menu>
         </div>
         <button class="work-head-btn" (click)="sendMessage()">Оставить Заявку</button>
       </div>

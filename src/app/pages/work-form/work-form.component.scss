@@ -10,16 +10,12 @@
 }
 .work-head{
   height: 100% !important;
-  // display: flex;
-  // align-items: center;
   display: flex;
     flex-direction: column;
     justify-content: space-evenly;
   background: linear-gradient(180deg, #8FBEF2 0%, rgba(23, 116, 226, 0.963542) 18.75%, rgba(59, 77, 243, 0.88) 43.23%, rgba(35, 51, 190, 0.92) 64.06%, rgba(12, 29, 168, 0.85) 84.37%);
   .work-head-input-wrap {
-
-    padding-top: 0px !important;
-    margin-top: -2%;
+    padding-top: 10px !important;
   }
   .work-head-center{
     display: flex;

@@ -1,0 +1,12 @@
+<div class="mess-Wrap">
+    <h2>Служители</h2>
+    <div class="work-wrap">
+      <div *ngFor="let item of (this.message$ | async)">
+        <i>Имя: </i>{{item.name}} <br>
+        <i>Емайл: </i> {{item.email}} <br>
+        <i>Номер телефона: </i> {{item.phone}}<br>
+        <i>Категория: </i> {{item.category}}<br>
+        <button (click)="deleteItem(item.id)">✖</button>
+      </div>
+    </div>
+</div>

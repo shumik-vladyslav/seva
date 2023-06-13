@@ -13,6 +13,7 @@ import { RevardsComponent } from './pages/admin/revards/revards.component';
 import { MessagesComponent } from './pages/admin/messages/messages.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
+import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'projects', component: ProjectComponent },
       { path: 'revards', component: RevardsComponent },
       { path: 'messages', component: MessagesComponent },
+      { path: 'servants', component: ServiceMessagesComponent },
       { path: 'category', component: CategoryComponent }
     ]
   }

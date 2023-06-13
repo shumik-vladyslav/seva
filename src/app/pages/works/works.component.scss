@@ -90,7 +90,15 @@
   display: flex;
   flex-flow: row wrap;
 }
-
+.bigger-inputs{
+    width: 100% !important;
+    justify-content: center !important  ;
+    padding-top: 3% !important;
+    input{
+      width: 30%;
+      margin: 0px 9px;
+    }
+}
 .card-checked-filter {
   background: rgba(217, 217, 217, 0.87);
   transition: all 0.3s;
@@ -111,4 +119,7 @@
     font-size: small;
 
   }
+}
+.def-select{
+  display: none;
 }
