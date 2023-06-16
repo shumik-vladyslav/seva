@@ -1,11 +1,11 @@
 <div class="home-container admin-content">
   <div class="form-control">
-    <button (click)="createWorkOffer()">Создать Предложенние</button>
+    <button (click)="createWorkOffer()">Создать Предложение</button>
   </div>
   <main>
     <div class="li-block" *ngFor="let item of  workOffer$ | async">
       <i>Название: </i> {{item.title}} <br>
-      <i>Подзаголовок: </i> {{item.subTitle}} <br>
+      <i>Локация: </i> {{item.subTitle}} <br>
       <i>Описание: </i> {{item.desc}}<br>
       <p *ngIf="item?.category">
         <i (click)="cons(item)">Категория: </i> <span *ngFor="let cat of categorys$ | async">{{cat.id == item?.category ? cat.title : ''}}</span> <br>

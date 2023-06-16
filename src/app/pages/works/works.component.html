@@ -14,9 +14,9 @@
           <input type="text"   readonly placeholder="Категория" [matMenuTriggerFor]="menu" formControlName="category">
           <mat-menu #menu="matMenu" >
             <button  mat-menu-item (click)="form.get('category').setValue(defValue.value)">
-              <input (click)="$event.stopPropagation()" #defValue type="text" class="w-full p-3" placeholder="Вкажите свою категорию">
+              <input (click)="$event.stopPropagation()" #defValue type="text" class="w-full p-3" placeholder="Укажите свою категорию">
             </button>
-            <button (click)="form.get('category').setValue(cat.title)" mat-menu-item *ngFor="let cat of categorys$ | async" >{{cat.title}}>
+            <button (click)="form.get('category').setValue(cat.title)" mat-menu-item *ngFor="let cat of categorys$ | async" >{{cat.title}}
             </button>
           </mat-menu>
         </div>
