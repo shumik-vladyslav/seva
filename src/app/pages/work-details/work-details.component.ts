@@ -1,10 +1,9 @@
-// import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { collection, collectionData, doc, Firestore, getDoc, where } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { WorkFormComponent } from '../work-form/work-form.component';
-import { query } from "firebase/firestore";
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-work-details',
@@ -40,12 +39,12 @@ export class WorkDetailsComponent implements OnInit {
       type: 'work',
       val: this.workOffer
     }
-    console.log(data);
-    let dialogRef = this.dialog.open(WorkFormComponent, {
+    this.dialog.open(WorkFormComponent, {
       height: '45%',
       maxWidth: '95%',
+      scrollStrategy: new NoopScrollStrategy(),
       data: data,
-      panelClass: "dialog-responsive"
+      panelClass: ["dialog-responsive", "dialog-border"]
     });
   }
 }

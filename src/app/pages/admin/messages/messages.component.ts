@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-messages',
@@ -22,15 +23,12 @@ export class MessagesComponent implements OnInit {
     this.message$ = collectionData(this.collections, {idField: 'id'});
    }
 
-  ngOnInit(): void {
-    this.message$.subscribe((e:any)=>{
-      console.log(e);
-
-    })
-  }
+  ngOnInit(): void {}
+  
   deleteItem(id: string){
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e) {

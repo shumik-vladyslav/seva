@@ -123,3 +123,16 @@
 .def-select{
   display: none;
 }
+
+.big-desc{
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+  ::ng-deep{
+  *{
+      font-size: 17px !important;
+      font-weight: 400 !important;
+    }
+  } 
+}

@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { collection, collectionData, deleteDoc, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,12 +7,12 @@ import { Observable } from 'rxjs';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
-  providers: [AsyncPipe]
 })
 export class CategoryComponent implements OnInit {
   public form: FormGroup;
@@ -26,7 +25,6 @@ export class CategoryComponent implements OnInit {
   constructor(
     private firestore: Firestore,
     private dialogRef: MatDialog,
-    private async: AsyncPipe,
     private _snackBar: MatSnackBar
     ) {
     this.collectionsWork = collection(firestore, 'workOffer');
@@ -39,9 +37,7 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   createCateg(){
     this.form.reset()
@@ -52,13 +48,12 @@ export class CategoryComponent implements OnInit {
     }
     this.dialogRef.open(ModalComponent, {
       width: '40%',
+      scrollStrategy: new NoopScrollStrategy(),
       data:  obj,
     });
   }
 
-
   EditCateg(item: any){
-    console.log(item);
     this.form.reset()
     this.form.patchValue(item)
     let obj={
@@ -70,16 +65,15 @@ export class CategoryComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '90%',
       data:  obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
-
 
   deleteCateg(id: string) {
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
-
-
     confDialog.afterClosed().subscribe(e=>{
       if(e){
         deleteDoc(doc(this.firestore, `category/${id}`)).then(()=>{
@@ -93,12 +87,14 @@ export class CategoryComponent implements OnInit {
       }
     })
   }
+
   openSnackBar(message:string) {
     this._snackBar.openFromComponent(SnackbarComponent, {
       data: message,
       duration: 1000,
     });
   }
+  
   filterUpdate(id:any){
     this.workOffer$.subscribe(e=>{
       let offer

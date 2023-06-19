@@ -1,14 +1,6 @@
 
-::ng-deep{
-  .mat-dialog-container{
-    padding: 0% !important;
-    border-radius: 40px;
-  }
-  .cdk-overlay-backdrop{
-    background: rgba(255,255,255, 0.7)
-  }
-}
 .work-head{
+  min-width: 70vw;
   height: 100% !important;
   display: flex;
     flex-direction: column;

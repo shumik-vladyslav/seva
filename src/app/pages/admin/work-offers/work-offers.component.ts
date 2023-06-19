@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, Observable } from 'rxjs';
-import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Firestore, collectionData, collection, doc, deleteDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
-import { AsyncPipe } from '@angular/common';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-work-offers',
@@ -30,7 +30,6 @@ export class WorkOffersComponent implements OnInit {
     private fb: FormBuilder,
     private _snackBar: MatSnackBar
   ) {
-
     this.collections = collection(firestore, 'workOffer');
     this.workOffer$ = collectionData(this.collections, { idField: 'id' });
     this.collectionsCateg = collection(firestore, 'category');
@@ -42,7 +41,6 @@ export class WorkOffersComponent implements OnInit {
     this.form = this.fb.group({
       title: [null, Validators.required],
       subTitle: [null, Validators.required],
-      desc: [null, Validators.required],
       category: [null],
       bigDesc: [null, Validators.required],
       details: this.fb.group({
@@ -54,13 +52,11 @@ export class WorkOffersComponent implements OnInit {
       isHot: [false]
     });
   }
-  cons(e:any){
-    console.log(e);
 
-  }
   deleteOffer(id: string) {
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e) deleteDoc(doc(this.firestore, `workOffer/${id}`)).then(()=>{
@@ -76,6 +72,7 @@ export class WorkOffersComponent implements OnInit {
       duration: 1000,
     });
   }
+
   EditOffer(item: any) {
     this.form.patchValue(item)
     let obj = {
@@ -87,11 +84,13 @@ export class WorkOffersComponent implements OnInit {
     let dialog = this.dialogRef.open(ModalComponent, {
       width: '90%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
     dialog.afterClosed().subscribe(e => {
       this.initForm();
     })
   }
+
   showDesc(item:any, event: any) {
     if (!this.isBigDesc) {
       event.target.nextElementSibling.innerHTML = item.bigDesc
@@ -102,18 +101,18 @@ export class WorkOffersComponent implements OnInit {
       this.isBigDesc = false
     }
   }
+
   createWorkOffer() {
     let obj = {
       type: 'create',
       category: 'workOffer',
       form: this.form
     }
-
     let dialog = this.dialogRef.open(ModalComponent, {
       width: '90%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
-
     dialog.afterClosed().subscribe(e => {
       this.initForm();
     })
@@ -123,21 +122,4 @@ export class WorkOffersComponent implements OnInit {
     this.initForm();
   }
 
-  // ------- load all big desc if need
-  // initBigDesc() {
-  //   this.workOffer$.pipe(debounceTime(600)).subscribe(e => {
-  //     let elem = document.querySelectorAll('.bigDesc')
-  //     if (elem.length) {
-  //       if (e.length) {
-  //         e.find((el, i) => {
-  //           if (el?.bigDesc) {
-  //             if (elem[i].innerHTML !== el?.bigDesc) {
-  //               elem[i].innerHTML = el.bigDesc
-  //             }
-  //           }
-  //         })
-  //       }
-  //     }
-  //   })
-  // }
 }

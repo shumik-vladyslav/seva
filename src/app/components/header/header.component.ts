@@ -1,3 +1,4 @@
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkFormComponent } from 'src/app/pages/work-form/work-form.component';
@@ -22,11 +23,12 @@ export class HeaderComponent implements OnInit {
       type: 'donate',
       val: ''
     }
-    let dialogRef = this.dialog.open(WorkFormComponent, {
+    this.dialog.open(WorkFormComponent, {
       height: '45%',
       maxWidth: '95%',
+      scrollStrategy: new NoopScrollStrategy(),
       data: data,
-      panelClass: "dialog-responsive"
+      panelClass: ["dialog-responsive", "dialog-border"]
     });
   }
 }

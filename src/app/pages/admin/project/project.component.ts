@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, deleteDoc, doc, Firestore } from '@angular/fire/firestore';
 
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-project',
@@ -56,11 +57,11 @@ export class ProjectComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '90%',
       data:  obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
   EditProj(item: any){
-    console.log(item);
     this.form.reset()
     this.form.patchValue(item)
     let obj={
@@ -72,6 +73,7 @@ export class ProjectComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '90%',
       data:  obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
@@ -79,6 +81,7 @@ export class ProjectComponent implements OnInit {
   deleteProj(id: string) {
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e){
@@ -91,8 +94,7 @@ export class ProjectComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   showDesc(item:any, event: any) {
     if (!this.isBigDesc) {

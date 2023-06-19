@@ -33,7 +33,7 @@
           <div class="work-card" *ngFor="let item of (workOffer$ | async) | workFilter: chakedValueId : type : change">
             <h2 [routerLink]="[ '/work/'+item.id+'' ]">{{item?.title}}</h2>
             <h3>{{item?.subTitle}}</h3>
-            <p>{{item?.desc}}</p>
+            <div class="big-desc" [innerHTML]="item?.bigDesc"> </div>
             <div class="work-card-rowblock">
               <div class="work-card-img">
                 <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">

@@ -118,7 +118,6 @@ export class WorksComponent implements OnInit {
     if(window.innerWidth < 950){
       let title: any = document.querySelector('.arrow-categ')
       let hidenContainer : any = document.querySelector('.checkbox-holder')
-      console.log(hidenContainer);
       if( !this.isShow ) {
         this.isShow = true
         hidenContainer.style.display = 'flex'
@@ -130,8 +129,6 @@ export class WorksComponent implements OnInit {
         title.classList.remove('rotate')
 
       }
-        console.dir(hidenContainer);
-      // hidenContainer.hidden = !hidenContainer.hidden
     }
 
   }

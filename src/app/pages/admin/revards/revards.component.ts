@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-revards',
@@ -56,6 +57,7 @@ export class RevardsComponent implements OnInit {
     let dialog = this.dialogRef.open(ModalComponent, {
       width: '70%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
 
     dialog.afterClosed().subscribe(e => {
@@ -74,6 +76,7 @@ export class RevardsComponent implements OnInit {
     let dialog = this.dialogRef.open(ModalComponent, {
       width: '70%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
 
     dialog.afterClosed().subscribe(e => {
@@ -90,6 +93,7 @@ export class RevardsComponent implements OnInit {
   deleteRevard(id: any){
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e) deleteDoc(doc(this.firestore, `revards/${id}`)).then(()=>{

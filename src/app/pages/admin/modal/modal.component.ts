@@ -1,18 +1,18 @@
 import { ChangeDetectorRef, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { addDoc, collection, collectionData, doc, Firestore, setDoc } from '@angular/fire/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
 import { deleteObject, getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-
 import { MatChipInputEvent } from '@angular/material/chips';
 import { AsyncPipe } from '@angular/common';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-modal',
@@ -43,8 +43,8 @@ export class ModalComponent implements OnInit {
     minHeight: '5rem',
     placeholder: 'Enter text here...',
     translate: 'no',
-    uploadUrl: 'v1/images', // if needed
-    customClasses: [ // optional
+    uploadUrl: 'v1/images',
+    customClasses: [
       {
         name: "quote",
         class: "quote",
@@ -113,7 +113,6 @@ export class ModalComponent implements OnInit {
       elem.filter((el: any) => {
         if (el.id === rev) {
           this.revardsEl.push(el)
-          console.log(el, this.revardsEl);
           this.data.form.controls.revards.updateValueAndValidity();
           this.revardscopy$ = this.revardsCtrl.valueChanges.pipe(
             startWith(null),
@@ -148,8 +147,8 @@ export class ModalComponent implements OnInit {
     return this.revardsEl = this.revardsEl.filter((rev: any) => rev.id !== filterValue);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
   createOrEdit(data: any) {
     if (data.category === "projectContent") {
       let result = this.allRevards.filter((v: any)=> {
@@ -221,6 +220,7 @@ export class ModalComponent implements OnInit {
   deleteImage(img?: string): void {
     let confDialog = this.dialog.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e) {
@@ -250,11 +250,10 @@ export class ModalComponent implements OnInit {
   valueByControl(control: string): string {
     return this.data.form.get(control)?.value;
   }
+
   ngOnDestroy(): void {
     if (this.data.category === "projectContent") {
-
       this.data.form.reset()
     }
-
   }
 }

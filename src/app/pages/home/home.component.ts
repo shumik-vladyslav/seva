@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { addDoc } from 'firebase/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkFormComponent } from '../work-form/work-form.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,6 @@ import { WorkFormComponent } from '../work-form/work-form.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
 
   ngOnInit(): void {
   }
@@ -75,40 +74,17 @@ export class HomeComponent implements OnInit {
     this.content$ = collectionData(collectionsContent, {idField: 'id'});
   }
 
-
-
-  // for btn
-  // activePagBtn(id: any) {
-  //   if (id === 'prev') {
-  //     this.slides[this.previousPage].isActive = false
-  //     if (this.previousPage === 0) this.previousPage = this.slides.length - 1
-  //     else this.previousPage--
-  //     this.slides[this.previousPage].isActive = true
-  //   }
-  //   else if (id === 'next') {
-  //     this.slides[this.previousPage].isActive = false
-  //     if (this.previousPage === this.slides.length - 1) this.previousPage = 0
-  //     else this.previousPage++
-  //     this.slides[this.previousPage].isActive = true
-  //   }
-  //   else {
-  //     this.previousPage = +id
-  //     this.slides.filter(e => {
-  //       e.isActive = false
-  //       if (e.id === id) e.isActive = true
-  //     })
-  //   }
-  // }
   modalDetail(){
     let data = {
       type: 'donate',
       val: ''
     }
-    let dialogRef = this.dialog.open(WorkFormComponent, {
+    this.dialog.open(WorkFormComponent, {
       height: '45%',
       maxWidth: '95%',
       data: data,
-      panelClass: "dialog-responsive"
+      scrollStrategy: new NoopScrollStrategy(),
+      panelClass: ["dialog-responsive", "dialog-border"]
     });
   }
 }

@@ -1,11 +1,10 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-home-content',
@@ -20,7 +19,6 @@ export class HomeContentComponent implements OnInit {
   constructor(
     private firestore: Firestore,
     private dialogRef: MatDialog,
-    private _snackBar: MatSnackBar
     ) {
 
     this.collections = collection(firestore, 'content');
@@ -46,6 +44,7 @@ export class HomeContentComponent implements OnInit {
     }
     this.dialogRef.open(ModalComponent, {
       width: '90%',
+      scrollStrategy: new NoopScrollStrategy(),
       data:  obj,
     });
   }

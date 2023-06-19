@@ -74,6 +74,19 @@ button{
 
 }
 
+.dialog-border{
+  .mat-dialog-container{
+    padding: 0% !important;
+    border-radius: 40px;
+  }
+}
+
+::ng-deep{
+  .cdk-overlay-backdrop{
+    background: rgba(255,255,255, 0.7)
+  }
+}
+
 .home-container,
 .work-container {
   margin-top: 21vh;
@@ -140,10 +153,6 @@ input[type="range" i]::-webkit-slider-thumb {
 
     .work-card {
       border: 0.8px solid #D9D9D9;
-
-      h2 {
-        color: #388EED;
-      }
     }
   }
 

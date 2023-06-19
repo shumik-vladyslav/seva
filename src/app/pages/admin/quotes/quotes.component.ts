@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collectionData, collection, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, doc, deleteDoc } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { ModalComponent } from '../modal/modal.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-quotes',
@@ -17,7 +18,6 @@ export class QuotesComponent implements OnInit {
 
   quotes$: Observable<any[]>;
   slides$: Observable<any[]>;
-
   collections: any;
   collectionsSld: any;
 
@@ -45,9 +45,7 @@ export class QuotesComponent implements OnInit {
     this.slides$ = collectionData(this.collectionsSld, { idField: 'id' });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   createQuotes() {
     this.form.reset()
@@ -58,6 +56,7 @@ export class QuotesComponent implements OnInit {
     }
     this.dialogRef.open(ModalComponent, {
       width: '90%',
+      scrollStrategy: new NoopScrollStrategy(),
       data: obj,
     });
   }
@@ -72,6 +71,7 @@ export class QuotesComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '90%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
@@ -86,6 +86,7 @@ export class QuotesComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '90%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
@@ -100,11 +101,13 @@ export class QuotesComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '90%',
       data: obj,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
   deleteSlide(id: string, type: string) {
     let confDialog = this.dialogRef.open(ConfirmComponent, {
       width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
     })
     confDialog.afterClosed().subscribe(e=>{
       if(e){
