@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-messages',
@@ -13,17 +14,55 @@ import { NoopScrollStrategy } from '@angular/cdk/overlay';
 })
 export class MessagesComponent implements OnInit {
   collections: any;
+  collectionsWork: any;
   message$: any;
+  workOffer$: any;
+  json = JSON;
+  sortedItems : any[] = [];
+  messages : any[] = [];
+  messagesDontate : any[] = [];
+  filterControl = this.fb.control('')
+
   constructor(
     private firestore: Firestore,
+    private fb: FormBuilder,
     private dialogRef: MatDialog,
     private _snackBar: MatSnackBar
   ) {
     this.collections = collection(firestore, 'message');
     this.message$ = collectionData(this.collections, {idField: 'id'});
+    this.collectionsWork = collection(firestore, 'workOffer');
+    this.workOffer$ = collectionData(this.collectionsWork, { idField: 'id' });
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  this.filterControl.valueChanges.subscribe(vl=> {
+    this.sortedItems = this.messages
+    this.sortedItems = this.sortedItems.filter(elem=>{
+      if(vl){
+        return vl?.id === elem.data.val.id
+      }
+      return elem      
+    })
+
+  })
+    this.message$.subscribe((items : any) => {
+      this.sortedItems = items.sort((a: any , b: any) => {
+        if (!a.created || !b.created) {
+          if (!a.created) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+        return new Date(JSON.parse(b.created)).getTime() - new Date(JSON.parse(a.created)).getTime();
+      });
+      this.messages = this.sortedItems
+      this.messagesDontate = items.filter((e:any)=>{
+        return e?.data.type =='donate'
+      } )
+    });
+  }
   
   deleteItem(id: string){
     let confDialog = this.dialogRef.open(ConfirmComponent, {

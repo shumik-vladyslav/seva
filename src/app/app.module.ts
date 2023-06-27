@@ -46,6 +46,7 @@ import { WorkFilterPipe } from './shared/pipe/work-filter.pipe';
 import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { ServiceMessagesComponent } from './pages/admin/service-messages/service
     AppRoutingModule,
     MatChipsModule,
     MatTooltipModule,
+    MatSelectModule,
     CarouselModule,
     MatFormFieldModule,
     MatPaginatorModule,

@@ -39,6 +39,7 @@ export class WorkFormComponent implements OnInit {
     if (this.form.valid) {
       let obj = {
        data:  this.data,
+       created: JSON.stringify(new Date()),
        message: this.form.value
       }
       addDoc(collection(this.firestore, 'message'), obj).then(()=>{

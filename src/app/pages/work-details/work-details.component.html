@@ -41,7 +41,6 @@
                   <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
                   <button (click)="modalDetailsShow()" >Я хочу выполнять это служение</button>
                 </div>
-                <!-- <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div> -->
               </div>
             </div>
           </div>
@@ -51,7 +50,7 @@
           <div *ngFor="let item of (workOffers$ | async); let i = index" >
             <ng-container *ngIf="item.isHot && i<3 ">
 
-              <div class="hot-card">
+              <div class="hot-card" [routerLink]="[ '/work/'+item.id+'' ]">
 
                 <h4>{{item.title}}</h4>
                 <div class="short-info">

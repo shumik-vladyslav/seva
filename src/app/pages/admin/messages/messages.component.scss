@@ -5,11 +5,16 @@
   display: flex;
   justify-content: space-around;
   .donat-wrap, .work-wrap{
+    ::ng-deep{
+      .mat-form-field-wrapper{
+        padding-top: 0.3rem !important;
+        padding-bottom: 0.2rem !important;
+      }
+    }
     width: 48%;
     h2{
       text-align: center;
       color: #96652C;
-      // width: 45%;
     }
     div{
       i{

@@ -86,7 +86,7 @@ export class WorksComponent implements OnInit {
       }
     })
     this.chakedValueId.find((e:any,i:any)=>{
-      if(e.title === value){
+      if(e?.title === value){
         this.chakedValueId.splice(i, 1)
       }
     })

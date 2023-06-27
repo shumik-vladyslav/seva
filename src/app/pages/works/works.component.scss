@@ -11,6 +11,26 @@
       flex-direction: column;
       display: flex;
       justify-content: space-around;
+      .big-desc{
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        line-clamp: 3 !important;
+        -webkit-box-pack: end !important;
+        text-overflow: ellipsis !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-align: left !important;
+        ::ng-deep{
+        *{
+            display: inline !important;
+            font-size: 17px !important;
+            font-weight: 400 !important;
+          }
+          img{
+            display: none !important;
+          }
+        } 
+      }
       h2 {
         color: #388EED;
         cursor: pointer;
@@ -105,6 +125,12 @@
   display: flex;
   padding: 1.5vh 3vh;
   margin-right: 1%;
+  margin-bottom: 1vh;
+  p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+  }
   margin-top: 1%;
   align-items: center;
   border-radius: 25px;
@@ -122,17 +148,4 @@
 }
 .def-select{
   display: none;
-}
-
-.big-desc{
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 3 !important;
-  overflow: hidden !important;
-  ::ng-deep{
-  *{
-      font-size: 17px !important;
-      font-weight: 400 !important;
-    }
-  } 
 }

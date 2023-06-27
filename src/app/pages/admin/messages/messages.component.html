@@ -1,30 +1,52 @@
 <div class="mess-Wrap">
-
   <div class="donat-wrap">
     <h2>ПОЖЕРТВОВАНИЕ</h2>
-    <div *ngFor="let item of (this.message$ | async)" [hidden]="item?.data.type !=='donate'">
-      <i>Имя: </i>{{item.message.name}} <br>
-      <i>Емайл: </i> {{item.message.email}} <br>
-      <i>Номер телефона: </i> {{item.message.phone}}<br>
-      <span [hidden]="!item.data.val">
-        <i>Проект: </i> {{item.data.val.title}}<br>
-        <i>ID Проекта: </i> {{item.data.val.id}}<br>
-      </span>
-      <button (click)="deleteItem(item.id)">✖</button>
-    </div>
+    <ng-container *ngIf="messagesDontate?.length; else noItems">
+      <div *ngFor="let item of messagesDontate">
+        <i>Имя: </i>{{item.message.name}} <br>
+        <i>Емайл: </i> {{item.message.email}} <br>
+        <i>Номер телефона: </i> {{item.message.phone}}<br>
+        <span [hidden]="!item.data.val">
+          <i>Проект: </i> {{item.data.val.title}}<br>
+          <i>ID Проекта: </i> {{item.data.val.id}}<br>
+        </span>
+        <button (click)="deleteItem(item.id)">✖</button>
+      </div>
+    </ng-container>
+    <ng-template #noItems>
+      <p class="center mt-4">
+        Нет сообщений
+      </p>
+    </ng-template>
   </div>
   <div class="work-wrap">
     <h2>СЛУЖЕНИЕ</h2>
-    <div *ngFor="let item of (this.message$ | async)" [hidden]="item?.data.type !=='work'">
-      <i>Имя: </i>{{item.message.name}} <br>
-      <i>Емайл: </i> {{item.message.email}} <br>
-      <i>Номер телефона: </i> {{item.message.phone}}<br>
-      <span [hidden]="!item.data.val">
-        <i>Служение: </i> {{item.data.val.title}}<br>
-        <i>ID Служения: </i> {{item.data.val.id}}<br>
-      </span>
-      <button (click)="deleteItem(item.id)">✖</button>
-    </div>
-
+    <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Фильтр по служениям</mat-label>
+      <mat-select [formControl]="filterControl">
+        <mat-option>Выберите служение</mat-option>
+        <mat-option *ngFor="let work of workOffer$ | async" [value]="work">
+          {{work.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ng-container *ngIf="sortedItems?.length; else noItemsMess">
+      <div *ngFor="let item of sortedItems" [hidden]="item?.data.type !=='work'">
+        <i>Имя: </i>{{item.message.name}} <br>
+        <i>Емайл: </i> {{item.message.email}} <br>
+        <i>Номер телефона: </i> {{item.message.phone}}<br>
+        <span [hidden]="!item.data.val">
+          <i>Служение: </i> {{item.data.val.title}}<br>
+          <i>ID Служения: </i> {{item.data.val.id}}<br>
+        </span>
+        <button (click)="deleteItem(item.id)">✖</button>
+        <p class="d-flex jc-end" *ngIf="item?.created">{{ json.parse(item?.created) | date: 'dd/M/yyyy' }}</p>
+      </div>
+    </ng-container>
+    <ng-template #noItemsMess>
+      <p class="center">
+        Нет сообщений
+      </p>
+    </ng-template>
   </div>
 </div>

@@ -184,6 +184,11 @@ input[type="range" i]::-webkit-slider-thumb {
 .location{
   font-family: 'PT Serif' !important;
 }
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .work-card-rowblock {
   display: flex;
   justify-content: space-between;
@@ -834,8 +839,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-bottom: 1rem !important;
 }
 
+.d-flex{
+  display: flex !important;
+}
+.jc-end{
+  justify-content: end;
+}
+
 .mt-2{
   margin-top: 2% !important;
+}
+.mt-4{
+  margin-top: 5rem !important;
 }
 .mt-1{
   margin-top: 1% !important;

@@ -22,14 +22,16 @@
         </div>
         <button class="work-head-btn" (click)="sendMessage()">Оставить Заявку</button>
       </div>
-      <div class="from-filter" *ngIf="chackedValue[0]">
-        <div class="card-checked-filter" *ngFor="let item of chackedValue | slice: 0 : 10, let i =index">
-          <p>{{item | slice :0:19}}</p>
-          <p class="ch_exit" (click)="deleteValue(i)">✕</p>
-        </div>
-      </div>
       <div class="work-content-wrap">
         <div class="work-content">
+          <div class="from-filter" >
+            <ng-container  *ngIf="chackedValue[0]">
+              <div class="card-checked-filter" *ngFor="let item of chackedValue | slice: 0 : 10, let i =index">
+                <p>{{item | slice :0:16}}</p>
+                <p class="ch_exit" (click)="deleteValue(i)">✕</p>
+              </div>
+            </ng-container>
+          </div>
           <div class="work-card" *ngFor="let item of (workOffer$ | async) | workFilter: chakedValueId : type : change">
             <h2 [routerLink]="[ '/work/'+item.id+'' ]">{{item?.title}}</h2>
             <h3>{{item?.subTitle}}</h3>
