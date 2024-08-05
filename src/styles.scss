@@ -68,7 +68,7 @@ button{
   width: 100%;
 }
 .main-wrap {
-  width: 60%;
+  width: 72%;
   height: 100%;
   margin: auto;
 
@@ -254,7 +254,12 @@ input[type="range" i]::-webkit-slider-thumb {
   color: white;
   width: 100%;
   background: linear-gradient(180deg, #1371DA 0%, rgba(5, 23, 181, 0) 100%);
-
+  &.sm {
+    padding-bottom: 4%;
+    .work-title {
+      padding-top: 0.5%;
+    }
+  }
   .work-title {
     margin: auto;
     padding-top: 3.5%;
@@ -303,9 +308,10 @@ input[type="range" i]::-webkit-slider-thumb {
     font-weight: 700;
     color: white;
     padding: 1.2% 5% 1% 5%;
-
     border-radius: 28.5299px;
-
+    &.sm {
+      margin-top: 2%;
+    }
   }
 
   .work-head-btn:hover {
@@ -825,9 +831,14 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+.flex-col {
+  flex-direction: column !important;
+}
 .mb-1{
   margin-bottom: 1% !important;
+}
+.justify-center {
+  justify-content: center;
 }
 .mb-2{
   margin-bottom: 2% !important;

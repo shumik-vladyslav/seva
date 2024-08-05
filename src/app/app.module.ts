@@ -47,6 +47,7 @@ import { HomeContentComponent } from './pages/admin/home-content/home-content.co
 import {MatMenuModule} from '@angular/material/menu';
 import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
 import { MatSelectModule } from '@angular/material/select';
+import { FormApplyComponent } from './pages/form-apply/form-apply.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { MatSelectModule } from '@angular/material/select';
     ServiceMessagesComponent,
     WorkFilterPipe,
     HomeContentComponent,
+    FormApplyComponent,
   ],
   imports: [
     BrowserModule,

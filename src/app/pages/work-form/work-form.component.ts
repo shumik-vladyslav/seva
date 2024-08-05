@@ -33,8 +33,9 @@ export class WorkFormComponent implements OnInit {
     this.initForm()
   }
   closeModal() {
-    this.dialog.closeAll()
+    this.dialog.closeAll();
   }
+  
   sendMessage() {
     if (this.form.valid) {
       let obj = {

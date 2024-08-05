@@ -1,0 +1,32 @@
+<div class="work-head" [formGroup]="form">
+    <h3 class="work-title">Если вы не нашли подходящего служения для себя, оставьте заявку и вам обязательно дадут
+        возможность накопить заслугу</h3>
+    <div class="work-head-input-wrap">
+        <div class="d-flex flex-col w-full">
+            <div class="d-flex justify-center mb-1">
+                <input type="text" placeholder="Ваше имя" formControlName="name">
+                <input class="ml-1" type="text" placeholder="Ваш телефон" formControlName="phone">
+            </div>
+            <div class="d-flex justify-center mt-1">
+                <input type="text" placeholder="Ваш Email" formControlName="email">
+                <input class="ml-1" type="text" readonly placeholder="Категория" [matMenuTriggerFor]="menu"
+                    formControlName="category">
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="form.get('category').setValue(defValue.value)">
+                        <input (click)="$event.stopPropagation()" #defValue type="text" class="w-full p-3"
+                            placeholder="Укажите свою категорию">
+                    </button>
+                    <button (click)="form.get('category').setValue(cat.title)" mat-menu-item
+                        *ngFor="let cat of categorys$ | async">{{cat.title}}
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <button class="work-head-btn" [class.disabledbtn]="form.invalid" [disabled]="form.invalid" (click)="sendMessage()">
+        <img src="assets/img/premium-icon-pray-3620149.png" width="15%" alt="">
+        <span>
+            Оставить Заявку
+        </span>
+    </button>
+</div>
