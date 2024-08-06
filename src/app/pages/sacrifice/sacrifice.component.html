@@ -1,0 +1,44 @@
+<div class="work-container">
+    <div class="main-wrap">
+        <div class="nav nav-tabs scrollmenu mt-5">
+            <a (click)="index = 0" [ngClass]="{'active': index == 0}" class="nav-link colorWhite">UAH</a>
+            <a (click)="index = 1" [ngClass]="{'active': index == 1}" class="nav-link colorWhite">RUB</a>
+            <a (click)="index = 2" [ngClass]="{'active': index == 2}" class="nav-link colorWhite">USD</a>
+            <a (click)="index = 3" [ngClass]="{'active': index == 3}" class="nav-link colorWhite">EUR</a>
+            <a (click)="index = 4" [ngClass]="{'active': index == 4}" class="nav-link colorWhite">DM</a>
+        </div>
+        <div *ngIf="index == 0"></div>
+        <div *ngIf="index == 2"></div>
+        <div *ngIf="index == 3"></div>
+        <div *ngIf="index == 4"></div>
+        <div *ngIf="index == 1" class="hud">
+            <div class="relative_wrap">
+                <div class="g_wrapp"></div>
+                <div [formGroup]="formAmount" class="forms_w">
+                    <p class="text-about-forum">Мы Всемирная Община Санатана Дхармы....</p>
+                    <p class="title">Сделать донаты на сайт</p>
+                    <div class="d_fl">
+                        <div class="form-registration-form flex justify-between" id="registration-form">
+                            <input type="number" min="1" class="input-form-gold" placeholder="Сумма"
+                                formControlName="amount" />
+                        </div>
+                    </div>
+                    <div class="header-inner header-inner-button boreder grad">
+                        <button [disabled]="formAmount?.invalid" class="registration-button" (click)="submitForm()">
+                            Пожертвовать
+                        </button>
+                    </div>
+                </div>
+                <div class="social-items mt-6">
+                    <p class="links" (click)="
+                      goToUrl(
+                        'https://docs.google.com/document/d/16TABAaWvOogSNOSlNRU-vAEnf0PvMzwd/edit#heading=h.pj4vxw57p2j3'
+                      )
+                    ">
+                        Договор Публичной Оферты
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

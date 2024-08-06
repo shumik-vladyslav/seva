@@ -14,11 +14,13 @@ import { MessagesComponent } from './pages/admin/messages/messages.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
 import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
+import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'works', component: WorksComponent },
   { path: 'work/:details', component: WorkDetailsComponent },
+  { path: 'sacrifice', component: SacrificeComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'project/:details', component: ProjectDetailsComponent },
   {

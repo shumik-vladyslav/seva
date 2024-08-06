@@ -48,6 +48,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormApplyComponent } from './pages/form-apply/form-apply.component';
+import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { FormApplyComponent } from './pages/form-apply/form-apply.component';
     WorkFilterPipe,
     HomeContentComponent,
     FormApplyComponent,
+    SacrificeComponent,
   ],
   imports: [
     BrowserModule,
