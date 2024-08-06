@@ -49,7 +49,8 @@ export class WorkOffersComponent implements OnInit {
         timeOnDay: [null],
         fullTime: [false],
       }),
-      isHot: [false]
+      isHot: [false],
+      date: Math.floor(new Date().getTime() / 1000)
     });
   }
 
@@ -74,7 +75,8 @@ export class WorkOffersComponent implements OnInit {
   }
 
   EditOffer(item: any) {
-    this.form.patchValue(item)
+    item.date = Math.floor(new Date().getTime() / 1000);
+    this.form.patchValue(item);
     let obj = {
       type: 'edit',
       category: 'workOffer',
