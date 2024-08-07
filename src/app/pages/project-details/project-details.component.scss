@@ -1,3 +1,7 @@
+.slider-container {
+  width: 52%;
+}
+
 .proj-detail-container {
   margin-top: 15vh;
 
@@ -253,6 +257,15 @@
 
 .gray {
   color: #808080 !important;
+}
+
+@media (max-width: 558px) {
+  .proj-detail-container {
+    .slider-container {
+      width: 85%;
+      margin: 0 auto;
+    }
+  }
 }
 
 .proj-navbar-wrap {

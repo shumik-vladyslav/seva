@@ -87,6 +87,19 @@ button{
   }
 }
 
+.proj-detail-container {
+  .owl-theme .owl-nav .owl-prev {
+    position: absolute;
+    left: -45px;
+    top: 40%;
+  }
+  .owl-theme .owl-nav .owl-next {
+    position: absolute;
+    right: -45px;
+    top: 40%;
+  }
+}
+
 .home-container,
 .work-container {
   margin-top: 21vh;
@@ -682,8 +695,6 @@ body {
       width: 80% !important;
     }
   }
-
-
   .proj-dt-inf {
     height: 65vh !important;
   }

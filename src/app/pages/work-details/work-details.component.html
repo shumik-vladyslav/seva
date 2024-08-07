@@ -7,7 +7,7 @@
           <div class="work-content-head">
             <div class="work-card-rowblock">
               <div class="work-card-img">
-                <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
+                <img src="assets/img/premium-icon-pray-3620149.png" alt="">
                 <button (click)="modalDetailsShow()" >Взять служение</button>
               </div>
               <!-- <div class="is-hot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div> -->
@@ -16,29 +16,29 @@
           <div class="work-content-wrap">
             <div class="work-content">
               <div class="work-card-rowblock">
-                <div class="is-hot noabs-is-hot" *ngIf="workOffer?.isHot"><img src="../../../assets/img/premium-icon-fire.png" alt=""> Срочное</div>
+                <div class="is-hot noabs-is-hot" *ngIf="workOffer?.isHot"><img src="assets/img/premium-icon-fire.png" alt=""> Срочное</div>
               </div>
               <h2>{{workOffer?.title}}</h2>
               <div class="short-info">
                 <div class="regular-work location">
-                  <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="5%" alt=""><span>{{workOffer?.details?.fullTime ? 'Служение на постоянной основе': 'Временное служение'}}</span>
+                  <img src="assets/img/schedule_school_date_time_month_icon_208752.png" width="5%" alt=""><span>{{workOffer?.details?.fullTime ? 'Служение на постоянной основе': 'Временное служение'}}</span>
                 </div>
 
                 <div class="location">
-                  <img src="../../../assets/img/31_104880.png" width="5%" alt=""><span>{{workOffer?.details?.location}}</span>
+                  <img src="assets/img/31_104880.png" width="5%" alt=""><span>{{workOffer?.details?.location}}</span>
                 </div>
                 <div class="location contacts">
-                  <img src="../../../assets/img/free-icon-telegram-226253.png" width="5%" alt=""><span>{{workOffer?.details?.contacts}}</span>
+                  <img src="assets/img/free-icon-telegram-226253.png" width="5%" alt=""><span>{{workOffer?.details?.contacts}}</span>
                 </div>
                 <div class="location time-work">
-                  <img src="../../../assets/img/checkmark-round_icon-icons.png" width="5%" alt=""><span>Занятость от {{workOffer?.details?.timeOnDay}} часов в день</span>
+                  <img src="assets/img/checkmark-round_icon-icons.png" width="5%" alt=""><span>Занятость {{workOffer?.details?.timeOnDay}}</span>
                 </div>
               </div>
               <div class="work-detail-description">
               </div>
               <div class="work-card-rowblock work-card-rowblock-center">
                 <div class="work-card-img">
-                  <img src="../../../assets/img/premium-icon-pray-3620149.png" alt="">
+                  <img src="assets/img/premium-icon-pray-3620149.png" alt="">
                   <button (click)="modalDetailsShow()" >Я хочу выполнять это служение</button>
                 </div>
               </div>
@@ -49,33 +49,26 @@
           <div class="hot-header"><p>Срочное служение</p></div>
           <div *ngFor="let item of (workOffers$ | async); let i = index" >
             <ng-container *ngIf="item.isHot && i<3 ">
-
               <div class="hot-card" [routerLink]="[ '/work/'+item.id+'' ]">
-
                 <h4>{{item.title}}</h4>
                 <div class="short-info">
                   <div class="regular-work location">
-                    <img src="../../../assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>{{workOffer?.details?.fullTime ? 'Служение на постоянной основе': 'Временное служение'}}</span>
+                    <img src="assets/img/schedule_school_date_time_month_icon_208752.png" width="6%" alt=""><span>{{workOffer?.details?.fullTime ? 'Служение на постоянной основе': 'Временное служение'}}</span>
                   </div>
                   <div class="location">
-                    <img src="../../../assets/img/31_104880.png" width="6%" alt=""><span>{{item?.details?.location}}</span>
+                    <img src="assets/img/31_104880.png" width="6%" alt=""><span>{{item?.details?.location}}</span>
                   </div>
                   <div class="location contacts">
-                    <img src="../../../assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>{{item?.details?.contacts}}</span>
+                    <img src="assets/img/free-icon-telegram-226253.png" width="6%" alt=""><span>{{item?.details?.contacts}}</span>
                   </div>
                   <div class="location time-work">
-                    <img src="../../../assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от {{item?.details?.timeOnDay}} часов в
+                    <img src="assets/img/checkmark-round_icon-icons.png" width="6%" alt=""><span>Занятость от {{item?.details?.timeOnDay}} часов в
                       день</span>
                   </div>
                 </div>
               </div>
             </ng-container>
-
           </div>
-
         </div>
-
     </div>
-
-
 </div>
