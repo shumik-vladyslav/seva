@@ -152,4 +152,34 @@
     <input id="first-name" type="text" formControlName="title">
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
+
+  <div class="modal-content" *ngIf="data.category ==='samayasServices'">
+    <label for="first-name">Название*: </label>
+    <input id="first-name" required type="text" formControlName="title">
+    <label for="first-name">Категория: </label>
+
+    <select formControlName="category">
+      <option value="null" selected>Без категории</option>
+      <option [value]="cat.id" *ngFor="let cat of categorysSamaya$ | async">{{cat.title}}</option>
+    </select>
+    <label for="last-name">Большое описание*: </label>
+    <angular-editor id="editor1" formControlName="bigDesc" [config]="editorConfig"></angular-editor>
+    <div >
+    <label for="last-name">Детали: </label>
+    <div class="ml-2" [formGroup]="data.form?.controls?.details">
+      <!-- <span>Служение на постоянной основе </span> <input type="checkbox" class="mb-2" formControlName="fullTime">
+      <br > -->
+      <label for="last-name" >Имя: </label>
+      <input type="text" formControlName="name">
+      <br >
+      <label for="last-name" >Цена </label>
+      <input type="text" formControlName="cost">
+      <br >
+      <label for="last-name" >Контакты: </label>
+      <input type="text" formControlName="contacts">
+    </div>
+  </div>
+
+    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+  </div>
 </form>

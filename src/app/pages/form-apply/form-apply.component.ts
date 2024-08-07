@@ -30,8 +30,7 @@ export class FormApplyComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private firestore: Firestore
   ) {
-    this.collections = collection(firestore, 'category');
-    this.categorys$ = collectionData(this.collections, { idField: 'id' });
+    this.categorys$ = this.data.categories
   }
 
   ngOnInit(): void {

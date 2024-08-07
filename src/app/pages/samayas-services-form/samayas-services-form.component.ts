@@ -7,11 +7,11 @@ import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { FormApplyComponent } from '../form-apply/form-apply.component';
 
 @Component({
-  selector: 'app-works',
-  templateUrl: './works.component.html',
-  styleUrls: ['./works.component.scss']
+  selector: 'app-samayas-services-form',
+  templateUrl: './samayas-services-form.component.html',
+  styleUrls: ['./samayas-services-form.component.scss']
 })
-export class WorksComponent implements OnInit {
+export class SamayasServicesFormComponent implements OnInit {
   categorys$: Observable<any[]>;
   collections: any;
   chakedValueId?: any = [];
@@ -21,45 +21,54 @@ export class WorksComponent implements OnInit {
   isShow = false;
   workOffer$: Observable<any>;
   chackedValue: Array<any> = [];
-
   constructor(
     private firestore: Firestore,
     private _snackBar: MatSnackBar,
     private dialog: MatDialog
-  ) {
-    const collSup = collection(firestore, 'workOffer');
+  ) { 
+    const collSup = collection(firestore, 'samayasServices');
     this.workOffer$ = collectionData(collSup, { idField: 'id' });
-    this.collections = collection(firestore, 'category');
+    this.collections = collection(firestore, 'samayaCategories');
     this.categorys$ = collectionData(this.collections, { idField: 'id' });
   }
 
   ngOnInit(): void {
-    this.categorys$.subscribe(e => {
-      this.categorys = JSON.parse(JSON.stringify(e))
+  }
+
+  modalApply() {
+    let dialog = this.dialog.open(FormApplyComponent, {
+      height: '45%',
+      maxWidth: '95%',
+      panelClass: ["dialog-responsive", "dialog-border"],
+      data: {
+        title: 'Если вы хотите предоставить свой навык в помощь другим самайным, оставьте заявку и мы свяжемся с вами.',
+       categories: this.categorys$
+      }
+    });
+    dialog.afterClosed().subscribe(e=>{
+      if(e){
+        this.sendMessage(e);
+      }
     })
   }
 
-  changeChackbox(event: any) {
-    this.change = Math.random()
-    this.type = 'add'
-    if (event.target.checked) {
-      this.chackedValue.push(event.target.defaultValue)
-      this.categorys.filter((e: any) => {
-        if (e.title == event.target.defaultValue) this.chakedValueId.push(e)
+  sendMessage(form: any) {
+    if (form.valid) {
+      addDoc(collection(this.firestore, 'serviceMessage'), form.value).then(() => {
+        this.openSnackBar('Заявка Оставленна')
+      }).catch(err => {
+        this.openSnackBar(err)
       })
+    } else {
+      this.openSnackBar('Не верно заполненые данные!')
     }
-    else {
-      this.type = 'del'
-      this.chackedValue.find((e: any, i: any) => {
-        if (e === event.target.defaultValue) this.chackedValue.splice(i, 1)
+  }
 
-      })
-      this.chakedValueId.find((e: any, i: any) => {
-        if (e?.title === event.target.defaultValue) {
-          this.chakedValueId.splice(i, 1)
-        }
-      })
-    }
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: message,
+      duration: 1000,
+    });
   }
 
   deleteValue(i: any) {
@@ -83,42 +92,6 @@ export class WorksComponent implements OnInit {
     })
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data: message,
-      duration: 1000,
-    });
-  }
-
-  modalApply() {
-    let dialog = this.dialog.open(FormApplyComponent, {
-      height: '45%',
-      maxWidth: '95%',
-      panelClass: ["dialog-responsive", "dialog-border"],
-      data: {
-        title: 'Если вы не нашли подходящего служения для себя, оставьте заявку и вам обязательно дадут возможность накопить заслугу',
-        categories: this.categorys$
-      }
-    });
-    dialog.afterClosed().subscribe(e=>{
-      if(e){
-        this.sendMessage(e);
-      }
-    })
-  }
-
-  sendMessage(form: any) {
-    if (form.valid) {
-      addDoc(collection(this.firestore, 'serviceMessage'), form.value).then(() => {
-        this.openSnackBar('Заявка Оставленна')
-      }).catch(err => {
-        this.openSnackBar(err)
-      })
-    } else {
-      this.openSnackBar('Не верно заполненые данные!')
-    }
-  }
-
   showCategory() {
     if (window.innerWidth < 950) {
       let title: any = document.querySelector('.arrow-categ')
@@ -134,6 +107,29 @@ export class WorksComponent implements OnInit {
         title.classList.remove('rotate')
 
       }
+    }
+  }
+
+  changeChackbox(event: any) {
+    this.change = Math.random()
+    this.type = 'add'
+    if (event.target.checked) {
+      this.chackedValue.push(event.target.defaultValue)
+      this.categorys.filter((e: any) => {
+        if (e.title == event.target.defaultValue) this.chakedValueId.push(e)
+      })
+    }
+    else {
+      this.type = 'del'
+      this.chackedValue.find((e: any, i: any) => {
+        if (e === event.target.defaultValue) this.chackedValue.splice(i, 1)
+
+      })
+      this.chakedValueId.find((e: any, i: any) => {
+        if (e?.title === event.target.defaultValue) {
+          this.chakedValueId.splice(i, 1)
+        }
+      })
     }
   }
 }

@@ -1,0 +1,54 @@
+<div class="work-container">
+    <div class="main-wrap">
+      <div class="work-wrap">
+        <div class="work-head sm">
+          <h3 class="work-title">Если вы хотите предоставить свой навык в помощь другим самайным, оставьте заявку и мы свяжемся с вами.</h3>
+          <button class="work-head-btn sm" (click)="modalApply()">Оставить Заявку</button>
+        </div>
+        <div class="work-content-wrap">
+          <div class="work-content">
+            <div class="from-filter" >
+              <ng-container  *ngIf="chackedValue[0]">
+                <div class="card-checked-filter" *ngFor="let item of chackedValue | slice: 0 : 10, let i =index">
+                  <p>{{item | slice :0:16}}</p>
+                  <p class="ch_exit" (click)="deleteValue(i)">✕</p>
+                </div>
+              </ng-container>
+            </div>
+            <div class="work-card" *ngFor="let item of (workOffer$ | async) | workFilter: chakedValueId : type : change">
+              <h2 [routerLink]="[ '/work/'+item.id+'' ]">{{item?.title}}</h2>
+              <h3>{{item?.subTitle}}</h3>
+              <div class="big-desc" [innerHTML]="item?.bigDesc"> </div>
+              <div class="work-card-rowblock">
+                <div class="work-card-img">
+                    Имя: {{item?.details?.name}}
+                    <br>
+                    Контакт: {{item?.details?.contacts}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-filter">
+            <div class="filter-wrap">
+              <h3 (click)="showCategory()" class="categ-title">Категория <span class="arrow-categ">⌵</span></h3>
+              <form class="checkbox-holder" name="chackbox" (change)="changeChackbox($event)">
+                <ng-container *ngFor="let item of categorys$ | async">
+                  <label><input class="filter-checkbox" type="checkbox" name=""
+                      [value]="item.title" id=""> <span class="checkbox-text">{{item.title}}</span></label>
+                </ng-container>
+  
+              </form>
+              <!-- <div class="more-block"><span>Еще</span></div> -->
+            </div>
+          </div>
+        </div>
+        <div class="paginator" [hidden]="(workOffer$ | async)?.length < 20">
+          <div class="see-more">Показать еще</div>
+  
+          <mat-paginator [length]="100" [pageSize]="10" [pageIndex]="1" aria-label="Select page">
+          </mat-paginator>
+  
+        </div>
+      </div>
+    </div>
+  </div>

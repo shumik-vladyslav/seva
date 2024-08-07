@@ -1,0 +1,25 @@
+<div class="home-container admin-content">
+  <div class="form-control">
+    <button (click)="createWorkOffer()">Создать Предложение</button>
+  </div>
+  <main>
+    <div class="li-block" *ngFor="let item of  samayasServices$ | async">
+      <i>Название: </i> {{item.title}} <br>
+      <p *ngIf="item?.category">
+        <i>Категория: </i> <span *ngFor="let cat of categorys$ | async">{{cat.id == item?.category ? cat.title : ''}}</span> <br>
+      </p>
+      <i class="b-desc" (click)="showDesc()">Большое описание <span *ngIf="!isBigDesc">⌵</span> <span class="roteted" *ngIf="isBigDesc">⌵</span></i>
+      <br> 
+      <p *ngIf="isBigDesc" class="bigDesc" [innerHTML]="item.bigDesc"></p>
+      <i>Детали: </i><br>
+      <div class="ml-2">
+        <i>Имя:</i> {{item.details?.name}}<br>
+        <i>Контакты:</i> {{item.details?.contacts}}<br>
+        <i>Цена:</i> {{item.details?.cost}}<br>
+      </div>
+      <span class="hot" *ngIf="item.isHot">Срочное</span><br>
+      <button class="mt-1 edit-btn" (click)="EditOffer(item)">Редактировать</button>
+      <button class="ml-1 mt-1" (click)="deleteOffer(item.id)">Удалить</button>
+    </div>
+  </main>
+</div>

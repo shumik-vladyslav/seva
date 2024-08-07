@@ -27,6 +27,8 @@ export class ModalComponent implements OnInit {
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
   collectionsCateg:any;
   categorys$: Observable<any>
+  collectionsCategSamaya:any;
+  categorysSamaya$: Observable<any>;
 
   allRevards= []
   isChangesField = false
@@ -82,6 +84,9 @@ export class ModalComponent implements OnInit {
     this.revards$ = collectionData(this.collections, { idField: 'id' });
     this.collectionsCateg = collection(firestore, 'category');
     this.categorys$ = collectionData(this.collectionsCateg, {idField: 'id'});
+
+    this.collectionsCategSamaya = collection(firestore, 'samayaCategories');
+    this.categorysSamaya$ = collectionData(this.collectionsCategSamaya, {idField: 'id'});
 
     this.revards$.subscribe((elem: any, i: any) => {
       this.revardsEl = elem
