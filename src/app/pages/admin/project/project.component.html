@@ -16,7 +16,11 @@
       <i class="b-desc" (click)="showDesc(item, $event)">Большое описание <span *ngIf="!isBigDesc">⌵</span> <span class="roteted" *ngIf="isBigDesc">⌵</span></i>
       <p class="bigDesc" ></p>
 
-      <i>Изображенние: </i> <br> <img src="{{item.img}}" height="70px" width="100px" alt=""><br>
+      <i>Изображенния: </i> <br> 
+      <ng-container *ngFor="let img of item?.img">
+        <img style="margin-right: 10px;" src="{{img}}" height="70px" width="100px" alt="img">
+      </ng-container>
+      <br>
       <button class="mt-1 edit-btn" (click)="EditProj(item)">Редактировать</button>
       <button class="ml-1 mt-1" (click)="deleteProj(item.id)">Удалить</button>
     </li>

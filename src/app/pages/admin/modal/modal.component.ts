@@ -99,7 +99,10 @@ export class ModalComponent implements OnInit {
           map((rev: string | null) => (rev ? this.filter(rev) : this.revardsEl.slice())),
         );
       }, 200);
-    })
+    });
+    if (data.type == 'create') {
+      data.form.value.img = [];
+    }
   }
 
   add(event: MatChipInputEvent): void {
@@ -161,7 +164,7 @@ export class ModalComponent implements OnInit {
 
     if (data.type == 'create') {
       if (data.category === "projectContent") {
-        data.form.value.date = new Date().toISOString()
+        data.form.value.date = new Date().toISOString();
       }
       if (data.form.valid) {
         addDoc(collection(this.firestore, data.category), data.form.value).then(()=>{
@@ -189,14 +192,19 @@ export class ModalComponent implements OnInit {
   upload(event: any): void {
     const file = event.target.files[0];
     this.uploadFile(this.data.category, file.name, file).then(data => {
+      let currentImages = this.data.form.get('img').value;
+      if (!Array.isArray(currentImages)) {
+        currentImages = [];
+      }
+      currentImages.push(data);
       this.data.form.patchValue({
-        img: data
+        img: currentImages
       });
       this.isUploaded = true;
     })
-      .catch(err => {
-        console.log(err);
-      })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
@@ -221,23 +229,27 @@ export class ModalComponent implements OnInit {
     let confDialog = this.dialog.open(ConfirmComponent, {
       width: '30%',
       scrollStrategy: new NoopScrollStrategy()
-    })
-    confDialog.afterClosed().subscribe(e=>{
-      if(e) {
+    });
+    confDialog.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
         this.data.form.markAsDirty();
-        img = img ? img : this.valueByControl('imagePath')
-        this.isUploaded = false;
-        const task = ref(this.storage, img);
+        const imagePath = img ? img : this.valueByControl('img');
+        const task = ref(this.storage, imagePath);
         deleteObject(task).then(() => {
           this.openSnackBar('Изображение удалено');
-          this.data.form.patchValue({
-            img: null
-          })
-        }).catch(err=>{
+          const imagesArray = this.valueByControl('img') as unknown as string[];
+          const index = imagesArray.indexOf(imagePath);
+          if (index > -1) {
+            imagesArray.splice(index, 1);
+            this.data.form.patchValue({
+              img: imagesArray
+            });
+          }
+        }).catch(err => {
           this.openSnackBar(err);
-        })
+        });
       }
-    })
+    });
   }
 
   openSnackBar(message:string) {

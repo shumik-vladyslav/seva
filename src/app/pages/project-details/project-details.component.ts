@@ -25,7 +25,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.project$.subscribe((el: any) => {
         this.project = el.find((val : any) => val.id === e.details)
         let descBlock : any = document.querySelector('.bottom-proj-detail')
-        descBlock.innerHTML =  this.project.bigDesc
+        descBlock.innerHTML =  this.project?.bigDesc
       })
     })
   }

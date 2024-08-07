@@ -33,7 +33,7 @@ export class ProjectComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
       tag: new FormControl('', Validators.required),
-      img: new FormControl(''),
+      img: new FormControl([]),
       aim: new FormControl('', Validators.required),
       percent: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
@@ -48,7 +48,7 @@ export class ProjectComponent implements OnInit {
   }
 
   createProject(){
-    this.form.reset()
+    this.form.reset();
     let obj={
       type: 'create',
       category: 'projectContent',
@@ -62,7 +62,7 @@ export class ProjectComponent implements OnInit {
   }
 
   EditProj(item: any){
-    this.form.reset()
+    this.form.reset();
     this.form.patchValue(item)
     let obj={
       type: 'edit',

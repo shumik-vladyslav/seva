@@ -16,13 +16,22 @@ form{
   }
 }
 
-.del-img{
-  background-color: #96642cc1;
-  border-color: #96642cc1;
-  color: white;
-  border-radius: 10px;
-  padding: 5px;
-  width: 26%;
+.del-img {
+  position: absolute;
+  top: 4px;
+  right: 12px;
+  border: none;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  border-radius: 5px;
+  margin: 0 !important;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
 }
 .del-inp{
   color: white;

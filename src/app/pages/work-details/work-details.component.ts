@@ -27,7 +27,7 @@ export class WorkDetailsComponent implements OnInit {
       this.workOffers$.subscribe((el: any) => {
         this.workOffer = el.find((val : any) => val.id === e.details)
         let descBlock : any = document.querySelector('.work-detail-description')
-        descBlock.innerHTML =  this.workOffer.bigDesc
+        descBlock.innerHTML =  this.workOffer?.bigDesc
       })
     })
   }
