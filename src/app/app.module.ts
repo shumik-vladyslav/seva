@@ -49,6 +49,8 @@ import { ServiceMessagesComponent } from './pages/admin/service-messages/service
 import { MatSelectModule } from '@angular/material/select';
 import { FormApplyComponent } from './pages/form-apply/form-apply.component';
 import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
+import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
+import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
     HomeContentComponent,
     FormApplyComponent,
     SacrificeComponent,
+    SamayasServicesComponent,
+    SamayasServicesFormComponent,
   ],
   imports: [
     BrowserModule,
