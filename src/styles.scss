@@ -131,6 +131,17 @@ button{
 
 }
 
+// .g_wrapp {
+//     position: absolute;
+//     background: url(../../../assets/img/dove.png) center no-repeat;
+//     background-size: cover;
+//     height: 100%;
+//     width: 100%;
+//     height: 100vh;
+//     opacity: 0.3;
+//     z-index: -1;
+// }
+
 .range::-moz-range-thumb {
   height: 0px;
   width: 0px;
@@ -873,6 +884,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .mt-4{
   margin-top: 5rem !important;
+}
+.mt-3{
+  margin-top: 3.8rem !important;
 }
 .mt-1{
   margin-top: 1% !important;

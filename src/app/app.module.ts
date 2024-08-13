@@ -49,6 +49,7 @@ import { ServiceMessagesComponent } from './pages/admin/service-messages/service
 import { MatSelectModule } from '@angular/material/select';
 import { FormApplyComponent } from './pages/form-apply/form-apply.component';
 import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
+import { CurrencyComponent } from './pages/currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
     HomeContentComponent,
     FormApplyComponent,
     SacrificeComponent,
+    CurrencyComponent,
   ],
   imports: [
     BrowserModule,

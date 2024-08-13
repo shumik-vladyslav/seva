@@ -1,0 +1,38 @@
+<div class="hud">
+    <div class="relative_wrap">
+        <!-- <div class="g_wrapp"></div> -->
+        <div *ngIf="currency !== 'RUB'" [formGroup]="formAmount" class="forms_w">
+            <p class="text-about-forum">{{currency}}</p>
+            <p class="text-about-forum">Мы Всемирная Община Санатана Дхармы....</p>
+            <p class="title">Сделать донаты на сайт</p>
+            <div class="d_fl">
+                <div class="form-registration-form flex justify-between" id="registration-form">
+                    <input type="number" min="1" class="input-form-gold" placeholder="Сумма" formControlName="amount" />
+                </div>
+            </div>
+            <div class="header-inner header-inner-button boreder grad">
+                <button [disabled]="formAmount?.invalid" class="registration-button" (click)="submitForm()">
+                    Пожертвовать
+                </button>
+            </div>
+        </div>
+        <div class="social-items mt-6">
+            <p class="links" (click)="
+              goToUrl(
+                'https://docs.google.com/document/d/16TABAaWvOogSNOSlNRU-vAEnf0PvMzwd/edit#heading=h.pj4vxw57p2j3'
+              )
+            ">
+                Договор Публичной Оферты
+            </p>
+        </div>
+        <div *ngIf="currency == 'RUB'">
+            <div class="mt-3">
+                <p class="links">
+                    ООО ФИТНЕС КЛУБ "ЖЕЛТОЕ СОЛНЦЕ-ОКТЯБРЬСКИЙ"<br>
+                    ИНН: 5027229220<br>
+                    ОГРН/ОГРНИП: 1155027006045
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
