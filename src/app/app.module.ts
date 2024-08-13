@@ -52,6 +52,7 @@ import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
 import { CurrencyComponent } from './pages/currency/currency.component';
 import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
 import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
+import { IframeComponent } from './pages/iframe/iframe.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { SamayasServicesFormComponent } from './pages/samayas-services-form/sama
     CurrencyComponent,
     SamayasServicesComponent,
     SamayasServicesFormComponent,
+    IframeComponent,
   ],
   imports: [
     BrowserModule,

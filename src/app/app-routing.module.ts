@@ -17,6 +17,7 @@ import { ServiceMessagesComponent } from './pages/admin/service-messages/service
 import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
 import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
 import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
+import { IframeComponent } from './pages/iframe/iframe.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'project/:details', component: ProjectDetailsComponent },
   { path: 'samayas-services', component: SamayasServicesFormComponent },
+  { path: 'frame', component: IframeComponent },
   {
     path: 'admin', component: AdminComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'quotes' },
