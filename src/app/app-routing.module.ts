@@ -15,6 +15,8 @@ import { CategoryComponent } from './pages/admin/category/category.component';
 import { HomeContentComponent } from './pages/admin/home-content/home-content.component';
 import { ServiceMessagesComponent } from './pages/admin/service-messages/service-messages.component';
 import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
+import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
+import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'sacrifice', component: SacrificeComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'project/:details', component: ProjectDetailsComponent },
+  { path: 'samayas-services', component: SamayasServicesFormComponent },
   {
     path: 'admin', component: AdminComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'quotes' },
@@ -33,7 +36,8 @@ const routes: Routes = [
       { path: 'revards', component: RevardsComponent },
       { path: 'messages', component: MessagesComponent },
       { path: 'servants', component: ServiceMessagesComponent },
-      { path: 'category', component: CategoryComponent }
+      { path: 'category', component: CategoryComponent },
+      { path: 'samayas-services', component: SamayasServicesComponent },
     ]
   }
 ];

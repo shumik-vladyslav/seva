@@ -50,6 +50,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormApplyComponent } from './pages/form-apply/form-apply.component';
 import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
 import { CurrencyComponent } from './pages/currency/currency.component';
+import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
+import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { CurrencyComponent } from './pages/currency/currency.component';
     FormApplyComponent,
     SacrificeComponent,
     CurrencyComponent,
+    SamayasServicesComponent,
+    SamayasServicesFormComponent,
   ],
   imports: [
     BrowserModule,
