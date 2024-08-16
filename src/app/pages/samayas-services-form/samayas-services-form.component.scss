@@ -1,1 +1,7 @@
 @import url(../works/works.component.scss);
+:host::ng-deep {
+    .work-card {
+        min-height: 210px !important;
+        padding: 0 20px !important;
+    }
+}

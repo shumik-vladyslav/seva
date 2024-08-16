@@ -15,9 +15,8 @@
                 </div>
               </ng-container>
             </div>
-            <div class="work-card" *ngFor="let item of (workOffer$ | async) | workFilter: chakedValueId : type : change">
-              <h2 [routerLink]="[ '/work/'+item.id+'' ]">{{item?.title}}</h2>
-              <h3>{{item?.subTitle}}</h3>
+            <div class="work-card min-h-auto" *ngFor="let item of (workOffer$ | async) | workFilter: chakedValueId : type : change">
+              <h2>{{item?.title}}</h2>
               <div class="big-desc" [innerHTML]="item?.bigDesc"> </div>
               <div class="work-card-rowblock">
                 <div class="work-card-img">
