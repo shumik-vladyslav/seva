@@ -23,6 +23,7 @@ import { NoopScrollStrategy } from '@angular/cdk/overlay';
 export class ModalComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   revardsCtrl = new FormControl('');
+  file: FormControl | undefined;
   selectedRevards: any[] = [];
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
   collectionsCateg:any;
@@ -80,6 +81,7 @@ export class ModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
   ) {
+    this.file = new FormControl(null);
     this.collections = collection(firestore, 'revards');
     this.revards$ = collectionData(this.collections, { idField: 'id' });
     this.collectionsCateg = collection(firestore, 'category');
@@ -220,11 +222,20 @@ export class ModalComponent implements OnInit {
           const storageRef = ref(this.storage, path);
           const task = uploadBytes(storageRef, file);
           await task;
+          if (this.file) {
+            this.file.markAsDirty();
+          }
           return await getDownloadURL(storageRef);
         } catch (e: any) {
+          if (this.file) {
+            this.file.markAsDirty();
+          }
           return e.message
         }
       } else {
+        if (this.file) {
+          this.file.markAsDirty();
+        }
         return '';
       }
     }

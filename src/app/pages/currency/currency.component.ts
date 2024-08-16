@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './currency.component.html',
   styleUrls: ['./currency.component.scss']
 })
-export class CurrencyComponent implements OnInit {
+export class CurrencyComponent implements OnInit, AfterViewInit  {
   @Input() currency: string = 'RUB';
   md5_hmac: any;
   formAmount!: FormGroup;
@@ -20,8 +20,26 @@ export class CurrencyComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.loadScript('https://js.stripe.com/v3/buy-button.js');
+  }
+
+  private loadScript(url: string) {
+    const script = document.createElement('script');
+    script.src = url;
+    script.async = true;
+    script.onload = () => {
+      if (!customElements.get('stripe-buy-button')) {
+        customElements.define('stripe-buy-button', class extends HTMLElement {});
+      }
+    };
+    script.onerror = (error) => {
+      console.error('Script load error:', error);
+    };
+    document.head.appendChild(script);
+  }
+
   submitForm() {
-    console.log(this.formAmount);
     this.sendGetRequest();
   }
 

@@ -47,11 +47,11 @@
     <label for="last-name">Описание*: </label>
     <input class="mb-2" id="last-name" type="text" formControlName="desc">
     <label for="last-name">Изображенния*: </label>
-    <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
+    <input formControlName="file" *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)" accept="image/*">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
     <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
 
-    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+    <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
   <div class="modal-content" *ngIf="data.category ==='projectContent'" >
@@ -103,7 +103,7 @@
       <span> Добавить в слайдер? </span><input type="checkbox" formControlName="addToSlider">
     </div>
     <label for="last-name" >Изображенния: </label>
-    <input class="mb-2" id="last-name" type="file" (change)="upload($event)">
+    <input formControlName="file" class="mb-2" id="last-name" type="file" (change)="upload($event)" accept="image/*">
     <div class="d-flex" *ngIf="data.form.value?.img?.length">
       <ng-container *ngFor="let img of data.form.value.img">
         <div style="position: relative;">
@@ -112,7 +112,7 @@
         </div>
       </ng-container>
     </div>
-    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+    <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
   <div class="modal-content" *ngIf="data.category ==='revards'" >
@@ -128,10 +128,10 @@
     <label for="last-name" >Осталось*: </label>
     <input  id="last-name" type="number" max="{{data?.form.value?.aim}}" min="0" formControlName="remainder">
     <label for="last-name">Изображенния*: </label>
-    <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
+    <input formControlName="file" *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)" accept="image/*">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
     <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
-    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+    <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
   <div class="modal-content" *ngIf="data.category ==='content'" >
@@ -140,10 +140,10 @@
     <label for="last-name">Описание*: </label>
     <input id="last-name" type="text" formControlName="desc">
     <label for="last-name">Изображенния*: </label>
-    <input *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)">
+    <input formControlName="file" *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)" accept="image/*">
     <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
     <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
-    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+    <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>]=[=]
   </div>
 
 

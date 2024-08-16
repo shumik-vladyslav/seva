@@ -5,7 +5,23 @@
             <p class="text-about-forum">{{currency}}</p>
             <p class="text-about-forum">Мы Всемирная Община Санатана Дхармы....</p>
             <p class="title">Сделать донаты на сайт</p>
-            <div class="d_fl">
+            <div *ngIf="currency == 'EUR'">
+                <div class="hfd"></div>
+                <div>
+                    <stripe-buy-button buy-button-id="buy_btn_1Pmwv5JLy9EiRUcifhNRhVe4"
+                        publishable-key="pk_live_51OnMrNJLy9EiRUci82gUI6dkOfbSlCYKZEbbXSiTH4D4C93JQureiYQ4di8Uj8bR9avV8onMzwFmHXQpTU5zNngI00Ubxhbpta">
+                    </stripe-buy-button>
+                </div>
+            </div>
+            <div *ngIf="currency == 'USD'">
+                <div class="hfd"></div>
+                <div>
+                    <stripe-buy-button buy-button-id="buy_btn_1PmwvbJLy9EiRUciILnfhqVp"
+                        publishable-key="pk_live_51OnMrNJLy9EiRUci82gUI6dkOfbSlCYKZEbbXSiTH4D4C93JQureiYQ4di8Uj8bR9avV8onMzwFmHXQpTU5zNngI00Ubxhbpta">
+                    </stripe-buy-button>
+                </div>
+            </div>
+            <!-- <div class="d_fl">
                 <div class="form-registration-form flex justify-between" id="registration-form">
                     <input type="number" min="1" class="input-form-gold" placeholder="Сумма" formControlName="amount" />
                 </div>
@@ -14,7 +30,7 @@
                 <button [disabled]="formAmount?.invalid" class="registration-button" (click)="submitForm()">
                     Пожертвовать
                 </button>
-            </div>
+            </div> -->
         </div>
         <div class="social-items mt-6">
             <p class="links" (click)="
