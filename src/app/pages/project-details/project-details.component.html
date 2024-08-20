@@ -13,7 +13,7 @@
         </div>
         <div *ngIf="project?.img?.length > 1" class="slider-container">
           <div class="slider-wrap-r">
-            <div class="slider-wrap-absolute ">
+            <div class="slider-wrap-absolute proj_d">
               <owl-carousel-o #owl [options]="customOptions">
                 <ng-container *ngFor="let slide of project?.img, let i = index">
                   <ng-template [id]="i.toString()" carouselSlide >

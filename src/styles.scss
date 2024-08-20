@@ -899,6 +899,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .owl-carousel .owl-stage{
   display: flex !important;
 }
+.proj_d {
+  .owl-carousel .owl-item img {
+    max-height: 490px;
+  }
+}
 
 @media (max-width: 700px){
   .card-donats button {
