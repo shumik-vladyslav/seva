@@ -55,6 +55,13 @@ body {
 button {
   cursor: pointer !important;
 }
+.cdk-overlay-pane {
+  width: 83%;
+  height: 60% !important;
+}
+app-work-form {
+  display: block;
+}
 
 * {
   margin: 0%;
