@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -20,13 +19,10 @@ $verstkaSeva-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$verstkaSeva-theme: mat.define-light-theme((
-  color: (
-    primary: $verstkaSeva-primary,
-    accent: $verstkaSeva-accent,
-    warn: $verstkaSeva-warn,
-  )
-));
+$verstkaSeva-theme: mat.define-light-theme((color: (primary: $verstkaSeva-primary,
+        accent: $verstkaSeva-accent,
+        warn: $verstkaSeva-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -44,29 +40,36 @@ body {
   overflow-x: hidden;
 }
 
-.open-sans{
+.open-sans {
   font-family: 'Open Sans' !important;
 }
-.PT-Serif{
+
+.PT-Serif {
   font-family: 'PT Serif' !important;
 }
-.playfair-display{
+
+.playfair-display {
   font-family: 'Playfair Display' !important;
 }
-button{
+
+button {
   cursor: pointer !important;
 }
+
 * {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  &:not(.work-detail-description *, .bottom-proj-detail *){
-      font-family: 'Open Sans';
+
+  &:not(.work-detail-description *, .bottom-proj-detail *) {
+    font-family: 'Open Sans';
   }
 }
-.w-full{
+
+.w-full {
   width: 100%;
 }
+
 .main-wrap {
   width: 72%;
   height: 100%;
@@ -74,16 +77,16 @@ button{
 
 }
 
-.dialog-border{
-  .mat-dialog-container{
+.dialog-border {
+  .mat-dialog-container {
     padding: 0% !important;
     border-radius: 40px;
   }
 }
 
-::ng-deep{
-  .cdk-overlay-backdrop{
-    background: rgba(255,255,255, 0.7)
+::ng-deep {
+  .cdk-overlay-backdrop {
+    background: rgba(255, 255, 255, 0.7)
   }
 }
 
@@ -93,6 +96,7 @@ button{
     left: -45px;
     top: 40%;
   }
+
   .owl-theme .owl-nav .owl-next {
     position: absolute;
     right: -45px;
@@ -182,6 +186,7 @@ input[type="range" i]::-webkit-slider-thumb {
 
   .work-filter {
     width: 33%;
+
     .filter-wrap {
       width: 100%;
 
@@ -197,6 +202,7 @@ input[type="range" i]::-webkit-slider-thumb {
         display: flex;
         align-items: flex-start;
       }
+
       .filter-checkbox {
         margin-right: 4%;
         margin-top: 2%;
@@ -205,14 +211,17 @@ input[type="range" i]::-webkit-slider-thumb {
     }
   }
 }
-.location{
+
+.location {
   font-family: 'PT Serif' !important;
 }
-.center{
+
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .work-card-rowblock {
   display: flex;
   justify-content: space-between;
@@ -278,12 +287,15 @@ input[type="range" i]::-webkit-slider-thumb {
   color: white;
   width: 100%;
   background: linear-gradient(180deg, #1371DA 0%, rgba(5, 23, 181, 0) 100%);
+
   &.sm {
     padding-bottom: 4%;
+
     .work-title {
       padding-top: 0.5%;
     }
   }
+
   .work-title {
     margin: auto;
     padding-top: 3.5%;
@@ -333,6 +345,7 @@ input[type="range" i]::-webkit-slider-thumb {
     color: white;
     padding: 1.2% 5% 1% 5%;
     border-radius: 28.5299px;
+
     &.sm {
       margin-top: 2%;
     }
@@ -383,13 +396,14 @@ body {
   .proj-detail-status {
     min-width: 17% !important;
   }
-    .offer-container {
-      .offer-content {
-        .head-block {
-          display: none !important;
-        }
+
+  .offer-container {
+    .offer-content {
+      .head-block {
+        display: none !important;
       }
     }
+  }
 }
 
 @media (max-width: 950px) {
@@ -455,6 +469,7 @@ body {
     }
   }
 }
+
 .admin-content {
 
 
@@ -466,12 +481,15 @@ body {
       color: red;
 
     }
+
     ul {
       &:not(.main) {
         margin-left: 5%;
       }
     }
-    main, .main {
+
+    main,
+    .main {
       margin-top: 2%;
 
       .li-block {
@@ -498,13 +516,14 @@ body {
       display: flex;
       flex-direction: column;
 
-      button{
+      button {
         background-color: #E5BF51;
         width: 25%;
         outline: none !important;
         border-color: #E5BF51;
         color: white;
       }
+
       * {
         padding: 5px;
         border-radius: 5px;
@@ -518,10 +537,12 @@ body {
 
   i {
     color: rgb(177, 102, 102);
-    &.b-desc{
+
+    &.b-desc {
       cursor: pointer;
     }
-    span{
+
+    span {
       text-decoration: none;
       position: relative;
       display: inline-block;
@@ -529,33 +550,39 @@ body {
       margin-left: 5px;
       font-style: normal;
       transition: all 0.3s;
-      &.roteted{
+
+      &.roteted {
         transform: rotate(180deg);
         top: 4px;
       }
     }
   }
 
-  .edit-btn{
+  .edit-btn {
     background-color: #96642cc1 !important;
   }
 }
+
 @media (max-width: 938px) {
   .offer-content {
     flex-direction: column;
   }
+
   .offer-container .offer-content .offer-card {
     width: 88% !important;
     margin: 2% 0px !important;
-    .txt-offer{
-      p{
+
+    .txt-offer {
+      p {
         padding: 2% !important;
       }
     }
   }
+
   .owl-carousel .slide-img-container {
     width: 60vw !important;
   }
+
   .biger-wrap {
     width: 90% !important;
 
@@ -571,9 +598,10 @@ body {
 
       .row-block {
         width: 100% !important;
-        &:not(:first-child){
+
+        &:not(:first-child) {
           margin-top: 20px;
-        } 
+        }
 
         .row-block-img {
           height: 30vh !important;
@@ -581,6 +609,7 @@ body {
       }
 
     }
+
     .head-block {
       .wrp-block {
 
@@ -598,14 +627,17 @@ body {
     width: 100% !important;
     right: 0px !important;
   }
+
   .offer-container {
     .offer-content {
       justify-content: center !important;
       align-items: center;
+
       .offer-card {
         width: 100% !important;
       }
     }
+
     .offer-block {
       width: 125% !important;
       left: -13% !important;
@@ -635,32 +667,38 @@ body {
   }
 
 }
+
 @media (max-width: 508px) {
   .owl-carousel .slide-img-container {
     width: 65vw !important;
   }
+
   .quotes-block .owl-carousel .slide-img-container p {
     margin-top: 1% !important;
     font-size: medium !important;
   }
-.biger-wrap{
 
-  .head-block {
-    .img-wrp {
-      height: 36vh;
+  .biger-wrap {
+
+    .head-block {
+      .img-wrp {
+        height: 36vh;
+      }
     }
   }
 }
-}
+
 @media (max-width: 408px) {
   .owl-carousel .slide-img-container {
     width: 75vw !important;
   }
+
   .quotes-block .owl-carousel .slide-img-container h4 {
     font-size: x-large !important;
     margin-top: 7% !important;
   }
-  .biger-wrap{
+
+  .biger-wrap {
     .head-block {
       .img-wrp {
         height: 34vh;
@@ -668,12 +706,14 @@ body {
     }
   }
 }
+
 ::ng-deep {
-  .mat-paginator{
+  .mat-paginator {
     display: flex;
     background-color: red;
   }
-  .paginator{
+
+  .paginator {
     justify-content: center !important;
   }
 
@@ -700,11 +740,6 @@ body {
     height: 11vh !important;
   }
 
-  // .proj-content .proj-slider {
-
-  //   width: 93% !important;
-  // }
-
 
   .offer-container .offer-block {
     width: 106% !important;
@@ -713,9 +748,6 @@ body {
     .main-wrap {
       width: 80% !important;
     }
-  }
-  .proj-dt-inf {
-    height: 65vh !important;
   }
 
   .proj-detail-container .proj-detail-head--info {
@@ -743,7 +775,7 @@ body {
   }
 
   .work-head {
-    .work-title{
+    .work-title {
       width: 85% !important;
     }
   }
@@ -760,11 +792,12 @@ body {
 }
 
 @media (max-width: 500px) {
-  .slider-container h1{
+  .slider-container h1 {
     text-align: center;
     width: 75%;
   }
 }
+
 @media (max-width: 470px) {
   .slider-container h1 {
     font-size: larger;
@@ -840,86 +873,109 @@ body {
   background-color: rgba($color: #000000, $alpha: 0);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .flex-col {
   flex-direction: column !important;
 }
-.mb-1{
+
+.mb-1 {
   margin-bottom: 1% !important;
 }
+
 .justify-center {
   justify-content: center;
 }
-.mb-2{
+
+.mb-2 {
   margin-bottom: 2% !important;
 }
-.mb-5{
+
+.mb-5 {
   margin-bottom: 5% !important;
 }
-.mb-1r{
+
+.mb-1r {
   margin-bottom: 1rem !important;
 }
 
-.d-flex{
+.d-flex {
   display: flex !important;
 }
-.jc-end{
+
+.jc-end {
   justify-content: end;
 }
 
-.mt-2{
+.mt-2 {
   margin-top: 2% !important;
 }
-.mt-4{
+
+.mt-4 {
   margin-top: 5rem !important;
 }
-.mt-3{
+
+.mt-3 {
   margin-top: 3.8rem !important;
 }
-.mt-1{
+
+.mt-1 {
   margin-top: 1% !important;
 }
-.ml-1{
+
+.ml-1 {
   margin-left: 1% !important;
 }
-.ml-2{
+
+.ml-2 {
   margin-left: 2% !important;
 }
-.work-detail-description{
-  ul{
+
+.work-detail-description {
+  ul {
     margin-left: 6%;
   }
 }
-.m-prog{
+
+.m-prog {
   height: 100%;
   transition: all 0.4s;
   background-color: #0478EE;
 }
-.owl-carousel .owl-stage{
+
+.owl-carousel .owl-stage {
   display: flex !important;
 }
+
 .proj_d {
   .owl-carousel .owl-item img {
     max-height: 350px;
   }
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
   .card-donats button {
-    padding: 3% 2%!important;
+    padding: 3% 2% !important;
   }
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .card-donats {
-      button {
-        font-size: 14px !important;
-      }
-
-      h2 {
-        font-size: 21px !important;
-        line-height: 33px !important;
-      }
+    button {
+      font-size: 14px !important;
     }
+
+    h2 {
+      font-size: 21px !important;
+      line-height: 33px !important;
+    }
+  }
 }

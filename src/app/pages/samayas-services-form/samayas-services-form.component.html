@@ -30,7 +30,7 @@
           <div class="work-filter">
             <div class="filter-wrap">
               <h3 (click)="showCategory()" class="categ-title">Категория <span class="arrow-categ">⌵</span></h3>
-              <form class="checkbox-holder" name="chackbox" (change)="changeChackbox($event)">
+              <form class="checkbox-holder" name="checkbox" (change)="changeCheckbox($event)">
                 <ng-container *ngFor="let item of categorys$ | async">
                   <label><input class="filter-checkbox" type="checkbox" name=""
                       [value]="item.title" id=""> <span class="checkbox-text">{{item.title}}</span></label>

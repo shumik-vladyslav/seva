@@ -110,7 +110,7 @@ export class SamayasServicesFormComponent implements OnInit {
     }
   }
 
-  changeChackbox(event: any) {
+  changeCheckbox(event: any) {
     this.change = Math.random()
     this.type = 'add'
     if (event.target.checked) {
