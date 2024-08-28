@@ -15,7 +15,7 @@
   </button>
 </div> -->
 <div class="work-container">
-  <div class="main-wrap">
+  <div class="main-wrap mod">
       <div class="nav nav-tabs scrollmenu mt-5">
           <ng-container *ngFor="let currency of currencies, let i = index">
               <a (click)="setCurrent(i, currency)" [ngClass]="{'active': index == i}" class="nav-link colorWhite">{{currency}}</a>

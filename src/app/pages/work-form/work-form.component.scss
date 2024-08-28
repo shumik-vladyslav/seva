@@ -47,7 +47,7 @@ div.scrollmenu {
   border-bottom: 2px solid #E5BF51;
   display: flex;
   justify-content: space-between;
-
+  flex-wrap: wrap;
   &::-webkit-scrollbar {
       width: 0px !important;
       height: 4px !important;

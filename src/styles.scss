@@ -81,7 +81,9 @@ app-work-form {
   width: 72%;
   height: 100%;
   margin: auto;
-
+  &.mod {
+    width: 100%;
+  }
 }
 
 .dialog-border {
