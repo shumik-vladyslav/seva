@@ -78,14 +78,15 @@
       position: relative;
       display: flex;
       justify-content: center;
-
+      border-radius: 22px;
+      overflow: hidden;
       img {
         width: 100%;
         object-fit: cover;
       }
 
       .suport-proj {
-        background-color: transparent;
+        background-color: #d6265a;
         border: 2px solid #F9F0E4;
         color: #F9F0E4;
         display: block;

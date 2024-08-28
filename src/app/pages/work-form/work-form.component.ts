@@ -12,52 +12,69 @@ import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
   styleUrls: ['./work-form.component.scss']
 })
 export class WorkFormComponent implements OnInit {
-  form: any;
-  initForm() {
-    this.form = this.fb.group({
-      name: [null, Validators.required],
-      phone: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.email]],
-    });
-  }
+  // form: any;
+  index: number = 0;
+  currency: string = 'RUB';
+  currencies = [
+    'RUB',
+    'UAH',
+    'USDT/USDC',
+    'Тинькофф',
+    'PayPal',
+    'WISE',
+    'USD',
+    'EUR'
+  ]
+  // initForm() {
+  //   this.form = this.fb.group({
+  //     name: [null, Validators.required],
+  //     phone: [null, [Validators.required]],
+  //     email: [null, [Validators.required, Validators.email]],
+  //   });
+  // }
 
   constructor(
     private dialog: MatDialog,
-    private fb: FormBuilder,
+    // private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private firestore: Firestore,
-    private _snackBar: MatSnackBar
+    // private firestore: Firestore,
+    // private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.initForm()
+    // this.initForm()
   }
   closeModal() {
     this.dialog.closeAll();
   }
-  
-  sendMessage() {
-    if (this.form.valid) {
-      let obj = {
-       data:  this.data,
-       created: JSON.stringify(new Date()),
-       message: this.form.value
-      }
-      addDoc(collection(this.firestore, 'message'), obj).then(()=>{
-        this.openSnackBar('Заявка Оставленна!')
-        this.dialog.closeAll()
-      }).catch(err=>{
-        this.openSnackBar(err)
-        this.dialog.closeAll()
-      })
-    }
-    this.closeModal()
-  }
 
-  openSnackBar(message:string){
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data: message,
-      duration: 1000,
-    });
+  setCurrent(i: number, currency: string) {
+    this.index = i; 
+    this.currency = currency;
   }
+  
+  // sendMessage() {
+  //   if (this.form.valid) {
+  //     let obj = {
+  //      data:  this.data,
+  //      created: JSON.stringify(new Date()),
+  //      message: this.form.value
+  //     }
+  //     addDoc(collection(this.firestore, 'message'), obj).then(()=>{
+  //       this.openSnackBar('Заявка Оставленна!')
+  //       this.dialog.closeAll()
+  //     }).catch(err=>{
+  //       this.openSnackBar(err)
+  //       this.dialog.closeAll()
+  //     })
+  //   }
+  //   this.closeModal()
+  // }
+
+  // openSnackBar(message:string){
+  //   this._snackBar.openFromComponent(SnackbarComponent, {
+  //     data: message,
+  //     duration: 1000,
+  //   });
+  // }
 }

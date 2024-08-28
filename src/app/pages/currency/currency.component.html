@@ -1,10 +1,10 @@
 <div class="hud">
     <div class="relative_wrap">
         <!-- <div class="g_wrapp"></div> -->
-        <div *ngIf="currency !== 'RUB'" [formGroup]="formAmount" class="forms_w">
-            <p class="text-about-forum">{{currency}}</p>
-            <p class="text-about-forum">Мы Всемирная Община Санатана Дхармы....</p>
-            <p class="title">Сделать донаты на сайт</p>
+        <div *ngIf="currency == 'EUR' || currency == 'USD'" [formGroup]="formAmount" class="forms_w">
+            <!-- <p class="text-about-forum">{{currency}}</p> -->
+            <!-- <p class="text-about-forum">Мы Всемирная Община Санатана Дхармы....</p> -->
+            <!-- <p class="title">Сделать донаты на сайт</p> -->
             <div *ngIf="currency == 'EUR'">
                 <div class="hfd"></div>
                 <div>
@@ -32,7 +32,7 @@
                 </button>
             </div> -->
         </div>
-        <div class="social-items mt-6">
+        <!-- <div class="social-items mt-6">
             <p class="links" (click)="
               goToUrl(
                 'https://docs.google.com/document/d/16TABAaWvOogSNOSlNRU-vAEnf0PvMzwd/edit#heading=h.pj4vxw57p2j3'
@@ -40,13 +40,55 @@
             ">
                 Договор Публичной Оферты
             </p>
-        </div>
+        </div> -->
         <div *ngIf="currency == 'RUB'">
             <div class="mt-3">
                 <p class="links">
-                    ООО ФИТНЕС КЛУБ "ЖЕЛТОЕ СОЛНЦЕ-ОКТЯБРЬСКИЙ"<br>
-                    ИНН: 5027229220<br>
-                    ОГРН/ОГРНИП: 1155027006045
+                    Сбербанк (рубли)<br>
+                    4276 4200 4899 2142<br>
+                    Елена Драндарова
+                </p>
+            </div>
+        </div>
+        <div *ngIf="currency == 'UAH'">
+            <div class="mt-3">
+                <p class="links">
+                    Приват Банк Украины (гривны)<br>
+                    4149 4999 9466 6889<br>
+                    PETRO HLUKHYI
+                </p>
+            </div>
+        </div>
+        <div *ngIf="currency == 'USDT/USDC'">
+            <div class="mt-3">
+                <p class="links">
+                    Криптовалюта:<br>
+                    USDT/USDC, TRC20:<br>
+                    TCuuaT3AeS4mdm3xnWsq1LpgEdfcreEERo
+                </p>
+            </div>
+        </div>
+        <div *ngIf="currency == 'Тинькофф'">
+            <div class="mt-3">
+                <p class="links">
+                    Тинькофф Банк России (рубли) <br>
+                    5536 9138 8746 7591<br>
+                    Веденеев Иван<br>
+                    тел. +79503563415
+                </p>
+            </div>
+        </div>
+        <div *ngIf="currency == 'PayPal'">
+            <div class="mt-3">
+                <p class="links">
+                    aravindini.giri@gmail.com
+                </p>
+            </div>
+        </div>
+        <div *ngIf="currency == 'WISE'">
+            <div class="mt-3">
+                <p class="links">
+                    ‌https://wise.com/pay/me/olenas2053
                 </p>
             </div>
         </div>

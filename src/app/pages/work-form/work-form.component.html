@@ -1,4 +1,4 @@
-<div class="work-head"  [formGroup]="form">
+<!-- <div class="work-head" [formGroup]="form">
   <h3 class="work-title" [hidden]="data.type == 'donate'">После того, как вы оставите заявку, с вами свяжется монах, ответственный  за данное служение</h3>
   <h3 class="work-title" [hidden]="data.type !== 'donate'">После того, как вы оставите заявку, с вами свяжутся!</h3>
   <div class="work-head-input-wrap">
@@ -13,5 +13,15 @@
       Оставить Заявку
     </span>
   </button>
+</div> -->
+<div class="work-container">
+  <div class="main-wrap">
+      <div class="nav nav-tabs scrollmenu mt-5">
+          <ng-container *ngFor="let currency of currencies, let i = index">
+              <a (click)="setCurrent(i, currency)" [ngClass]="{'active': index == i}" class="nav-link colorWhite">{{currency}}</a>
+          </ng-container>
+      </div>
+      <app-currency [currency]="currency"></app-currency>
+  </div>
 </div>
 
