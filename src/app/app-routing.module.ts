@@ -18,11 +18,13 @@ import { SacrificeComponent } from './pages/sacrifice/sacrifice.component';
 import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
 import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 import { IframeComponent } from './pages/iframe/iframe.component';
+import { SServiceComponent } from './pages/admin/s-service/s-service.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'works', component: WorksComponent },
   { path: 'work/:details', component: WorkDetailsComponent },
+  { path: 'service/:details', component: SServiceComponent },
   { path: 'sacrifice', component: SacrificeComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'project/:details', component: ProjectDetailsComponent },

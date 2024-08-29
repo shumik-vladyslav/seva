@@ -16,7 +16,7 @@
               </ng-container>
             </div>
             <div class="work-card min-h-auto" *ngFor="let item of (workOffer$ | async) | workFilter: chakedValueId : type : change">
-              <h2>{{item?.title}}</h2>
+              <h2 [routerLink]="[ '/service/'+item.id+'' ]">{{item?.title}}</h2>
               <div class="big-desc" [innerHTML]="item?.bigDesc"> </div>
               <div class="work-card-rowblock">
                 <div class="work-card-img">
@@ -35,7 +35,6 @@
                   <label><input class="filter-checkbox" type="checkbox" name=""
                       [value]="item.title" id=""> <span class="checkbox-text">{{item.title}}</span></label>
                 </ng-container>
-  
               </form>
               <!-- <div class="more-block"><span>Еще</span></div> -->
             </div>

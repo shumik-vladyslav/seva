@@ -52,6 +52,7 @@ import { CurrencyComponent } from './pages/currency/currency.component';
 import { SamayasServicesComponent } from './pages/samayas-services/samayas-services.component';
 import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 import { IframeComponent } from './pages/iframe/iframe.component';
+import { SServiceComponent } from './pages/admin/s-service/s-service.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { IframeComponent } from './pages/iframe/iframe.component';
     SamayasServicesComponent,
     SamayasServicesFormComponent,
     IframeComponent,
+    SServiceComponent,
   ],
   imports: [
     BrowserModule,
