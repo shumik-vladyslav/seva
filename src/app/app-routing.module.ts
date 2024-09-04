@@ -19,6 +19,8 @@ import { SamayasServicesComponent } from './pages/samayas-services/samayas-servi
 import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 import { IframeComponent } from './pages/iframe/iframe.component';
 import { SServiceComponent } from './pages/admin/s-service/s-service.component';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,8 +32,9 @@ const routes: Routes = [
   { path: 'project/:details', component: ProjectDetailsComponent },
   { path: 'samayas-services', component: SamayasServicesFormComponent },
   { path: 'frame', component: IframeComponent },
+  { path: 'login', component: LoginComponent},
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard], canActivateChild: [AdminAuthGuard], children: [
       { path: '', pathMatch: 'full', redirectTo: 'quotes' },
       { path: 'quotes', component: QuotesComponent },
       { path: 'work-offers', component: WorkOffersComponent },

@@ -1,0 +1,10 @@
+
+<div class="content-container">
+    <div class="d-flex justify-center flex-col items-center mt-6" [formGroup]="form">
+        <input class="main-input mb-3" type="email" placeholder="Введите Email" formControlName="email">
+        <input class="main-input mb-3" type="password" placeholder="Введите Пароль" formControlName="password">
+        <button class="main-button" (click)="login()" [disabled]="!form.valid">Авторизоваться</button>
+    </div>
+
+
+</div>

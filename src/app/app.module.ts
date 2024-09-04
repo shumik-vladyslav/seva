@@ -30,7 +30,7 @@ import { ModalComponent } from './pages/admin/modal/modal.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import '@angular/common/locales/global/ru';
 import { RevardsComponent } from './pages/admin/revards/revards.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -53,6 +53,11 @@ import { SamayasServicesComponent } from './pages/samayas-services/samayas-servi
 import { SamayasServicesFormComponent } from './pages/samayas-services-form/samayas-services-form.component';
 import { IframeComponent } from './pages/iframe/iframe.component';
 import { SServiceComponent } from './pages/admin/s-service/s-service.component';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
+import { LoginComponent } from './components//login/login.component';
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { BearerTokenInterceptor } from './interseptor/bearer-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -85,6 +90,7 @@ import { SServiceComponent } from './pages/admin/s-service/s-service.component';
     SamayasServicesFormComponent,
     IframeComponent,
     SServiceComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,7 +118,15 @@ import { SServiceComponent } from './pages/admin/s-service/s-service.component';
     provideAuth(() => getAuth()),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AdminAuthGuard,
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BearerTokenInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

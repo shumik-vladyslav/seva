@@ -198,7 +198,12 @@ export class ModalComponent implements OnInit {
 
   upload(event: any): void {
     const file = event.target.files[0];
-    this.uploadFile(this.data.category, file.name, file).then(data => {
+
+    this.uploadFile(this.data.category, file.name, file).then((data) => {
+      if (data.includes('User does not have permission to access')) {
+        this.openSnackBar('У Вас нет доступа, для загрузки изображения пожалуйста свяжитесь с Админом.');
+        return;
+      }
       let currentImages = this.data.form.get('img').value;
       if (!Array.isArray(currentImages)) {
         currentImages = [];

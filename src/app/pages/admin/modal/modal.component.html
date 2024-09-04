@@ -102,7 +102,7 @@
     <div>
       <span> Добавить в слайдер? </span><input type="checkbox" formControlName="addToSlider">
     </div>
-    <label for="last-name" >Изображенния: </label>
+    <label for="last-name" >Изображения: </label>
     <input formControlName="file" class="mb-2" id="last-name" type="file" (change)="upload($event)" accept="image/*">
     <div class="d-flex" *ngIf="data.form.value?.img?.length">
       <ng-container *ngFor="let img of data.form.value.img">
