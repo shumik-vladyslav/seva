@@ -49,7 +49,7 @@ export class CategoryComponent implements OnInit {
     this.dialogRef.open(ModalComponent, {
       width: '40%',
       scrollStrategy: new NoopScrollStrategy(),
-      data:  obj,
+      data: obj
     });
   }
 

@@ -57,7 +57,10 @@ button {
 }
 .cdk-overlay-pane {
   width: 83%;
-  height: 60% !important;
+  height: fit-content !important;
+}
+.cdk-overlay-pane.modal_ {
+  min-height: 421px;
 }
 app-work-form {
   display: block;
