@@ -44,7 +44,7 @@ export class WorkDetailsComponent implements OnInit {
       maxWidth: '95%',
       scrollStrategy: new NoopScrollStrategy(),
       data: data,
-      panelClass: ["dialog-responsive", "dialog-border"]
+      panelClass: ["dialog-responsive", "dialog-border", "modal_"]
     });
   }
 }

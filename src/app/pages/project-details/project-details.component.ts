@@ -66,7 +66,7 @@ export class ProjectDetailsComponent implements OnInit {
       maxWidth: '95%',
       data: data,
       scrollStrategy: new NoopScrollStrategy(),
-      panelClass: ["dialog-responsive", "dialog-border"]
+      panelClass: ["dialog-responsive", "dialog-border", "modal_"]
     });
   }
 }
