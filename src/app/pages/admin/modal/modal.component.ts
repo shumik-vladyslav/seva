@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { addDoc, collection, collectionData, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ import { NoopScrollStrategy } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  providers: [AsyncPipe, ChangeDetectorRef as any],
+  providers: [AsyncPipe],
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
@@ -26,19 +26,18 @@ export class ModalComponent implements OnInit {
   file: FormControl;
   selectedRevards: any[] = [];
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
-  collectionsCateg:any;
-  categorys$: Observable<any>
-  collectionsCategSamaya:any;
+  collectionsCateg: any;
+  categorys$: Observable<any>;
+  collectionsCategSamaya: any;
   categorysSamaya$: Observable<any>;
-
-  allRevards= []
-  isChangesField = false
+  allRevards = [];
+  isChangesField = false;
   revardscopy$?: Observable<any>;
-  revards$: any
-  req: any = []
+  revards$: any;
+  req: any = [];
   collections: any;
   isUploaded = false;
-  revardsEl?: any = []
+  revardsEl?: any = [];
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -69,12 +68,11 @@ export class ModalComponent implements OnInit {
       { class: 'open-sans', name: 'Open-sans' },
       { class: 'playfair-display', name: 'Playfair-display' },
       { class: 'PT-Serif', name: 'PT-Serif' }
-    ],
+    ]
   };
 
   constructor(
     public async: AsyncPipe,
-    private _ref: ChangeDetectorRef,
     private firestore: Firestore,
     private storage: Storage,
     private _snackBar: MatSnackBar,
@@ -85,18 +83,18 @@ export class ModalComponent implements OnInit {
     this.collections = collection(firestore, 'revards');
     this.revards$ = collectionData(this.collections, { idField: 'id' });
     this.collectionsCateg = collection(firestore, 'category');
-    this.categorys$ = collectionData(this.collectionsCateg, {idField: 'id'});
+    this.categorys$ = collectionData(this.collectionsCateg, { idField: 'id' });
 
     this.collectionsCategSamaya = collection(firestore, 'samayaCategories');
-    this.categorysSamaya$ = collectionData(this.collectionsCategSamaya, {idField: 'id'});
+    this.categorysSamaya$ = collectionData(this.collectionsCategSamaya, { idField: 'id' });
 
     this.revards$.subscribe((elem: any, i: any) => {
       this.revardsEl = elem
       this.allRevards = elem
       if (data.category === "projectContent") {
-        if(data.form.value.revards?.length){
+        if (data.form.value.revards?.length) {
           this.selectedRevards = JSON.parse(JSON.stringify(data.form.value.revards))
-          let result = this.revardsEl.filter((service:any) => this.selectedRevards.every(item => item.id !== service.id));
+          let result = this.revardsEl.filter((service: any) => this.selectedRevards.every(item => item.id !== service.id));
           this.revardsEl = result
         }
       }
@@ -113,7 +111,7 @@ export class ModalComponent implements OnInit {
   }
 
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+    // const value = (event.value || '').trim();
     event.chipInput!.clear();
   }
 
@@ -157,15 +155,15 @@ export class ModalComponent implements OnInit {
     return this.revardsEl = this.revardsEl.filter((rev: any) => rev.id !== filterValue);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   createOrEdit(data: any) {
     if (data.category === "projectContent") {
-      let result = this.allRevards.filter((v: any)=> {
-        return this.selectedRevards.some((v2: any)=> {
-             return v.id == v2.id ;
-         })
-       })
+      let result = this.allRevards.filter((v: any) => {
+        return this.selectedRevards.some((v2: any) => {
+          return v.id == v2.id;
+        })
+      })
       this.data.form.get("revards").setValue(result);
     }
 
@@ -174,10 +172,10 @@ export class ModalComponent implements OnInit {
         data.form.value.date = new Date().toISOString();
       }
       if (data.form.valid) {
-        addDoc(collection(this.firestore, data.category), data.form.value).then(()=>{
+        addDoc(collection(this.firestore, data.category), data.form.value).then(() => {
           this.openSnackBar('Успешно Создано')
           this.dialog.closeAll()
-        }).catch(err=>{
+        }).catch(err => {
           this.openSnackBar(err)
           this.dialog.closeAll()
         })
@@ -185,10 +183,10 @@ export class ModalComponent implements OnInit {
     }
     else {
       if (data.form.valid) {
-        setDoc(doc(this.firestore, data.category, data.id as string), data.form.value).then(()=>{
+        setDoc(doc(this.firestore, data.category, data.id as string), data.form.value).then(() => {
           this.openSnackBar('Успешно редактировано')
           this.dialog.closeAll()
-        }).catch(err=>{
+        }).catch(err => {
           this.openSnackBar(err)
           this.dialog.closeAll()
         })
@@ -213,9 +211,9 @@ export class ModalComponent implements OnInit {
       });
       this.isUploaded = true;
     })
-    .catch(err => {
-      console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
@@ -272,7 +270,7 @@ export class ModalComponent implements OnInit {
     });
   }
 
-  openSnackBar(message:string) {
+  openSnackBar(message: string) {
     this._snackBar.openFromComponent(SnackbarComponent, {
       data: message,
       duration: 1000,
