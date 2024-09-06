@@ -23,7 +23,7 @@ import { NoopScrollStrategy } from '@angular/cdk/overlay';
 export class ModalComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   revardsCtrl = new FormControl('');
-  file: FormControl | undefined;
+  file: FormControl;
   selectedRevards: any[] = [];
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
   collectionsCateg:any;
@@ -198,7 +198,6 @@ export class ModalComponent implements OnInit {
 
   upload(event: any): void {
     const file = event.target.files[0];
-
     this.uploadFile(this.data.category, file.name, file).then((data) => {
       if (data.includes('User does not have permission to access')) {
         this.openSnackBar('У Вас нет доступа, для загрузки изображения пожалуйста свяжитесь с Админом.');
