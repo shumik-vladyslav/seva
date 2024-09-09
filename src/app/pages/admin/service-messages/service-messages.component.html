@@ -7,6 +7,7 @@
         <i>Номер телефона: </i> {{item.phone}}<br>
         <i>Категория: </i> {{item.category}}<br>
         <button (click)="deleteItem(item.id)">✖</button>
+        <p class="d-flex jc-end" *ngIf="item?.date">{{ item?.date }}</p> 
       </div>
     </div>
 </div>

@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -55,9 +54,9 @@ import { IframeComponent } from './pages/iframe/iframe.component';
 import { SServiceComponent } from './pages/admin/s-service/s-service.component';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { LoginComponent } from './components//login/login.component';
-import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { BearerTokenInterceptor } from './interseptor/bearer-token.interceptor';
+import { FormCategoryComponent } from './pages/form-category/form-category.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +90,7 @@ import { BearerTokenInterceptor } from './interseptor/bearer-token.interceptor';
     IframeComponent,
     SServiceComponent,
     LoginComponent,
+    FormCategoryComponent,
   ],
   imports: [
     BrowserModule,

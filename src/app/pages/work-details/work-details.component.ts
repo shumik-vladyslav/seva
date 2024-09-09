@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { WorkFormComponent } from '../work-form/work-form.component';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
+import { FormCategoryComponent } from '../form-category/form-category.component';
 
 @Component({
   selector: 'app-work-details',
@@ -11,11 +11,9 @@ import { NoopScrollStrategy } from '@angular/cdk/overlay';
   styleUrls: ['./work-details.component.scss']
 })
 export class WorkDetailsComponent implements OnInit {
-
   collections: any;
   workOffers$: any
   workOffer: any
-
   constructor(
     private dialog: MatDialog,
     private firestore: Firestore,
@@ -39,12 +37,12 @@ export class WorkDetailsComponent implements OnInit {
       type: 'work',
       val: this.workOffer
     }
-    this.dialog.open(WorkFormComponent, {
+    this.dialog.open(FormCategoryComponent, {
       height: '45%',
       maxWidth: '95%',
       scrollStrategy: new NoopScrollStrategy(),
       data: data,
-      panelClass: ["dialog-responsive", "dialog-border", "modal_"]
+      panelClass: ["dialog-responsive", "dialog-border"]
     });
   }
 }

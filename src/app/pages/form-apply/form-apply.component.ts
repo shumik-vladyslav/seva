@@ -16,11 +16,17 @@ export class FormApplyComponent implements OnInit {
   collections: any;
 
   initForm() {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
     this.form = this.fb.group({
       name: [null, Validators.required],
       phone: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      category: [null, [Validators.required]]
+      category: [null, [Validators.required]],
+      date: [formattedDate]
     });
   }
 
