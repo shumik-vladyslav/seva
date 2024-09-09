@@ -153,7 +153,7 @@
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
-  <div class="modal-content" *ngIf="data.category ==='samayasServices'">
+  <div class="modal-content" *ngIf="data.category ==='samayasServices'"> 
     <label for="first-name">Название*: </label>
     <input id="first-name" required type="text" formControlName="title">
     <label for="first-name">Категория: </label>
@@ -177,6 +177,12 @@
       <br >
       <label for="last-name" >Контакты: </label>
       <input type="text" formControlName="contacts">
+    </div>
+    <div class="flex flex-col">
+      <label for="last-name">Изображенниe*: </label>
+      <input [formControl]="file" *ngIf="!data.form.value.img" class="mb-2" id="last-name" type="file" (change)="uploadSingle($event)" accept="image/*">
+      <img class="mb-2" *ngIf="data.form?.value?.img" src="{{data.form.value?.img}}" height="70px" width="100px" alt="">
+      <button  *ngIf="data.form.value.img" class="del-img_stt mb-2" (click)="deleteSingleImage(data.form.value.img)">Удалить изображенние</button>
     </div>
   </div>
 

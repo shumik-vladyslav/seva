@@ -17,6 +17,8 @@
         <i>Контакты:</i> {{item.details?.contacts}}<br>
         <i>Цена:</i> {{item.details?.cost}}<br>
       </div>
+      <i>Изображенние: </i> <br><img [src]="item?.img" class="mt-1" width="150px" alt="">
+      <br>
       <span class="hot" *ngIf="item.isHot">Срочное</span><br>
       <button class="mt-1 edit-btn" (click)="EditOffer(item)">Редактировать</button>
       <button class="ml-1 mt-1" (click)="deleteOffer(item.id)">Удалить</button>

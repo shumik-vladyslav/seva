@@ -19,12 +19,12 @@
               <h2 [routerLink]="[ '/service/'+item.id+'' ]">{{item?.title}}</h2>
               <div class="big-desc" [innerHTML]="item?.bigDesc"> </div>
               <div class="work-card-rowblock">
-                <div class="work-card-img">
-                    Имя: {{item?.details?.name}}
-                    <br>
-                    Контакт: {{item?.details?.contacts}}
+                <div class="work-card-img flex flex-col">
+                  <span><i class="bold">Имя:</i> {{item?.details?.name}}</span>
+                  <span><i class="bold">Контакт:</i> {{item?.details?.contacts}}</span>
                 </div>
               </div>
+              <img [src]="item?.img" class="mx-4" width="150px" alt="">
             </div>
           </div>
           <div class="work-filter">

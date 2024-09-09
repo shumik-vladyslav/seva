@@ -720,6 +720,17 @@ body {
     }
   }
 }
+.flex.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mx-4 {
+  margin: 15px 0;
+}
+.bold {
+  font-weight: 700;
+}
 
 ::ng-deep {
   .mat-paginator {

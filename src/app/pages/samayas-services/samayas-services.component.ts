@@ -66,6 +66,7 @@ export class SamayasServicesComponent implements OnInit {
         name: [null],
         cost: [null],
       }),
+      img: [null, Validators.required],
       date: Math.floor(new Date().getTime() / 1000)
     });
   }

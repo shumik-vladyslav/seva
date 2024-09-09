@@ -4,7 +4,7 @@
       <div *ngFor="let item of (this.message$ | async)">
         <i>Имя: </i>{{item.name}} <br>
         <i>Емайл: </i> {{item.email}} <br>
-        <i>Номер телефона: </i> {{item.phone}}<br>
+        <i>Номер телефона/telegram: </i> {{item.phone}}<br>
         <i>Категория: </i> {{item.category}}<br>
         <button (click)="deleteItem(item.id)">✖</button>
         <p class="d-flex jc-end" *ngIf="item?.date">{{ item?.date }}</p> 
