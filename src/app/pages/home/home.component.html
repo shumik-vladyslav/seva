@@ -1,7 +1,7 @@
 <div class="home-container">
   <div class="biger-wrap">
-    <ng-container *ngFor="let item of content$ | async">
-      <div class='head-block' *ngIf="item.isTitle">
+    <ng-container *ngFor="let item of content$ | async, let i = index">
+      <div *ngIf="i == 1" class='head-block'>
         <div class="wrp-block">
           <h3>{{item.title}}</h3>
           <p class="txt-smaller">{{item.desc}}

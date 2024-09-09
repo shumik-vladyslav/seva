@@ -134,16 +134,16 @@
     <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
-  <div class="modal-content" *ngIf="data.category ==='content'" >
+  <div class="modal-content" *ngIf="data.category ==='content'">
     <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
     <label for="last-name">Описание*: </label>
     <input id="last-name" type="text" formControlName="desc">
-    <label for="last-name">Изображенния*: </label>
-    <input [formControl]="file" *ngIf="!data.form.value.img"  class="mb-2" id="last-name" type="file" (change)="upload($event)" accept="image/*">
-    <img class="mb-2" *ngIf="data.form.value.img" src="{{data.form.value.img}}" height="70px" width="100px" alt="">
-    <button  *ngIf="data.form.value.img" class="del-img mb-2" (click)="deleteImage(data.form.value.img)">Удалить изображенние</button>
-    <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>]=[=]
+    <label for="last-name">Изображенниe*: </label>
+    <input [formControl]="file" *ngIf="!data.form.value.img" class="mb-2" id="last-name" type="file" (change)="uploadSingle($event)" accept="image/*">
+    <img class="mb-2" *ngIf="data.form?.value?.img" src="{{data.form.value?.img}}" height="70px" width="100px" alt="">
+    <button  *ngIf="data.form.value.img" class="del-img_stt mb-2" (click)="deleteSingleImage(data.form.value.img)">Удалить изображенние</button>
+    <button class="edit-or-save" [class.disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" [disabled]="(data.form.invalid || !data.form.dirty) && file?.pristine" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
 
 

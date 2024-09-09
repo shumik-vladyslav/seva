@@ -2,7 +2,7 @@ import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core'
 import { addDoc, collection, collectionData, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, take } from 'rxjs';
 import { deleteObject, getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -194,6 +194,71 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  uploadSingle(event: any): void {
+    const file = event.target.files[0];
+    this.uploadSingleFile(this.data.category, file.name, file).then((data) => {
+      if (data.includes('User does not have permission to access')) {
+        this.openSnackBar('У Вас нет доступа, для загрузки изображения пожалуйста свяжитесь с Админом.');
+        return;
+      }
+      this.data.form.patchValue({
+        img: data
+      });
+      this.isUploaded = true;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+  
+  async uploadSingleFile(folder: string, name: string, file: File | null): Promise<string> {
+    if (!file) {
+      this.file?.markAsDirty();
+      return '';
+    }
+    const ext = file.name.split('.').pop();
+    const uniqueName = `${name}_${Date.now()}.${ext}`;
+    const path = `${folder}/${uniqueName}`;
+    try {
+      const storageRef = ref(this.storage, path);
+      const uploadTask = await uploadBytes(storageRef, file);
+      this.file?.markAsDirty();
+      return await getDownloadURL(uploadTask.ref);
+    } catch (error: any) {
+      this.file?.markAsDirty();
+      this.openSnackBar(`Ошибка загрузки файла: ${error.message}`);
+      return '';
+    }
+  }
+
+  deleteSingleImage(img?: string): void {
+    let confDialog = this.dialog.open(ConfirmComponent, {
+      width: '30%',
+      scrollStrategy: new NoopScrollStrategy()
+    });
+    confDialog.afterClosed().pipe(take(1)).subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        const imagePath = img ? img : this.valueByControl('img');
+        if (!imagePath) {
+          this.openSnackBar('No image path provided.');
+          return;
+        }
+        const task = ref(this.storage, imagePath);
+        deleteObject(task)
+          .then(() => {
+            this.openSnackBar('Изображение удалено');
+            this.data.form.markAsDirty();
+            this.data.form.patchValue({
+              img: null
+            });
+          })
+          .catch(err => {
+            this.openSnackBar('Ошибка при удалении изображения: ' + err);
+          });
+      }
+    });
+  }
+
   upload(event: any): void {
     const file = event.target.files[0];
     this.uploadFile(this.data.category, file.name, file).then((data) => {
@@ -217,29 +282,29 @@ export class ModalComponent implements OnInit {
   }
 
   async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
-    const ext = file!.name.split('.').pop();
-    const path = `${folder}/${name}`; {
-      if (file) {
-        try {
-          const storageRef = ref(this.storage, path);
-          const task = uploadBytes(storageRef, file);
-          await task;
-          if (this.file) {
-            this.file.markAsDirty();
-          }
-          return await getDownloadURL(storageRef);
-        } catch (e: any) {
-          if (this.file) {
-            this.file.markAsDirty();
-          }
-          return e.message
-        }
-      } else {
-        if (this.file) {
-          this.file.markAsDirty();
-        }
-        return '';
+    if (!file) {
+      if (this.file) {
+        this.file.markAsDirty();
       }
+      return '';
+    }
+    const ext = file.name.split('.').pop();
+    const uniqueName = `${name}_${Date.now()}.${ext}`;
+    const path = `${folder}/${uniqueName}`;
+  
+    try {
+      const storageRef = ref(this.storage, path);
+      const task = uploadBytes(storageRef, file);
+      await task;
+      if (this.file) {
+        this.file.markAsDirty();
+      }
+      return await getDownloadURL(storageRef);
+    } catch (e: any) {
+      if (this.file) {
+        this.file.markAsDirty();
+      }
+      return e.message;
     }
   }
 
