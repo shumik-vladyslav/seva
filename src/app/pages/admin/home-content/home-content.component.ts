@@ -27,6 +27,7 @@ export class HomeContentComponent implements OnInit {
       title: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
       img: new FormControl('', Validators.required),
+      date: new FormControl(null)
     });
   }
 

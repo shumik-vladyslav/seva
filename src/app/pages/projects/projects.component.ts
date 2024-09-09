@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatPaginator } from '@angular/material/paginator';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -14,7 +14,20 @@ export class ProjectsComponent implements OnInit {
   projects$: Observable<any>;
   constructor(firestore: Firestore) {
     const collSup = collection(firestore, 'projectContent');
-    this.projects$ = collectionData(collSup, {idField: 'id'});
+    this.projects$ = collectionData(collSup, {idField: 'id'}).pipe(
+      map((projects: any[]) => {
+        return projects.sort((a: any, b: any) => {
+          const dateA = a.date ? new Date(a.date).getTime() : -Infinity;
+          const dateB = b.date ? new Date(b.date).getTime() : -Infinity;
+          return dateB - dateA;
+        });
+        // return projects.sort((a: any, b: any) => {
+        //   const dateA = a.date ? new Date(a.date).getTime() : -Infinity;
+        //   const dateB = b.date ? new Date(b.date).getTime() : -Infinity;
+        //   return dateA - dateB; // Ascending order
+        // });
+      })
+    );
   }
   ngOnInit(): void {
   }

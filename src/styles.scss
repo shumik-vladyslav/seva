@@ -56,8 +56,10 @@ button {
   cursor: pointer !important;
 }
 .cdk-overlay-pane {
-  width: 83%;
   height: fit-content !important;
+  &.modal_ {
+    width: 83%;
+  }
 }
 .cdk-overlay-pane.modal_ {
   min-height: 421px;

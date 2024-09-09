@@ -158,6 +158,7 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void { }
 
   createOrEdit(data: any) {
+    data.form.get("date").setValue(Math.floor(new Date().getTime() / 1000));
     if (data.category === "projectContent") {
       let result = this.allRevards.filter((v: any) => {
         return this.selectedRevards.some((v2: any) => {

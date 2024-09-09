@@ -62,7 +62,7 @@ div.scrollmenu {
   a {
       transition: all 0.4s;
       font-family: "PT Serif";
-      font-weight: 700;
+      font-weight: 500;
       font-style: normal;
       font-size: 15px;
       text-transform: uppercase;
@@ -74,13 +74,13 @@ div.scrollmenu {
       padding: 14px;
       text-decoration: none;
       text-decoration: none;
-      color: #96652C;
+      color: #e5bf51;
       cursor: pointer;
 
       &.active {
-          color: rgb(33, 6, 133);
           position: relative;
-          border-bottom: 2px solid rgb(33, 6, 133);
+          color: #e08f30;
+          font-weight: 700;
       }
   }
 }
