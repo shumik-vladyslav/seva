@@ -188,4 +188,10 @@
 
     <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
   </div>
+
+  <div class="modal-content" *ngIf="data.category ==='samayaCategories'" >
+    <label for="first-name">Название*: </label>
+    <input id="first-name" type="text" formControlName="title">
+    <button class="edit-or-save" [class.disabled]="data.form.invalid || !data.form.dirty" [disabled]="data.form.invalid || !data.form.dirty" (click)="createOrEdit(data)">{{data.type=='create'? "Создать" : 'Редактировать'}}</button>
+  </div>
 </form>

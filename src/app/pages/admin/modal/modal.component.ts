@@ -79,6 +79,7 @@ export class ModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
   ) {
+    console.log('data!',data);
     this.file = new FormControl(null);
     this.collections = collection(firestore, 'revards');
     this.revards$ = collectionData(this.collections, { idField: 'id' });
@@ -158,7 +159,7 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void { }
 
   createOrEdit(data: any) {
-    data.form.get("date").setValue(Math.floor(new Date().getTime() / 1000));
+    data.form.get("date")?.setValue(Math.floor(new Date().getTime() / 1000));
     if (data.category === "projectContent") {
       let result = this.allRevards.filter((v: any) => {
         return this.selectedRevards.some((v2: any) => {
