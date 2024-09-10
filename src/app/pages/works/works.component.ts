@@ -40,9 +40,12 @@ export class WorksComponent implements OnInit {
   }
 
   changeCheckbox(event: any) {
+    console.log('event!',event);
     this.change = Math.random()
     this.type = 'add'
     if (event.target.checked) {
+      console.log('this.chackedValue!',);
+      console.log('this.categorys!',this.categorys);
       this.chackedValue.push(event.target.defaultValue)
       this.categorys.filter((e: any) => {
         if (e.title == event.target.defaultValue) this.chakedValueId.push(e)

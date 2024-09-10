@@ -21,6 +21,7 @@ import { IframeComponent } from './pages/iframe/iframe.component';
 import { SServiceComponent } from './pages/admin/s-service/s-service.component';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { LoginComponent } from './components/login/login.component';
+import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services-category/samayas-services-category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'servants', component: ServiceMessagesComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'samayas-services', component: SamayasServicesComponent },
+      { path: 'samayas-services-category', component: SamayasServicesCategoryComponent },
     ]
   }
 ];

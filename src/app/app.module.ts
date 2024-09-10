@@ -57,6 +57,7 @@ import { LoginComponent } from './components//login/login.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { BearerTokenInterceptor } from './interseptor/bearer-token.interceptor';
 import { FormCategoryComponent } from './pages/form-category/form-category.component';
+import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services-category/samayas-services-category.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { FormCategoryComponent } from './pages/form-category/form-category.compo
     SServiceComponent,
     LoginComponent,
     FormCategoryComponent,
+    SamayasServicesCategoryComponent,
   ],
   imports: [
     BrowserModule,

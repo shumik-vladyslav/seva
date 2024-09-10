@@ -33,6 +33,9 @@ export class SamayasServicesFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.categorys$.subscribe(e => {
+      this.categorys = JSON.parse(JSON.stringify(e))
+    })
   }
 
   modalApply() {
@@ -111,10 +114,13 @@ export class SamayasServicesFormComponent implements OnInit {
   }
 
   changeCheckbox(event: any) {
+    console.log('changeCheckbox!',event);
     this.change = Math.random()
     this.type = 'add'
     if (event.target.checked) {
       this.chackedValue.push(event.target.defaultValue)
+      console.log('this.collections!',this.collections);
+      console.log('categorys!',this.categorys);
       this.categorys.filter((e: any) => {
         if (e.title == event.target.defaultValue) this.chakedValueId.push(e)
       })
