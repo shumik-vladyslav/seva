@@ -183,6 +183,22 @@ input[type="range" i]::-webkit-slider-thumb {
   text-decoration: none;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
 .work-content-wrap {
   display: flex;
   width: 100%;

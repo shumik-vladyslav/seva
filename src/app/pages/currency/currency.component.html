@@ -1,16 +1,25 @@
 <div class="hud">
     <div class="relative_wrap">
         <!-- <div class="g_wrapp"></div> -->
-        <div *ngIf="currency == 'EUR' || currency == 'USD'" [formGroup]="formAmount" class="forms_w">
+        <div *ngIf="currency == 'EUR' || currency == 'USD'" [formGroup]="formAmount" class="forms_w w-full">
             <!-- <p class="text-about-forum">{{currency}}</p> -->
             <!-- <p class="text-about-forum">Мы Всемирная Община Санатана Дхармы....</p> -->
             <!-- <p class="title">Сделать донаты на сайт</p> -->
-            <div *ngIf="currency == 'EUR'">
+            <div class="w-full" *ngIf="currency == 'EUR'">
                 <div class="hfd"></div>
-                <div>
-                    <stripe-buy-button buy-button-id="buy_btn_1Pmwv5JLy9EiRUcifhNRhVe4"
-                        publishable-key="pk_live_51OnMrNJLy9EiRUci82gUI6dkOfbSlCYKZEbbXSiTH4D4C93JQureiYQ4di8Uj8bR9avV8onMzwFmHXQpTU5zNngI00Ubxhbpta">
-                    </stripe-buy-button>
+                <div class="d-flex justify-around items-center w-full">
+                    <div class="d-flex">
+                        <stripe-buy-button buy-button-id="buy_btn_1Pmwv5JLy9EiRUcifhNRhVe4"
+                            publishable-key="pk_live_51OnMrNJLy9EiRUci82gUI6dkOfbSlCYKZEbbXSiTH4D4C93JQureiYQ4di8Uj8bR9avV8onMzwFmHXQpTU5zNngI00Ubxhbpta">
+                        </stripe-buy-button>
+                    </div>
+                    <p class="d-flex links">
+                        BancoPosta (Италия - евро)<br>
+                        Ivan Vedeneev<br>
+                        IBAN: IT09P0760103000001070381494<br>
+                        BIC/SWIFT: BPPIITRRXXX<br>
+                        MasterCard: 5355 7405 7747 2609
+                    </p>
                 </div>
             </div>
             <div *ngIf="currency == 'USD'">
@@ -81,14 +90,14 @@
         <div *ngIf="currency == 'PayPal'">
             <div class="mt-3">
                 <p class="links">
-                    aravindini.giri@gmail.com
+                    indramantrin@gmail.com
                 </p>
             </div>
         </div>
         <div *ngIf="currency == 'WISE'">
             <div class="mt-3">
                 <p class="links">
-                    ‌https://wise.com/pay/me/olenas2053
+                    https://wise.com/pay/me/olenas2053
                 </p>
             </div>
         </div>
