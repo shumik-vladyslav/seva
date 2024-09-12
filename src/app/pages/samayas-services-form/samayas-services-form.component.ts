@@ -34,8 +34,8 @@ export class SamayasServicesFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.categorys$.subscribe(e => {
-      this.categorys = JSON.parse(JSON.stringify(e))
-    })
+      this.categorys = JSON.parse(JSON.stringify(e));
+    });
   }
 
   modalApply() {
@@ -48,23 +48,23 @@ export class SamayasServicesFormComponent implements OnInit {
        categories: this.categorys$
       }
     });
-    dialog.afterClosed().subscribe(e=>{
-      if(e){
+    dialog.afterClosed().subscribe(e => {
+      if(e) {
         this.sendMessage(e);
-      }
-    })
+      };
+    });
   }
 
   sendMessage(form: any) {
     if (form.valid) {
       addDoc(collection(this.firestore, 'serviceMessage'), form.value).then(() => {
-        this.openSnackBar('Заявка Оставленна')
+        this.openSnackBar('Заявка Оставленна');
       }).catch(err => {
-        this.openSnackBar(err)
+        this.openSnackBar(err);
       })
     } else {
-      this.openSnackBar('Не верно заполненые данные!')
-    }
+      this.openSnackBar('Не верно заполненые данные!');
+    };
   }
 
   openSnackBar(message: string) {
@@ -75,67 +75,63 @@ export class SamayasServicesFormComponent implements OnInit {
   }
 
   deleteValue(i: any) {
-    this.change = Math.random()
-    this.type = 'del'
-    let value = this.chackedValue[i]
-    let elem = document.forms[0].childNodes
+    this.change = Math.random();
+    this.type = 'del';
+    let value = this.chackedValue[i];
+    let elem = document.forms[0].childNodes;
 
     elem.forEach((e: any) => {
       if (e.children) {
         if (e.children[0]?.defaultValue == value) {
           e.children[0].checked = false;
-          this.chackedValue.splice(i, 1)
+          this.chackedValue.splice(i, 1);
         }
       }
-    })
+    });
     this.chakedValueId.find((e: any, i: any) => {
       if (e?.title === value) {
         this.chakedValueId.splice(i, 1)
-      }
-    })
+      };
+    });
   }
 
   showCategory() {
     if (window.innerWidth < 950) {
-      let title: any = document.querySelector('.arrow-categ')
-      let hidenContainer: any = document.querySelector('.checkbox-holder')
+      let title: any = document.querySelector('.arrow-categ');
+      let hidenContainer: any = document.querySelector('.checkbox-holder');
       if (!this.isShow) {
-        this.isShow = true
-        hidenContainer.style.display = 'flex'
-        title.classList.add('rotate')
-      }
-      else {
-        this.isShow = false
-        hidenContainer.style.display = 'none'
-        title.classList.remove('rotate')
-
-      }
+        this.isShow = true;
+        hidenContainer.style.display = 'flex';
+        title.classList.add('rotate');
+      } else {
+        this.isShow = false;
+        hidenContainer.style.display = 'none';
+        title.classList.remove('rotate');
+      };
     }
   }
 
   changeCheckbox(event: any) {
-    console.log('changeCheckbox!',event);
-    this.change = Math.random()
-    this.type = 'add'
+    this.change = Math.random();
+    this.type = 'add';
     if (event.target.checked) {
-      this.chackedValue.push(event.target.defaultValue)
-      console.log('this.collections!',this.collections);
-      console.log('categorys!',this.categorys);
+      this.chackedValue.push(event.target.defaultValue);
       this.categorys.filter((e: any) => {
-        if (e.title == event.target.defaultValue) this.chakedValueId.push(e)
-      })
+        if (e.title == event.target.defaultValue) {
+          this.chakedValueId.push(e)
+        };
+      });
     }
     else {
-      this.type = 'del'
+      this.type = 'del';
       this.chackedValue.find((e: any, i: any) => {
-        if (e === event.target.defaultValue) this.chackedValue.splice(i, 1)
-
-      })
+        if (e === event.target.defaultValue) this.chackedValue.splice(i, 1);
+      });
       this.chakedValueId.find((e: any, i: any) => {
         if (e?.title === event.target.defaultValue) {
-          this.chakedValueId.splice(i, 1)
-        }
-      })
+          this.chakedValueId.splice(i, 1);
+        };
+      });
     }
   }
 }
