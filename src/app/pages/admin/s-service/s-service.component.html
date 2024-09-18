@@ -1,10 +1,10 @@
 <div class="main-wrap">
-    <div class="work-detail-container">
-        <a class="return-back" [routerLink]="['/samayas-services']">Результаты поиска</a>
-    </div>
-    <div class="work-content-wrap work-dcontent-wrap">
-        <div class="work-content-details">
-            <!-- <div class="work-content-head">
+  <div class="work-detail-container">
+    <a class="return-back" [routerLink]="['/samayas-services']">Результаты поиска</a>
+  </div>
+  <div class="work-content-wrap work-dcontent-wrap">
+    <div class="work-content-details">
+      <!-- <div class="work-content-head">
                 <div class="work-card-rowblock">
                     <div class="work-card-img">
                         <img src="assets/img/premium-icon-pray-3620149.png" alt="">
@@ -12,42 +12,45 @@
                     </div>
                 </div>
             </div> -->
-            <div class="work-content-wrap">
-                <div class="work-content">
-                    <div class="work-card-rowblock">
-                        <!-- <div class="is-hot noabs-is-hot"А><img src="assets/img/premium-icon-fire.png" alt=""> <span>{{workOffer?.date}}</span></div> -->
-                    </div>
-                    <h2>{{workOffer?.title}}</h2>
-                    <div class="short-info">
-                        <div class="regular-work location">
-                            <img src="assets/img/schedule_school_date_time_month_icon_208752.png" width="5%" alt="">
-                            <span>{{ workOffer?.date * 1000 | date:'yyyy-MM-dd HH:mm:ss' }}</span>
-                        </div>
-                        <div class="location contacts">
-                            <img src="assets/img/31_104880.png" width="5%" alt="">
-                            <span>{{workOffer?.details?.name}}</span>
-                        </div>
-                        <div class="location">
-                            <img src="assets/img/free-icon-telegram-226253.png" width="5%" alt="">
-                            <span>{{workOffer?.details?.contacts}}</span>
-                        </div>
-                        <div class="location time-work">
-                            <img src="assets/img/checkmark-round_icon-icons.png" width="5%"
-                                alt=""><span>{{workOffer?.details?.cost}}</span>
-                        </div>
-                    </div>
-                    <div class="work-detail-description">
-                    </div>
-                    <div class="work-card-rowblock work-card-rowblock-center">
-                        <!-- <div class="work-card-img">
+      <div class="work-content-wrap">
+        <div class="work-content">
+          <div class="work-card-rowblock">
+            <!-- <div class="is-hot noabs-is-hot"А><img src="assets/img/premium-icon-fire.png" alt=""> <span>{{workOffer?.date}}</span></div> -->
+          </div>
+          <h2>{{workOffer?.title}}</h2>
+          <div class="short-info">
+            <div class="regular-work location">
+              <img src="assets/img/schedule_school_date_time_month_icon_208752.png" width="5%" alt="">
+              <span>{{ workOffer?.date * 1000 | date:'yyyy-MM-dd HH:mm:ss' }}</span>
+            </div>
+            <div class="location contacts">
+              <img src="assets/img/31_104880.png" width="5%" alt="">
+              <span>{{workOffer?.details?.name}}</span>
+            </div>
+            <div class="location">
+              <img src="assets/img/free-icon-telegram-226253.png" width="5%" alt="">
+              <span>{{workOffer?.details?.contacts}}</span>
+            </div>
+            <div class="location time-work">
+              <img src="assets/img/checkmark-round_icon-icons.png" width="5%"
+                alt=""><span>{{workOffer?.details?.cost}}</span>
+            </div>
+          </div>
+          <div class="work-detail-description">
+          </div>
+          <div class="work-card-rowblock work-card-rowblock-center">
+            <!-- <div class="work-card-img">
                   <img src="assets/img/premium-icon-pray-3620149.png" alt="">
                   <button (click)="modalDetailsShow()" >Я хочу выполнять это служение</button>
                 </div> -->
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="d-flex justify-center w-[400px]">
+            <img [src]="workOffer?.img" alt="i" class="img-samayas">
+          </div>
         </div>
-        <!-- <div class="work-filter work-hot-content">
+      </div>
+    </div>
+    <!-- <div class="work-filter work-hot-content">
           <div class="hot-header"><p>Срочное служение</p></div>
           <div *ngFor="let item of (workOffers$ | async); let i = index" >
             <ng-container *ngIf="item.isHot && i<3 ">
@@ -71,5 +74,5 @@
             </ng-container>
           </div>
         </div> -->
-    </div>
+  </div>
 </div>
