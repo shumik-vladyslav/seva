@@ -1,0 +1,43 @@
+<div class="home_c-container">
+  <div class="main-cad-wrap">
+    <div class="cald_wrap">
+      <form class="frm_wrap" (ngSubmit)="addEvent()">
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Начало</mat-label>
+          <input matInput [matDatepicker]="startPicker" [(ngModel)]="event.start" name="startDate" required>
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Завершение</mat-label>
+          <input matInput [matDatepicker]="endPicker" [(ngModel)]="event.end" name="endDate" required>
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="tw_items">
+          <mat-form-field class="field" appearance="fill">
+            <mat-label>Название</mat-label>
+            <input matInput [(ngModel)]="event.title" name="topic" required>
+          </mat-form-field>
+
+          <div class="cl_btn">
+            <button mat-raised-button type="submit">Добавить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="cald_wrap">
+      <full-calendar [events]="events" [options]="calendarOptions"></full-calendar>
+      <div *ngFor="let event of events; let idx = index" class="ev_list">
+        <div class="ev_item">
+          <p>{{event.title}} <span class="blue">{{event.start}} - {{event.end}}</span></p>
+        </div>
+        <div class="cld_btn">
+          <button mat-raised-button (click)="deleteEvent(event.docId)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

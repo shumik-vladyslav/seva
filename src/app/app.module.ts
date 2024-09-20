@@ -27,12 +27,10 @@ import { ProjectComponent } from './pages/admin/project/project.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ModalComponent } from './pages/admin/modal/modal.component';
 import {MatChipsModule} from '@angular/material/chips';
-import { MatNativeDateModule } from '@angular/material/core';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import '@angular/common/locales/global/ru';
 import { RevardsComponent } from './pages/admin/revards/revards.component'
-import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MessagesComponent } from './pages/admin/messages/messages.component';
@@ -58,6 +56,14 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { BearerTokenInterceptor } from './interseptor/bearer-token.interceptor';
 import { FormCategoryComponent } from './pages/form-category/form-category.component';
 import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services-category/samayas-services-category.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DateRangeSelectorComponent } from './pages/date-range-selector/date-range-selector.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -66,6 +72,7 @@ import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services
     FooterComponent,
     HomeComponent,
     WorksComponent,
+    DateRangeSelectorComponent,
     ProjectsComponent,
     ProjectDetailsComponent,
     WorkDetailsComponent,
@@ -100,16 +107,20 @@ import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services
     MatMenuModule,
     FormsModule,
     AppRoutingModule,
+    FullCalendarModule,
     MatChipsModule,
     MatTooltipModule,
     MatSelectModule,
-    CarouselModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatButtonModule,
     MatFormFieldModule,
+    MatNativeDateModule,
+    CarouselModule,
     MatPaginatorModule,
     MatSnackBarModule,
     MatAutocompleteModule,
     MatIconModule,
-    MatNativeDateModule,
     HttpClientModule,
     AngularEditorModule,
     MatDialogModule,
@@ -128,6 +139,7 @@ import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services
       useClass: BearerTokenInterceptor,
       multi: true,
     },
+    FirebaseService
   ],
   bootstrap: [AppComponent],
 })

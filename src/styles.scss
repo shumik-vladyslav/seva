@@ -55,15 +55,19 @@ body {
 button {
   cursor: pointer !important;
 }
+
 .cdk-overlay-pane {
   height: fit-content !important;
+
   &.modal_ {
     width: 83%;
   }
 }
+
 .cdk-overlay-pane.modal_ {
   min-height: 421px;
 }
+
 app-work-form {
   display: block;
 }
@@ -86,9 +90,46 @@ app-work-form {
   width: 72%;
   height: 100%;
   margin: auto;
+
   &.mod {
     width: 100%;
   }
+}
+
+.blue {
+  color: #0478EE;
+  margin-left: 20px;
+}
+
+.ev_item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.cld_btn {
+  position: absolute;
+  right: 15px;
+}
+
+.ev_list:first-of-type {
+  margin-top: 30px;
+}
+
+.ev_list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px 120px 5px 5px;
+  margin-bottom: 10px;
+  position: relative;
+  min-height: 50px;
+}
+
+.main-cad-wrap {
+  width: 72%;
+  height: 100%;
+  margin: auto;
 }
 
 .dialog-border {
@@ -121,6 +162,11 @@ app-work-form {
 .home-container,
 .work-container {
   margin-top: 21vh;
+  height: 100%;
+}
+
+.home_c-container {
+  margin-top: 15vh;
   height: 100%;
 }
 
@@ -176,6 +222,7 @@ input[type="range" i]::-webkit-slider-thumb {
 
 .return-back::before {
   content: '﹤';
+  color: fuchsia;
 }
 
 .return-back {
@@ -197,6 +244,32 @@ input[type="range" i]::-webkit-slider-thumb {
 
 .w-full {
   width: 100%;
+}
+
+.tw_items {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.cald_wrap {
+  max-width: 70%;
+  margin: auto;
+
+  .frm_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      padding: 5px 5px 0 5px;
+    }
+  }
+
+  .cl_btn {
+    margin-top: -20px;
+    margin-left: 20px;
+  }
 }
 
 .work-content-wrap {
@@ -414,14 +487,38 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+@media (max-width: 1950px) {
+  .tw_items {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 1650px) {
+  .cald_wrap {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .cald_wrap {
+    max-width: 90%;
+  }
+}
+
 @media (max-width: 1300px) {
   .proj-detail-status {
     min-width: 14% !important;
   }
 
+  .cald_wrap {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 1150px) {
+  .main-cad-wrap {
+    width: 82%;
+  }
 
   .proj-detail-status {
     min-width: 17% !important;
@@ -439,6 +536,10 @@ body {
 @media (max-width: 950px) {
   .proj-content .proj-container .proj-card {
     width: 48% !important;
+  }
+
+  .main-cad-wrap {
+    width: 92%;
   }
 
   .proj-detail-status {
@@ -598,6 +699,21 @@ body {
     flex-direction: column;
   }
 
+  .cald_wrap {
+    .frm_wrap {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .tw_items {
+      width: 100%;
+    }
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
   .offer-container .offer-content .offer-card {
     width: 88% !important;
     margin: 2% 0px !important;
@@ -736,14 +852,17 @@ body {
     }
   }
 }
+
 .flex.flex-col {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
 .mx-4 {
   margin: 15px 0;
 }
+
 .bold {
   font-weight: 700;
 }
