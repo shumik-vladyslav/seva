@@ -451,6 +451,13 @@
 
       &.img-wrp {
         width: 51%;
+        max-height: 70vh;
+        margin: 20px 0;
+        overflow: hidden;
+        img {
+          width: fit-content;
+          height: 100%;
+        }
       }
 
       padding: 2% 0px;
@@ -496,8 +503,6 @@
       position: relative;
 
       @media (min-width: 938px) {
-        &:not(&:last-child) {
-
           &::after {
             content: '';
             display: block;
@@ -508,7 +513,16 @@
             right: -14%;
             background-color: rgba(217, 217, 217, 0.8);
           }
-        }
+          &::before {
+            content: '';
+            display: block;
+            height: 25vh;
+            position: absolute;
+            width: 2px;
+            top: 0px;
+            left: -14%;
+            background-color: rgba(217, 217, 217, 0.8);
+          }
       }
 
       h4 {
