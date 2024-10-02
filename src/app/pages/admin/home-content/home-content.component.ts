@@ -25,6 +25,7 @@ export class HomeContentComponent implements OnInit {
     this.content$ = collectionData(this.collections, {idField: 'id'});
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
+      isTitle: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
       img: new FormControl('', Validators.required),
       date: new FormControl(null)

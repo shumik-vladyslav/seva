@@ -138,7 +138,11 @@
     <label for="first-name">Название*: </label>
     <input id="first-name" type="text" formControlName="title">
     <label for="last-name">Описание*: </label>
-    <input id="last-name" type="text" formControlName="desc">
+    <angular-editor id="editor1" formControlName="desc" [config]="editorConfigSmall"></angular-editor>
+    <div class="d-flex items-center mb-1r">
+      <label for="isTitle">Титульная Карточка*: </label>
+      <input class="ist ml-2" id="isTitle" type="checkbox" formControlName="isTitle">
+    </div>
     <label for="last-name">Изображенниe*: </label>
     <input [formControl]="file" *ngIf="!data.form.value.img" class="mb-2" id="last-name" type="file" (change)="uploadSingle($event)" accept="image/*">
     <img class="mb-2" *ngIf="data.form?.value?.img" src="{{data.form.value?.img}}" height="70px" width="100px" alt="">

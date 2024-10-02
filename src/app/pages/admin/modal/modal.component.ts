@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { addDoc, collection, collectionData, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, doc, Firestore, getDocs, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { map, Observable, startWith, take } from 'rxjs';
@@ -70,6 +70,38 @@ export class ModalComponent implements OnInit {
       { class: 'PT-Serif', name: 'PT-Serif' }
     ]
   };
+  editorConfigSmall: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '10rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    uploadUrl: 'v1/images',
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ],
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'open-sans', name: 'Open-sans' },
+      { class: 'playfair-display', name: 'Playfair-display' },
+      { class: 'PT-Serif', name: 'PT-Serif' }
+    ]
+  };
 
   constructor(
     public async: AsyncPipe,
@@ -79,7 +111,7 @@ export class ModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
   ) {
-    console.log('data!',data);
+    console.log('data!', data);
     this.file = new FormControl(null);
     this.collections = collection(firestore, 'revards');
     this.revards$ = collectionData(this.collections, { idField: 'id' });
@@ -158,7 +190,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  createOrEdit(data: any) {
+  async createOrEdit(data: any) {
     data.form.get("date")?.setValue(Math.floor(new Date().getTime() / 1000));
     if (data.category === "projectContent") {
       let result = this.allRevards.filter((v: any) => {
@@ -168,6 +200,15 @@ export class ModalComponent implements OnInit {
       })
       this.data.form.get("revards").setValue(result);
     }
+    if (data.category === "content" && data.form.value.isTitle === true) {
+      const q = query(collection(this.firestore, data.category), where('isTitle', '==', true));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(async (docSnapshot) => {
+        if (docSnapshot.id !== data.id) {
+          await updateDoc(doc(this.firestore, data.category, docSnapshot.id), { isTitle: false });
+        }
+      });
+    }
 
     if (data.type == 'create') {
       if (data.category === "projectContent") {
@@ -175,23 +216,22 @@ export class ModalComponent implements OnInit {
       }
       if (data.form.valid) {
         addDoc(collection(this.firestore, data.category), data.form.value).then(() => {
-          this.openSnackBar('Успешно Создано')
-          this.dialog.closeAll()
-        }).catch(err => {
-          this.openSnackBar(err)
-          this.dialog.closeAll()
-        })
+            this.openSnackBar('Успешно Создано');
+            this.dialog.closeAll();
+          }).catch(err => {
+            this.openSnackBar(err);
+            this.dialog.closeAll();
+          });
       }
-    }
-    else {
+    } else {
       if (data.form.valid) {
         setDoc(doc(this.firestore, data.category, data.id as string), data.form.value).then(() => {
-          this.openSnackBar('Успешно редактировано')
-          this.dialog.closeAll()
-        }).catch(err => {
-          this.openSnackBar(err)
-          this.dialog.closeAll()
-        })
+            this.openSnackBar('Успешно редактировано');
+            this.dialog.closeAll();
+          }).catch(err => {
+            this.openSnackBar(err);
+            this.dialog.closeAll();
+          });
       }
     }
   }
@@ -208,9 +248,9 @@ export class ModalComponent implements OnInit {
       });
       this.isUploaded = true;
     })
-    .catch(err => {
-      console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
   
   async uploadSingleFile(folder: string, name: string, file: File | null): Promise<string> {

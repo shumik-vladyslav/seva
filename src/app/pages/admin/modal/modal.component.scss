@@ -12,6 +12,9 @@ form{
       &.invalid{
         border: 1px solid rgb(181, 43, 43);
       }
+      &.ist {
+        margin-bottom: 0;
+      }
     }
   }
 }

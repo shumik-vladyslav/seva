@@ -16,8 +16,7 @@
         <i>Локация:</i> {{item.details?.location}}<br>
         <i>График:</i> {{ item.details?.fullTime ? 'Полний робочий день' : 'Частичная занятость'}}<br>
         <i>Занятость:</i> {{item.details?.timeOnDay}}<br>
-        <i>Контакти:</i> {{item.details?.contacts}}<br>
-
+        <i>Контакты:</i> {{item.details?.contacts}}<br>
       </div>
       <span class="hot" *ngIf="item.isHot">Срочное</span><br>
       <button class="mt-1 edit-btn" (click)="EditOffer(item)">Редактировать</button>

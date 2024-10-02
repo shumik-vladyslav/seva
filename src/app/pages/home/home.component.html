@@ -1,11 +1,10 @@
 <div class="home-container">
   <div class="biger-wrap">
     <ng-container *ngFor="let item of content$ | async, let i = index">
-      <div *ngIf="i == 1" class='head-block'>
+      <div *ngIf="item.isTitle" class='head-block'>
         <div class="wrp-block">
           <h3>{{item.title}}</h3>
-          <p class="txt-smaller">{{item.desc}}
-          </p>
+          <p class="txt-smaller" [innerHTML]="item.desc"></p>
         </div>
         <div class="wrp-block img-wrp"><img src="{{item.img}}" width="100%" alt=""></div>
       </div>
@@ -64,8 +63,7 @@
             <img src="{{item.img}}" width="100%" alt="">
           </div>
           <h4 class="sb-ttl">{{item.title}}</h4>
-          <p class="txt-smaller">{{item.desc}}
-          </p>
+          <p class="txt-smaller" [innerHTML]="item.desc"></p>
         </div>
       </ng-container>
     </div>
