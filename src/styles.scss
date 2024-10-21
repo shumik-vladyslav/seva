@@ -170,6 +170,15 @@ app-work-form {
   height: 100%;
 }
 
+.outlet-wrap {
+  margin-bottom: 85px;
+}
+
+app-samaya, app-subscription {
+  display: block;
+  padding-top: 12%;
+}
+
 .range {
   -webkit-appearance: none;
   width: 100%;
@@ -810,6 +819,13 @@ body {
 
   .head-block {
     font-size: small;
+  }
+
+}
+
+@media (max-width: 650px) {
+  .outlet-wrap {
+    margin-bottom: 15px;
   }
 
 }

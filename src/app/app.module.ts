@@ -64,6 +64,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DateRangeSelectorComponent } from './pages/date-range-selector/date-range-selector.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { FirebaseService } from './services/firebase.service';
+import { SamayaComponent } from './pages/samaya/samaya.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +102,8 @@ import { FirebaseService } from './services/firebase.service';
     LoginComponent,
     FormCategoryComponent,
     SamayasServicesCategoryComponent,
+    SamayaComponent,
+    SubscriptionComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,33 @@
 <footer>
   <div class="main-wrap footer-wrap">
+    <div class="foot-card show">
+      <img class="fone" src="assets/img/phone.svg" alt="">
+      <div>
+        <p>Phone</p>
+        <p class="nowrap">+48 733 477 274</p>
+      </div>
+    </div>
     <div class="foot-content">
-      <div class="foot-card foot-card-top">
-        <img src="../../../assets/img/premium-icon-telegram-1603076.png" alt="">
-        <div ><p>Telegram</p><p>+380669461305</p></div>
+      <div class="cursor-pointer" (click)="goToUrl('https://t.me/jagadishadk')" class="foot-card foot-card-top">
+        <img src="assets/img/premium-icon-telegram-1603076.png" alt="">
+        <div class="cursor-pointer" (click)="goToUrl('https://t.me/jagadishadk')">
+          <p>Telegram</p>
+          <p>https://t.me/jagadishadk</p>
+        </div>
+      </div>
+      <div class="foot-card hide">
+        <img class="fone" src="assets/img/phone.svg" alt="">
+        <div>
+          <p>Phone</p>
+          <p class="nowrap">+48 733 477 274</p>
+        </div>
       </div>
       <div class="foot-card">
-        <img src="../../../assets/img/1639603676_8-abrakadabra-fun-p-pochta-ikonka-9.png" alt="">
-        <div><p>Email</p><p>shumicshumic@gmail.com</p></div>
+        <img src="assets/img/1639603676_8-abrakadabra-fun-p-pochta-ikonka-9.png" alt="">
+        <div (click)="goToUrl('mailto:contact@lotusf.org')" class="cursor-pointer">
+          <p>Email</p>
+          <p>contact@lotusf.org</p>
+        </div>
       </div>
     </div>
   </div>

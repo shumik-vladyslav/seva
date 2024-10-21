@@ -23,6 +23,8 @@ import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { SamayasServicesCategoryComponent } from './pages/admin/samayas-services-category/samayas-services-category.component';
 import { DateRangeSelectorComponent } from './pages/date-range-selector/date-range-selector.component';
+import { SamayaComponent } from './pages/samaya/samaya.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +38,8 @@ const routes: Routes = [
   { path: 'frame', component: IframeComponent },
   { path: 'calendar', component: DateRangeSelectorComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'samaya', component: SamayaComponent},
+  { path: 'subscription', component: SubscriptionComponent},
   {
     path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard], canActivateChild: [AdminAuthGuard], children: [
       { path: '', pathMatch: 'full', redirectTo: 'quotes' },
